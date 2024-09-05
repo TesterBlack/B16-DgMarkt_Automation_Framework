@@ -3,6 +3,7 @@ package com.dgmarkt.step_definitions;
 import com.dgmarkt.pages.LoginPage;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
