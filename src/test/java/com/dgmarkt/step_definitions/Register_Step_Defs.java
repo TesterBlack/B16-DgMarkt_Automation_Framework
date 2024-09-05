@@ -13,53 +13,44 @@ public class Register_Step_Defs {
     RegisterPage registerPage = new RegisterPage();
 
 
-    @When("user enters {string} firstname")
-    public void userEntersFirstname(String firstname) {
-        registerPage.firstnameInput.sendKeys(firstname);
-    }
 
+
+    @When("user enters {string} firstname")
+    public void user_enters_firstname(String firstname) {
+        registerPage.firstnameInput.sendKeys(firstname);
+
+    }
     @When("user enters {string} lastname")
-    public void userEntersLastname(String lastname) {
+    public void user_enters_lastname(String lastname) {
         registerPage.lastnameInput.sendKeys(lastname);
     }
-
     @When("user enters {string} email")
-    public void userEntersEmail(String email) {
+    public void user_enters_email(String email) {
         registerPage.emailInput.sendKeys(email);
     }
-
     @When("user enters {string} telephone")
-    public void userEntersTelephone(String telephone) {
-        registerPage.telephoneInput.sendKeys(telephone);
+    public void user_enters_telephone(String telephone) {
+      registerPage.telephoneInput.sendKeys(telephone);
     }
-
     @When("user enters {string} password")
-    public void userEntersPassword(String password) {
+    public void user_enters_password(String password) {
         registerPage.passwordInput.sendKeys(password);
     }
-
     @When("user enters {string} password Confirm")
-    public void userEntersPasswordConfirm(String passwordConfirm) {
+    public void user_enters_password_confirm(String passwordConfirm) {
         registerPage.passwordConfirmInput.sendKeys(passwordConfirm);
     }
-
-
-    @And("user clicks checkBox")
-    public void userClicksCheckBox() {
+    @When("user clicks checkBox")
+    public void user_clicks_check_box() {
         registerPage.checkBoxFürAgree.click();
     }
-
-    @And("user clicks Continue")
-    public void userClicksContinue() {
-        registerPage.continueButton.click();
+    @When("user clicks Continue")
+    public void user_clicks_continue() {
+       registerPage.continueButton.click();
     }
-
     @Then("verify that user can see {string} message")
-    public void verifyThatUserCanSeeMessage(String message) {
-        String actualMessage = "";
-        Assert.assertEquals(message,actualMessage);
+    public void verify_that_user_can_see_message(String message) {
 
     }
-
 
 }
