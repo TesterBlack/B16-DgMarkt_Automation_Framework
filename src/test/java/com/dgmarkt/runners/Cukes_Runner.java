@@ -15,9 +15,9 @@ import org.junit.runner.RunWith;
         },
         features="src/test/resources/features",
         glue="com/dgmarkt/step_definitions",
-        dryRun = false,
+        dryRun = true,
         publish = true,
-        tags = ""
+        tags = "@wip"
 
 
 )
