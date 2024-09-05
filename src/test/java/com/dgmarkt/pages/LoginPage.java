@@ -2,6 +2,7 @@ package com.dgmarkt.pages;
 
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,10 +19,10 @@ public class LoginPage extends BasePage{
     private WebElement loginButton;
 
     @FindBy(xpath = "//a[text()='Close']")
-    private WebElement poupClose;
+    public WebElement poupClose;
 
     @FindBy(xpath = "//span[text()='My Account']")
-    private WebElement myAccountButton;
+    public WebElement myAccountButton;
 
     @FindBy(xpath = "//a[@id='pt-login-link']")
     private WebElement accountLoginButton;
@@ -34,6 +35,12 @@ public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//span[text()='Login']")
     private WebElement accountLoginClickButton;
+
+    @FindBy (id = "pt-logout-link")
+    public WebElement logoutButton;
+
+    @FindBy (xpath = "(//span[text()='Continue'])[2]")
+    public WebElement continueButton;
 
 
 
