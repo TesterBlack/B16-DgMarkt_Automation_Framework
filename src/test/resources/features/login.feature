@@ -1,4 +1,4 @@
-Feature: Login functionality
+Feature: Login functionality test
 
 
 
