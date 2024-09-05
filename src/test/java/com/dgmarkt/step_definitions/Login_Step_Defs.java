@@ -16,12 +16,18 @@ public class Login_Step_Defs {
 
     }
     @When("The user enters valid credentials")
-    public void the_user_enters_valid_credentials() {
+    public void the_user_enters_valid_credentials() throws InterruptedException {
         loginPage.login();
 
     }
     @Then("The user should be able to see main page")
     public void the_user_should_be_able_to_see_main_page() {
+
+    }
+    @Then("The user enters own login information")
+    public void the_user_enters_own_login_information() throws InterruptedException {
+        loginPage.accountLogin();
+
 
     }
 }
