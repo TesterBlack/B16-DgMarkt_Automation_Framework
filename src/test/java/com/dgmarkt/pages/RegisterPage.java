@@ -34,5 +34,8 @@ public class RegisterPage extends BasePage{
     @FindBy(xpath = "//input[@value='Continue']")
     public WebElement continueButton;
 
+    @FindBy(xpath = "//h2[text()='Your Account Has Been Created!']")
+    public WebElement actualMessage;
+
 
 }

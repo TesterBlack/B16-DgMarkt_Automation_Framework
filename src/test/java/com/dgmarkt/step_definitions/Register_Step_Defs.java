@@ -55,7 +55,8 @@ public class Register_Step_Defs {
 
     @Then("verify that user can see {string} message")
     public void verify_that_user_can_see_message(String message) {
-        Assert.assertEquals(message,"");
+        Assert.assertEquals(message,registerPage.actualMessage.getText());
+        registerPage.actualMessage.getText();
 
     }
 
