@@ -7,3 +7,4 @@ Scenario: Positive Login Test
   When The user enters valid credentials
   Then The user should be able to see main page
   And The user enters own login information
+  And The user is on the login page
