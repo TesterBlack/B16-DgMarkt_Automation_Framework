@@ -22,7 +22,7 @@ Feature: register Functionality
     Examples:
       | firstname   | lastname | email                   | telephone | password   | passwordConfirm | message                        |
       |  sevgi      | sezgi    | amazon@gmail.com        | 2222222222| sevgi123   | sevgi123        | Your Account has been created! |
-      |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123   | mauro           | Your Account has been created! |
+      |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123   | mauro123        | Your Account has been created! |
 
 
 
