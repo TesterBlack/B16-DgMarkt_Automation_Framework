@@ -48,16 +48,14 @@ public class LoginPage extends BasePage{
 
 
 
-    public void login() throws InterruptedException {
-
+    public void login() {
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
         loginButton.click();
-        Thread.sleep(2000);
-
-
-
+        poupClose.click();
     }
+
+
     public void accountLogin() throws InterruptedException {
         poupClose.click();
         myAccountButton.click();
@@ -66,10 +64,6 @@ public class LoginPage extends BasePage{
         accountPasswordBox.sendKeys(ConfigReader.get("accountPassword"));
         accountLoginClickButton.click();
         Thread.sleep(2000);
-
-
-
-
     }
 
 

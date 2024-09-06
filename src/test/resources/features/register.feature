@@ -1,5 +1,5 @@
 
-@wip
+@register
 Feature: register Functionality
   As a user, I should be able to register
 
