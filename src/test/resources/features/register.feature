@@ -23,8 +23,6 @@ Feature: register Functionality
       |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123   | mauro123        | Your Account Has Been Created!       |
 
 
-
-
   Scenario: Attempting to Register with Empty Required Fields (E-Mail Field) - TC02
     Given The user is on the first login page
     When The user enters valid credentials
@@ -57,7 +55,6 @@ Feature: register Functionality
     Then verify that user can see error message for Firstname "First Name must be between 1 and 32 characters!"
 
 
-
   Scenario: Attempting to Register with Empty Required Fields (Last Name Field) - TC04
     Given The user is on the first login page
     When The user enters valid credentials
@@ -74,7 +71,6 @@ Feature: register Functionality
     Then verify that user can see error message for Lastname "Last Name must be between 1 and 32 characters!"
 
 
-
   Scenario: Attempting to Register with Empty Required Fields (Telephone Field) - TC05
     Given The user is on the first login page
     When The user enters valid credentials
@@ -89,7 +85,6 @@ Feature: register Functionality
     And user clicks checkBox
     And user clicks Continue
     Then verify that user can see error message for Telephone "Telephone must be between 3 and 32 characters!"
-
 
 
   Scenario: Attempting to Register with Empty Required Fields (Password Field) - TC06
