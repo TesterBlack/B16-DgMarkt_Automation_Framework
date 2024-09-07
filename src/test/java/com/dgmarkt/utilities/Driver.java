@@ -25,7 +25,7 @@ public class Driver {
     }
 
     public static WebDriver getDriver() {
-        String browser = ConfigReader.get("browser"); //chrome, firefox
+        String browser = ConfigReader.get("browser");
         if (driverPool.get() == null) {
             if (System.getProperty("BROWSER")==null){
                 browser=ConfigReader.get("browser");

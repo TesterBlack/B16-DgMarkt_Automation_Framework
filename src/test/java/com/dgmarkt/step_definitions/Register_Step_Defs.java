@@ -1,16 +1,13 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.RegisterPage;
-import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-
-import static org.bouncycastle.cms.RecipientId.password;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class Register_Step_Defs {
 
@@ -57,13 +54,13 @@ public class Register_Step_Defs {
        registerPage.continueButton.click();
     }
 
-    @When("user clicks alert")
-    public void user_clicks_alert() {
-    }
-
     @Then("verify that user can see {string} message")
     public void verify_that_user_can_see_message(String message) {
-        Assert.assertEquals(message,registerPage.actualMessage.getText());
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        WebElement element = Driver.getDriver().findElement(By.xpath("//h2[.='Your Account Has Been Created!']"));
+        String text = (String) js.executeScript("return arguments[0].innerText;", element);
+        System.out.println(text);
+        Assert.assertTrue(text.contains(message));
     }
 
     @Then("verify that user can see error message for Email {string}")

@@ -34,7 +34,7 @@ public class RegisterPage extends BasePage{
     @FindBy(xpath = "//input[@value='Continue']")
     public WebElement continueButton;
 
-    @FindBy (xpath = "//h2[text()='Your Account Has Been Created!']")
+    @FindBy (xpath = "//h2[.='Your Account Has Been Created!']")
     public WebElement actualMessage;
 
     @FindBy (xpath = "//div[@class='for-error error-email text-danger']")
@@ -63,9 +63,6 @@ public class RegisterPage extends BasePage{
 
     @FindBy (xpath = "//h2")
     public WebElement actualmessageForInvalidTelephone;
-
-
-
 
 
 

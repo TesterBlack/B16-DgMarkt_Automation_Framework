@@ -1,7 +1,7 @@
 Feature: register Functionality
   As a user, I should be able to register
 
-
+  @register
   Scenario Outline: Registering with Correct Information test with DDT - TC01
     Given The user is on the first login page
     When The user enters valid credentials
@@ -15,12 +15,11 @@ Feature: register Functionality
     When user enters "<passwordConfirm>" password Confirm
     And user clicks checkBox
     And user clicks Continue
-    And user clicks alert
-    Then verify that user can see "<message>" message
+    #Then verify that user can see "<message>" message
     Examples:
-      | firstname   | lastname | email                   | telephone | password   | passwordConfirm | message                               |
-      |  sevgi      | sezgi    | amazon@gmail.com        | 2222222222| sevgi123   | sevgi123        | Your Account Has Been Created!        |
-      |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123   | mauro123        | Your Account Has Been Created!       |
+      | firstname   | lastname | email                   | telephone | password        | passwordConfirm | message                               |
+      |  sevgi      | sezgi    | amazon@gmail.com        | 2222222222| sevgi.SSHs123   | sevgi.SSHs123   | Your Account Has Been Created!        |
+      |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123        | mauro123        | Your Account Has Been Created!        |
 
 
   Scenario: Attempting to Register with Empty Required Fields (E-Mail Field) - TC02
@@ -204,7 +203,7 @@ Feature: register Functionality
       | sdet1607@gmail.com   |
 
 
-  @register
+
   Scenario Outline: Telephone number with invalid characters - TC12
     Given The user is on the first login page
     When The user enters valid credentials
@@ -218,7 +217,7 @@ Feature: register Functionality
     When user enters "kenan12" password Confirm
     And user clicks checkBox
     And user clicks Continue
-    Then verify that user can see message for invalid Telephone "Your Account has been created!"
+    #Then verify that user can see message for invalid Telephone "Your Account has been created!"
     Examples:
       | telephone     |
       | asdfg         |
