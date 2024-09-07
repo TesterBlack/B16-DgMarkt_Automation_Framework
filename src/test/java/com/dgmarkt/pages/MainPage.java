@@ -9,6 +9,12 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "(//div[@class='btn-group'])[1]")
     public WebElement currenyEuroButton;
 
+    @FindBy(xpath = "//span[text()='My Account']")
+    public WebElement myAccountButton;
+
+    @FindBy(xpath = "//a[@id='pt-register-link']")
+    public WebElement accountRegisterButton;
+
 
 
 }
