@@ -1,7 +1,8 @@
+
 Feature: register Functionality
   As a user, I should be able to register
 
-  @register
+
   Scenario Outline: Registering with Correct Information test with DDT - TC01
     Given The user is on the first login page
     When The user enters valid credentials
