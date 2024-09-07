@@ -37,5 +37,48 @@ public class RegisterPage extends BasePage{
     @FindBy (xpath = "//h2[text()='Your Account Has Been Created!']")
     public WebElement actualMessage;
 
+    @FindBy (xpath = "//div[@class='for-error error-email text-danger']")
+    public WebElement actualErrorMessageForEmail;
+
+    @FindBy (xpath = "//div[@class='for-error error-firstname text-danger']")
+    public WebElement actualErrorMessageForFirstname;
+
+    @FindBy (xpath = "//div[@class='for-error error-lastname text-danger']")
+    public WebElement actualErrorMessageForLastname;
+
+    @FindBy (xpath = "//div[@class='for-error error-telephone text-danger']")
+    public WebElement actualErrorMessageForTelephone;
+
+    @FindBy (xpath = "//div[@class='for-error error-password text-danger']")
+    public WebElement actualErrorMessageForPassword;
+
+    @FindBy (xpath = "//span[text()=' Warning: You must agree to the Privacy Policy!']")
+    public WebElement actualErrorMessageForCheckbox;
+
+    @FindBy (xpath = "//div[text()='Password confirmation does not match password!']")
+    public WebElement actualErrorMessageForBeidePassword;
+
+    @FindBy (xpath = "//*[text()=' Warning: E-Mail Address is already registered!']")
+    public WebElement actualErrorMessageForRegisterEmail;
+
+    @FindBy (xpath = "//h2")
+    public WebElement actualmessageForInvalidTelephone;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

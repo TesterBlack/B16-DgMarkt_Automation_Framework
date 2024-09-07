@@ -55,19 +55,65 @@ public class Register_Step_Defs {
     @When("user clicks Continue")
     public void user_clicks_continue() throws InterruptedException {
        registerPage.continueButton.click();
-
     }
+
     @When("user clicks alert")
     public void user_clicks_alert() {
-
     }
-
 
 
     @Then("verify that user can see {string} message")
-    public void verify_that_user_can_see_message(String message) throws InterruptedException {
+    public void verify_that_user_can_see_message(String message) {
         Assert.assertEquals(message,registerPage.actualMessage.getText());
     }
+
+    @Then("verify that user can see error message for Email {string}")
+    public void verify_that_user_can_see_error_message(String errorMessageForEmail){
+        Assert.assertEquals(errorMessageForEmail,registerPage.actualErrorMessageForEmail.getText());
+    }
+
+    @Then("verify that user can see error message for Firstname {string}")
+    public void verify_that_user_can_see_error_message_for_firstname(String errorMessageForFirstname) {
+         Assert.assertEquals(errorMessageForFirstname,registerPage.actualErrorMessageForFirstname.getText());
+    }
+
+    @Then("verify that user can see error message for Lastname {string}")
+    public void verify_that_user_can_see_error_message_for_lastname(String errorMessageForLastName) {
+        Assert.assertEquals(errorMessageForLastName,registerPage.actualErrorMessageForLastname.getText());
+    }
+
+    @Then("verify that user can see error message for Telephone {string}")
+    public void verify_that_user_can_see_error_message_for_telephone(String errorMessageForTelephone) {
+        Assert.assertEquals(errorMessageForTelephone,registerPage.actualErrorMessageForTelephone.getText());
+    }
+
+    @Then("verify that user can see error message for Password {string}")
+    public void verify_that_user_can_see_error_message_for_password(String errorMessageForPassword) {
+      Assert.assertEquals(errorMessageForPassword,registerPage.actualErrorMessageForPassword.getText());
+    }
+
+    @Then("verify that user can see error message for checkbox {string}")
+    public void verify_that_user_can_see_error_message_for_checkbox(String errorMessageForCheckbox) {
+       Assert.assertEquals(errorMessageForCheckbox,registerPage.actualErrorMessageForCheckbox.getText());
+    }
+
+    @Then("verify that user can see error message for beide Password {string}")
+    public void verify_that_user_can_see_error_message_for_beide_password(String errorMessageForBeidePassword) {
+       Assert.assertEquals(errorMessageForBeidePassword,registerPage.actualErrorMessageForBeidePassword.getText());
+    }
+
+
+    @Then("verify that user can see error message for Register Email {string}")
+    public void verify_that_user_can_see_error_message_for_register_email(String errorMessageForRegisterEmail) {
+        Assert.assertEquals(errorMessageForRegisterEmail,registerPage.actualErrorMessageForRegisterEmail.getText());
+    }
+
+    @Then("verify that user can see message for invalid Telephone {string}")
+    public void verify_that_user_can_see_message_for_invalid_telephone(String messageForInvalidTelephone) {
+        Assert.assertEquals(messageForInvalidTelephone,registerPage.actualmessageForInvalidTelephone.getText());
+    }
+
+
 
 
 
