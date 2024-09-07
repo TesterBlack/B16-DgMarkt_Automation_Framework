@@ -61,7 +61,6 @@ public class Register_Step_Defs {
     public void user_clicks_alert() {
     }
 
-
     @Then("verify that user can see {string} message")
     public void verify_that_user_can_see_message(String message) {
         Assert.assertEquals(message,registerPage.actualMessage.getText());
@@ -101,7 +100,6 @@ public class Register_Step_Defs {
     public void verify_that_user_can_see_error_message_for_beide_password(String errorMessageForBeidePassword) {
        Assert.assertEquals(errorMessageForBeidePassword,registerPage.actualErrorMessageForBeidePassword.getText());
     }
-
 
     @Then("verify that user can see error message for Register Email {string}")
     public void verify_that_user_can_see_error_message_for_register_email(String errorMessageForRegisterEmail) {

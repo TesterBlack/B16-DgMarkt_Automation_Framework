@@ -8,7 +8,6 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//span[text()='My Account']")
     public WebElement myAccountButton;
 
-
     @FindBy(xpath = "//a[@id='pt-register-link']")
     public WebElement accountRegisterButton;
 
