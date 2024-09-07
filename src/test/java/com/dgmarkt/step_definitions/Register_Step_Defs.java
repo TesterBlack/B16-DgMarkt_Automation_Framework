@@ -1,10 +1,14 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.RegisterPage;
+import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 
 import static org.bouncycastle.cms.RecipientId.password;
 
@@ -49,16 +53,22 @@ public class Register_Step_Defs {
     }
 
     @When("user clicks Continue")
-    public void user_clicks_continue() {
+    public void user_clicks_continue() throws InterruptedException {
        registerPage.continueButton.click();
+
     }
+    @When("user clicks alert")
+    public void user_clicks_alert() {
+
+    }
+
+
 
     @Then("verify that user can see {string} message")
-    public void verify_that_user_can_see_message(String message) {
+    public void verify_that_user_can_see_message(String message) throws InterruptedException {
         Assert.assertEquals(message,registerPage.actualMessage.getText());
-        registerPage.actualMessage.getText();
-
     }
+
 
 
 
