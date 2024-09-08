@@ -29,13 +29,13 @@ public class MainPage_Step_Defs {
 
 
 
+
     @When("The User navigates to the currency selector dropdown on the home page")
-    public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page()throws InterruptedException {
+    public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page() {
         BrowserUtils.waitFor(4);
         mainPage.currencyButton.click();
-
-
     }
+
     @Then("The user should be see the currency options\\(Euro-Pound-Dolar).")
     public void the_user_should_be_see_the_currency_options_euro_pound_euro() throws InterruptedException{
         Assert.assertTrue(mainPage.currencyEuroButton.isDisplayed());
