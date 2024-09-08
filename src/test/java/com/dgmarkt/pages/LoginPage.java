@@ -55,7 +55,7 @@ public class LoginPage extends BasePage{
 
 
     public void accountLogin() throws InterruptedException {
-        poupClose.click();
+        //poupClose.click();
         myAccountButton.click();
         accountLoginButton.click();
         accountEmailBox.sendKeys(ConfigReader.get("accountUsername"));

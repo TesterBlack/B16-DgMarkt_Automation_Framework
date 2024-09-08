@@ -20,8 +20,8 @@ public class MainPage_Step_Defs {
         mainPage.accountRegisterButton.click();
     }
 
-    @When("user cliks My Account from Dropdown menu")
-    public void user_cliks_my_account_from_dropdown_menu() {
+    @When("user clicks My Account from Dropdown menu")
+    public void user_clicks_my_account_from_dropdown_menu() {
         mainPage.myAccount2Button.click();
     }
 }

@@ -5,20 +5,20 @@ import org.openqa.selenium.support.FindBy;
 
 public class EditAccountPage extends BasePage {
 
-    @FindBy(xpath = "//input[@placeholder='First Name']")
-    private WebElement firstNameInput;
+    @FindBy(xpath = "//input[@name='firstname']")
+    public WebElement firstNameInput;
 
     @FindBy(xpath = "//input[@placeholder='Last Name']")
-    private WebElement lastNameInput;
+    public WebElement lastNameInput;
 
     @FindBy(xpath = "//input[@placeholder='E-Mail']")
-    private WebElement emailInput;
+    public WebElement emailInput;
 
     @FindBy(xpath = "//input[@placeholder='Telephone']")
-    private WebElement telephoneInput;
+    public WebElement telephoneInput;
 
-    @FindBy(xpath = "//input[@value='Continue']")
-    private WebElement continueButton;
+    @FindBy(xpath = "//input[@class='btn btn-primary']")
+    public WebElement continueButton;
 
 
 

@@ -3,8 +3,13 @@ package com.dgmarkt.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountPage {
+public class AccountPage extends BasePage{
 
-    @FindBy(xpath = "//a[text()='Edit Account']")
+    @FindBy(xpath = "//*[text()='Edit Account']")
     public WebElement editAccount;
+
+    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    public WebElement messageForEdit;
+
+
 }
