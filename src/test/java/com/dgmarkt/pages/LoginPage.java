@@ -1,5 +1,6 @@
 package com.dgmarkt.pages;
 
+import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
 import org.openqa.selenium.By;
@@ -44,8 +45,6 @@ public class LoginPage extends BasePage{
 
 
 
-
-
     public void login() throws InterruptedException {
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
@@ -65,6 +64,4 @@ public class LoginPage extends BasePage{
         Thread.sleep(2000);
     }
 
-
-
-}
+    }

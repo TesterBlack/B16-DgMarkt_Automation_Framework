@@ -1,4 +1,4 @@
-@logout
+
 Feature: Logout functionality
 
   Scenario: Logout Test
