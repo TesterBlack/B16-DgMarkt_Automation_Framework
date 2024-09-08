@@ -51,14 +51,11 @@ public class LoginPage extends BasePage{
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
         loginButton.click();
-        Thread.sleep(2000);
         poupClose.click();
     }
 
 
     public void accountLogin() throws InterruptedException {
-        BrowserUtils.waitFor(3);
-        poupClose.click();
         myAccountButton.click();
         accountLoginButton.click();
         accountEmailBox.sendKeys(ConfigReader.get("accountUsername"));

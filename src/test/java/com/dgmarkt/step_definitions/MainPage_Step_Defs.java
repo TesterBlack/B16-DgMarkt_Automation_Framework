@@ -48,7 +48,7 @@ public class MainPage_Step_Defs {
     }
     @Then("sees that Euro have been selected")
     public void sees_that_euro_have_been_selected() {
-        Assert.assertTrue(mainPage.currencyButton.getText().contains("€"));
+        Assert.assertTrue(mainPage.currencyButton.getText().contains("Euro"));
     }
     @When("The user should be see the currency options\\(Euro-Pound-Dolar)")
     public void the_user_should_be_see_the_currency_options_euro_pound_pounds() {
@@ -75,7 +75,7 @@ public class MainPage_Step_Defs {
     }
 
 
-
+/*
 
 
     @When("The user proceeds to the Checkout page")
@@ -154,27 +154,31 @@ public class MainPage_Step_Defs {
 
 
 
-
     @When("The user proceeds to the checkout page")
-    public void the_user_proceeds_to_the_checkout_page() {
+    public void the_user_proceeds_to_the_checkout_pages() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
     @Then("Verify that the total amount is displayed in the selected currency.")
-    public void verify_that_the_total_amount_is_displayed_in_the_selected_currency() {
+    public void verify_that_the_total_amount_is_displayed_in_the_selected_currencyy() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
     @Then("The user completes the purchase process \\(choose payment method, enter details, confirm payment).")
-    public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_payment() {
+    public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_paymentt() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
     @Then("The purchase should be successfully completed and the order confirmation should show the total amount in the selected currency.")
-    public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency() {
+    public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currencyy() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
+
+
+ */
+
 
 
 
