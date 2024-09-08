@@ -3,7 +3,7 @@
 Feature: Currency functionality test
 
 
-
+  @wip
   Scenario:Currency Selection Reflects on Product Page - TC01
     Given The user is on the first login page
     When The user is on the login page

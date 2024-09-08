@@ -48,7 +48,8 @@ public class MainPage_Step_Defs {
     }
     @Then("sees that Euro have been selected")
     public void sees_that_euro_have_been_selected() {
-        Assert.assertTrue(mainPage.currencyButton.getText().contains("Euro"));
+        Assert.assertEquals("€", mainPage.currencyEuroButton.getText());
+
     }
     @When("The user should be see the currency options\\(Euro-Pound-Dolar)")
     public void the_user_should_be_see_the_currency_options_euro_pound_pounds() {
