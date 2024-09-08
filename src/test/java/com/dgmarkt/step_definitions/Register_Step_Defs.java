@@ -56,6 +56,7 @@ public class Register_Step_Defs {
 
     @Then("verify that user can see {string} message")
     public void verify_that_user_can_see_message(String message) {
+      // Assert.assertEquals(registerPage.actualMessage.getText(),message);
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         WebElement element = Driver.getDriver().findElement(By.xpath("//h2[.='Your Account Has Been Created!']"));
         String text = (String) js.executeScript("return arguments[0].innerText;", element);
