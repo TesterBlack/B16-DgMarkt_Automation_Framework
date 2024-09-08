@@ -1,5 +1,6 @@
 package com.dgmarkt.pages;
 
+import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
 import org.openqa.selenium.By;
@@ -18,7 +19,7 @@ public class LoginPage extends BasePage{
     @FindBy (css = "[name='login']")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//a[text()='Close']")
+    @FindBy(xpath = "//a[@class='a-close-newsletter']")
     public WebElement poupClose;
 
     @FindBy(xpath = "//span[text()='My Account']")
@@ -56,6 +57,7 @@ public class LoginPage extends BasePage{
 
 
     public void accountLogin() throws InterruptedException {
+        BrowserUtils.waitFor(3);
         poupClose.click();
         myAccountButton.click();
         accountLoginButton.click();

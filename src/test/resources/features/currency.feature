@@ -6,6 +6,7 @@ Feature: Currency functionality test
 @wip
   Scenario:Currency Selection Reflects on Product Page - TC01
     Given The user is on the first login page
+    When The user enters own login information
     When The User navigates to the currency selector dropdown on the home page
     #Then The user should be see the currency options(Euro-Pound-Dolar).
     #And User selects Euro as the currency

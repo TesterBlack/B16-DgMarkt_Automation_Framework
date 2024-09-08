@@ -15,7 +15,7 @@ public class MainPage extends BasePage{
 
 
 
-    @FindBy(xpath = "//div[@class='btn-group open']")  //div[@class='btn-group']
+    @FindBy(xpath = "//span[text()='Currency']")  //div[@class='btn-group']
     public WebElement currencyButton;
 
     @FindBy(xpath = "//button[@name='EUR']") //div[@class='btn-group open'])[1]

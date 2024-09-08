@@ -31,7 +31,7 @@ public class MainPage_Step_Defs {
 
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page()throws InterruptedException {
-
+        BrowserUtils.waitFor(4);
         mainPage.currencyButton.click();
 
 
