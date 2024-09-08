@@ -27,4 +27,8 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//button[@name='USD']")
     public WebElement currencyDolarButton;
 
+    //TC04
+    @FindBy(xpath = "//button[@name='USD']")
+    public WebElement checkoutButton;
+
 }
