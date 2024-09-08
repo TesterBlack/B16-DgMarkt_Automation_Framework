@@ -5,6 +5,7 @@ import com.dgmarkt.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class MainPage_Step_Defs {
 
@@ -26,24 +27,33 @@ public class MainPage_Step_Defs {
 
 
 
+
+
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page()throws InterruptedException {
-        Thread.sleep(2000);
+
         mainPage.currencyButton.click();
+
+
     }
     @Then("The user should be see the currency options\\(Euro-Pound-Dolar).")
     public void the_user_should_be_see_the_currency_options_euro_pound_euro() throws InterruptedException{
-        Thread.sleep(2000);
-        BrowserUtils.clickWithJS(mainPage.currenyEuroButton);
+        Assert.assertTrue(mainPage.currencyEuroButton.isDisplayed());
+        //Assert.assertTrue(mainPage.currenyEuroButton.isDisplayed());
+        //Assert.assertTrue(mainPage.currenyEuroButton.isDisplayed());
+
+
+
     }
     @Then("User selects Euro as the currency")
     public void user_selects_euro_as_the_currency() {
 
+        mainPage.currencyEuroButton.click();
 
     }
     @Then("sees that Euro have been selected")
     public void sees_that_euro_have_been_selected() {
-
+        Assert.assertTrue(mainPage.currencyButton.getText().contains("€"));
     }
 
 
