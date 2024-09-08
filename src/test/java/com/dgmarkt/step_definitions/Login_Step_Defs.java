@@ -17,6 +17,7 @@ public class Login_Step_Defs {
         Driver.getDriver().get(ConfigReader.get("url"));
 
     }
+
     @When("The user enters valid credentials")
     public void the_user_enters_valid_credentials() throws InterruptedException {
         loginPage.login();

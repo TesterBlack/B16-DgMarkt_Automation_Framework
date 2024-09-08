@@ -3,6 +3,7 @@ package com.dgmarkt.step_definitions;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -39,10 +40,8 @@ public class MainPage_Step_Defs {
     @Then("The user should be see the currency options\\(Euro-Pound-Dolar).")
     public void the_user_should_be_see_the_currency_options_euro_pound_euro() throws InterruptedException{
         Assert.assertTrue(mainPage.currencyEuroButton.isDisplayed());
-        //Assert.assertTrue(mainPage.currenyEuroButton.isDisplayed());
-        //Assert.assertTrue(mainPage.currenyEuroButton.isDisplayed());
-
-
+        Assert.assertTrue(mainPage.currencyPoundsButton.isDisplayed());
+        Assert.assertTrue(mainPage.currencyDolarButton.isDisplayed());
 
     }
     @Then("User selects Euro as the currency")
@@ -59,24 +58,27 @@ public class MainPage_Step_Defs {
 
     @When("The user should be see the currency options\\(Euro-Pound-Dolar)")
     public void the_user_should_be_see_the_currency_options_euro_pound_pounds() {
+        Assert.assertTrue(mainPage.currencyEuroButton.isDisplayed());
+        Assert.assertTrue(mainPage.currencyPoundsButton.isDisplayed());
+        Assert.assertTrue(mainPage.currencyDolarButton.isDisplayed());
 
     }
     @Then("User selects pounds as the currency")
     public void user_selects_pounds_as_the_currency() {
-
+        mainPage.currencyPoundsButton.click();
     }
     @Then("sees that pounds have been selected")
     public void sees_that_pounds_have_been_selected() {
-
+        Assert.assertTrue(mainPage.currencyButton.getText().contains("Pound"));
     }
 
     @Then("User selects dolar as the currency")
     public void user_selects_dolar_as_the_currency() {
-
+        mainPage.currencyDolarButton.click();
     }
     @Then("sees that dolar have been selected")
     public void sees_that_dolar_have_been_selected() {
-
+        Assert.assertTrue(mainPage.currencyButton.getText().contains("$"));
     }
 
 
