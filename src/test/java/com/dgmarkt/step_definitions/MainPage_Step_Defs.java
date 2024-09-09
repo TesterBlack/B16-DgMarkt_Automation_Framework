@@ -2,7 +2,9 @@ package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class MainPage_Step_Defs {
 
@@ -19,5 +21,15 @@ public class MainPage_Step_Defs {
     public void user_clicks_register_on_my_account() {
         mainPage.accountRegisterButton.click();
 
+    }
+    @When("The user clicks {string} header")
+    public void the_user_clicks_header(String headerText) {
+        mainPage.getHeader(headerText).click();
+    }
+    @Then("The user should be able to see the {string} page")
+    public void the_user_should_be_able_to_see_the_page(String expectedPage) {
+        String actualPage = mainPage.getPage().getText();
+        BrowserUtils.waitForVisibility(mainPage.getPage(), 5);
+        Assert.assertEquals(expectedPage,actualPage);
     }
 }

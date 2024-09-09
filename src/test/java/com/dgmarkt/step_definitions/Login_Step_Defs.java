@@ -1,6 +1,7 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.LoginPage;
+import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -8,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class Login_Step_Defs {
     LoginPage loginPage = new LoginPage();
@@ -20,7 +22,6 @@ public class Login_Step_Defs {
     @When("The user enters valid credentials")
     public void the_user_enters_valid_credentials() throws InterruptedException {
         loginPage.login();
-
     }
     @Then("The user should be able to see main page")
     public void the_user_should_be_able_to_see_main_page() {
@@ -30,7 +31,6 @@ public class Login_Step_Defs {
     @Then("The user enters own login information")
     public void the_user_enters_own_login_information() throws InterruptedException {
         loginPage.accountLogin();
-
     }
     @Then("The user is on the login page")
     public void the_user_is_on_the_login_page() throws InterruptedException {
@@ -52,10 +52,10 @@ public class Login_Step_Defs {
     public void the_user_should_be_able_to_logout() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/",currentUrl);
+        BrowserUtils.waitForClickablility(loginPage.continueButton,1000);
     }
     @Then("The user clicks on Continue button")
-    public void the_user_clicks_on_continue_button() throws InterruptedException {
-        Thread.sleep(2000);
+    public void the_user_clicks_on_continue_button() {
         loginPage.continueButton.click();
     }
     @Then("The user closes the newsletter popup")
@@ -66,5 +66,16 @@ public class Login_Step_Defs {
     public void the_user_should_be_able_to_see_login_main_page() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/",currentUrl);
+    }
+    @When("The user clicks on Back button")
+    public void the_user_clicks_on_back_button() {
+        Driver.getDriver().navigate().back();
+    }
+    @Then("The user should able to see login button by clicking on My Account menu")
+    public void the_user_should_able_to_see_login_button_by_clicking_on_my_account_menu() {
+        loginPage.myAccountButton.click();
+        String expectedAccountLoginButton = "Login";
+        String actualAccountLoginButton = loginPage.accountLoginButton.getText();
+        Assert.assertEquals(expectedAccountLoginButton,actualAccountLoginButton);
     }
 }

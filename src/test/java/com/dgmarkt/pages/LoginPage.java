@@ -25,7 +25,7 @@ public class LoginPage extends BasePage{
     public WebElement myAccountButton;
 
     @FindBy(xpath = "//a[@id='pt-login-link']")
-    private WebElement accountLoginButton;
+    public WebElement accountLoginButton;
 
     @FindBy(xpath = "//input[@id='input-email']")
     private WebElement accountEmailBox;
@@ -50,13 +50,11 @@ public class LoginPage extends BasePage{
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
         loginButton.click();
-        Thread.sleep(2000);
         poupClose.click();
     }
 
 
     public void accountLogin() throws InterruptedException {
-        poupClose.click();
         myAccountButton.click();
         accountLoginButton.click();
         accountEmailBox.sendKeys(ConfigReader.get("accountUsername"));
