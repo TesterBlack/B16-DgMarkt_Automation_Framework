@@ -36,4 +36,11 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
     public WebElement verifyDolar ;
 
+
+
+
+
+
+
+
 }
