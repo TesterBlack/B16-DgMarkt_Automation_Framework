@@ -31,6 +31,49 @@ public class EditAccountPage_Step_Defs {
         Assert.assertEquals(message, accountPage.messageForEdit.getText());
     }
 
+    @Then("The user should receive a success message für Firstname {string}")
+    public void the_user_should_receive_a_success_message_für_firstname(String errorMessageForFirstname) {
+       Assert.assertEquals(errorMessageForFirstname, editAccountPage.messageForFirstName.getText());
+    }
+
+    @Then("The user should receive a success message for Lastname {string}")
+    public void the_user_should_receive_a_success_message_for_lastname(String errorMessageForLastname) {
+      Assert.assertEquals(errorMessageForLastname, editAccountPage.messageForLastName.getText());
+    }
+
+    @Then("The user should receive a success message for Telephone {string}")
+    public void the_user_should_receive_a_success_message_for_telephone(String errorMessageForTelephone) {
+        Assert.assertEquals(errorMessageForTelephone, editAccountPage.messageForTelephone.getText());
+    }
+
+    @Then("The user should receive a success message for empty Email  {string}")
+    public void the_user_should_receive_a_success_message_for_empty_email(String errorMessageForEmptyEmail) {
+      Assert.assertEquals(errorMessageForEmptyEmail,editAccountPage.messageForEmptyEmail.getText());
+    }
+
+    @Then("The user should receive a success message for registered Email {string}")
+    public void the_user_should_receive_a_success_message_for_registered_email(String errorMessageForRegisteredEmail) {
+        Assert.assertEquals(errorMessageForRegisteredEmail,editAccountPage.messageForRegisteredEmail.getText());
+    }
+
+    @Then("The user should receive a success message for invalid E-Mail Format \"Die E-Mail-Adresse muss ein @-Zeichen enthalte. Inder Angabe \"sevgisezergmail.com\" fehlt ein @-Zeichen.\"")
+    public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_die_e_mail_adresse_muss_ein_zeichen_enthalte_inder_angabe_sevgisezergmail_com_fehlt_ein_zeichen() {
+        // ikisi icin de alert var burada da alert mesajlarini locator ve assert yap tek tek
+    }
+
+
+
+    @Then("The user should receive a error message for Invalid Email Format {string} {string}")
+    public void the_user_should_receive_a_error_message_for_invalid_email_format(String invalidEmail, String errorMessage) {
+        if (invalidEmail.contains("@")){
+            Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),errorMessage);
+        }
+    }
+
+
+
+
+
     @When("The user updates the Last Name field with valid information")
     public void the_user_updates_the_last_name_field_with_valid_information() {
        //editAccountPage.lastNameInput.click();
@@ -48,7 +91,7 @@ public class EditAccountPage_Step_Defs {
     @When("The user updates the E-Mail field with valid information")
     public void the_user_updates_the_e_mail_field_with_valid_information() {
         editAccountPage.emailInput.clear();
-        editAccountPage.emailInput.sendKeys("login15645@gmail.com");
+        editAccountPage.emailInput.sendKeys("login26552@gmail.com");
     }
 
     @When("The user does not fill in the required First Name field")
@@ -102,11 +145,14 @@ public class EditAccountPage_Step_Defs {
         editAccountPage.emailInput.sendKeys(invalidEmailFormat);
 
     }
+
     @Then("The user should receive a success message for Invalid Email Format {string}")
     public void the_user_should_receive_a_success_message_for_invalid_email_format(String errorMessage) {
         Assert.assertEquals(errorMessage, accountPage.messageForEdit.getText());
 
     }
+
+
 
 
 

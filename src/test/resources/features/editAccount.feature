@@ -35,31 +35,31 @@ Feature: edit Account Functionality
   Scenario: Verify that the user did not fill in the required First Name field and received an error message - TC05
     When The user does not fill in the required First Name field
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "First Name must be between 1 and 32 characters!"
+    Then The user should receive a success message für Firstname "First Name must be between 1 and 32 characters!"
 
 
   Scenario: Verify that the user did not fill in the required Last Name field and received an error message - TC06
     When The user does not fill in the required Last Name field
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "Last Name must be between 1 and 32 characters!"
+    Then The user should receive a success message for Lastname "Last Name must be between 1 and 32 characters!"
 
 
   Scenario: Verify that the user did not fill in the required Telephone field and received an error message - TC07
     When The user does not fill in the required Telephone field
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "Telephone must be between 1 and 32 characters!"
+    Then The user should receive a success message for Telephone "Telephone must be between 3 and 32 characters!"
 
 
   Scenario: Verify that the user did not fill in the required E-Mail field and received an error message - TC08
     When The user does not fill in the required E-Mail field
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "E-Mail Address does not appear to be valid!"
+    Then The user should receive a success message for empty Email  "E-Mail Address does not appear to be valid!"
 
 
   Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC09, TC10
     When The user attempted update with invalid E-Mail format "<invalidEmailFormat>"
     And The user clicks Continue button on Edit Account site
-   # Then The user should receive a success message for invalid E-Mail Format "<errorMessage>"
+    Then The user should receive a success message for invalid E-Mail Format "<errorMessage>"
     Examples:
       | invalidEmailFormat  | errorMessage                                                                                            |
       | sevgisezergmail.com | Die E-Mail-Adresse muss ein @-Zeichen enthalte. Inder Angabe "sevgisezergmail.com" fehlt ein @-Zeichen. |
@@ -69,7 +69,7 @@ Feature: edit Account Functionality
   Scenario: The user tries to update with the existing E-Mail and receives an error message - TC11
     When updates user E-Mail details with an already registered E-Mail address
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "Warning: E-Mail address is already registered!"
+    Then The user should receive a success message for registered Email "Warning: E-Mail address is already registered!"
 
 
   Scenario Outline: Verify that user Entering Invalid Characters in the Telephone Field - TC12
@@ -87,7 +87,7 @@ Feature: edit Account Functionality
   Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC13
     When The user attempted update with invalid Email format "<invalidEmail>"
     And The user clicks Continue button on Edit Account site
-    #Then The user should receive a success message for Invalid Email Format "<errorMessage>"
+    Then The user should receive a error message for Invalid Email Format "<errorMessage>"
     Examples:
-      | invalidEmail | errorMessage |
+      | invalidEmail          | errorMessage                                  |
       | sevgi sezer@gmail.com | Vor dem @-Zeichen darf das Zeichen " " nicht verwendet werden. |
