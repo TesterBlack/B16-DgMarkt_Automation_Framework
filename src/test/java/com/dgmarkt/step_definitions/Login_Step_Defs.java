@@ -17,6 +17,7 @@ public class Login_Step_Defs {
         Driver.getDriver().get(ConfigReader.get("url"));
 
     }
+
     @When("The user enters valid credentials")
     public void the_user_enters_valid_credentials() throws InterruptedException {
         loginPage.login();
@@ -27,7 +28,7 @@ public class Login_Step_Defs {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/",currentUrl);
     }
-    @Then("The user enters own login information")
+    @When("The user enters own login information")
     public void the_user_enters_own_login_information() throws InterruptedException {
         loginPage.accountLogin();
 

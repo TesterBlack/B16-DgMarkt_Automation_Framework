@@ -19,7 +19,7 @@ public class LoginPage extends BasePage{
     @FindBy (css = "[name='login']")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//a[text()='Close']")
+    @FindBy(xpath = "//a[@class='a-close-newsletter']")
     public WebElement poupClose;
 
     @FindBy(xpath = "//span[text()='My Account']")
@@ -45,17 +45,18 @@ public class LoginPage extends BasePage{
 
 
 
+
+
     public void login() throws InterruptedException {
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
         loginButton.click();
-        Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
         poupClose.click();
     }
 
 
     public void accountLogin() throws InterruptedException {
-        //poupClose.click();
         myAccountButton.click();
         accountLoginButton.click();
         accountEmailBox.sendKeys(ConfigReader.get("accountUsername"));
@@ -64,4 +65,6 @@ public class LoginPage extends BasePage{
         Thread.sleep(2000);
     }
 
-    }
+
+
+}
