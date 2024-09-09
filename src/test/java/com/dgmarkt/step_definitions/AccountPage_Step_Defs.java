@@ -13,7 +13,11 @@ public class AccountPage_Step_Defs {
         BrowserUtils.waitFor(3);
         BrowserUtils.waitForClickablility(accountPage.editAccount,10);
         accountPage.editAccount.click();
+    }
 
+    @When("The user clicks on Address Book from Account Page")
+    public void the_user_clicks_on_address_book_from_account_page() {
+        accountPage.addressBook.click();
     }
 
 

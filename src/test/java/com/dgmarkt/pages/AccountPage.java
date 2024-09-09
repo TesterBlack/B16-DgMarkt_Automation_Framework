@@ -11,6 +11,10 @@ public class AccountPage extends BasePage{
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     public WebElement messageForEdit;
 
+    @FindBy(xpath = "//a[text()='Address Book']")
+    public WebElement addressBook;
+
+
 
 
 
