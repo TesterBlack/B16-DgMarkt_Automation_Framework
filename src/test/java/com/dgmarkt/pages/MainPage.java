@@ -11,12 +11,41 @@ public class MainPage extends BasePage{
     public WebElement myAccountButton;
 
     @FindBy(xpath = "//a[@id='pt-register-link']")
-    public WebElement accountRegisterButton;
+    public WebElement accountRegisterButton;   
 
-    public WebElement getHeader (String headerName){
+    @FindBy(xpath = "//a[text()='My Account']")
+    public WebElement myAccount2Button;
+  
+    @FindBy(xpath = "//span[text()='Currency']")
+    public WebElement currencyButton;
+
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle'])[1]")
+    public WebElement currencies;
+
+    @FindBy(xpath = "//button[@name='EUR']")
+    public WebElement currencyEuroButton;
+
+    @FindBy(xpath = "//button[@name='GBP']")
+    public WebElement currencyPoundsButton;
+
+    @FindBy(xpath = "//button[@name='USD']")
+    public WebElement currencyDolarButton;
+
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
+    public WebElement verifyEuro ;
+
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
+    public WebElement verifyPounds ;
+  
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
+    public WebElement verifyDolar ;
+  
+   public WebElement getHeader (String headerName){
         return Driver.getDriver().findElement(By.xpath("//a[@class='a-top-link']//span[contains(text(),'"+headerName+"')]"));
     }
     public WebElement getPage (){
         return Driver.getDriver().findElement(By.xpath(("//div[@class='breadcrumbs']//li[2]")));
     }
+
+
 }
