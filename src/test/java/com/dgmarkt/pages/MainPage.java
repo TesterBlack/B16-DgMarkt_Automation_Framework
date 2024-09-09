@@ -11,6 +11,8 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[@id='pt-register-link']")
     public WebElement accountRegisterButton;
 
+    @FindBy(xpath = "//a[text()='My Account']")
+    public WebElement myAccount2Button;
     @FindBy(xpath = "//span[text()='Currency']")
     public WebElement currencyButton;
 
