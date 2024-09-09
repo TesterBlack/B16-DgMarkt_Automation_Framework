@@ -79,6 +79,17 @@ public class MainPage_Step_Defs {
     public void sees_that_dolar_have_been_selected() {
         Assert.assertTrue(mainPage.verifyDolar.getText().contains("$"));
     }
+  
+   @When("The user clicks {string} header")
+    public void the_user_clicks_header(String headerText) {
+        mainPage.getHeader(headerText).click();
+    }
+    @Then("The user should be able to see the {string} page")
+    public void the_user_should_be_able_to_see_the_page(String expectedPage) {
+        String actualPage = mainPage.getPage().getText();
+        BrowserUtils.waitForVisibility(mainPage.getPage(), 5);
+        Assert.assertEquals(expectedPage,actualPage);
+    }
 
 
 
