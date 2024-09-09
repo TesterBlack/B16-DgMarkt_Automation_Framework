@@ -70,9 +70,10 @@ public class LoginPage extends BasePage{
     public void login() throws InterruptedException {
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
-        loginButton.click();
+        loginButton.click();   
         BrowserUtils.waitFor(2);
         popupClose.click();
+
     }
 
 

@@ -1,5 +1,7 @@
 package com.dgmarkt.pages;
 
+import com.dgmarkt.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -9,10 +11,11 @@ public class MainPage extends BasePage{
     public WebElement myAccountButton;
 
     @FindBy(xpath = "//a[@id='pt-register-link']")
-    public WebElement accountRegisterButton;
+    public WebElement accountRegisterButton;   
 
     @FindBy(xpath = "//a[text()='My Account']")
     public WebElement myAccount2Button;
+  
     @FindBy(xpath = "//span[text()='Currency']")
     public WebElement currencyButton;
 
@@ -33,7 +36,16 @@ public class MainPage extends BasePage{
 
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
     public WebElement verifyPounds ;
+  
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
     public WebElement verifyDolar ;
+  
+   public WebElement getHeader (String headerName){
+        return Driver.getDriver().findElement(By.xpath("//a[@class='a-top-link']//span[contains(text(),'"+headerName+"')]"));
+    }
+    public WebElement getPage (){
+        return Driver.getDriver().findElement(By.xpath(("//div[@class='breadcrumbs']//li[2]")));
+    }
+
 
 }
