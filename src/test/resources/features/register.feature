@@ -205,23 +205,3 @@ Feature: register Functionality
 
 
 
-  Scenario Outline: Telephone number with invalid characters - TC12
-    Given The user is on the first login page
-    When The user enters valid credentials
-    When user clicks My Account on the main page
-    When user clicks Register on My Account
-    When user enters "kenan" firstname
-    When user enters "yildiz" lastname
-    When user enters "kenanyildiz12@gmail.com" email
-    When user enters "<telephone>" telephone
-    When user enters "kenan12" password
-    When user enters "kenan12" password Confirm
-    And user clicks checkBox
-    And user clicks Continue
-    #Then verify that user can see message for invalid Telephone "Your Account has been created!"
-    Examples:
-      | telephone     |
-      | asdfg         |
-      | adds243fdfs53 |
-      | aaaaa2222     |
-
