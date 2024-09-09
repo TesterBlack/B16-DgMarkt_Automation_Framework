@@ -11,6 +11,7 @@ public class EditAccountPage_Step_Defs {
 
     AccountPage accountPage = new AccountPage();
     EditAccountPage editAccountPage = new EditAccountPage();
+    String invalidEmail = "";
 
     @When("The user updates the First Name field with valid information")
     public void the_user_updates_the_first_name_field_with_valid_information() {
@@ -79,13 +80,13 @@ public class EditAccountPage_Step_Defs {
     }
 
 
-
-    @Then("The user should receive a error message for Invalid Email Format {string} {string}")
-    public void the_user_should_receive_a_error_message_for_invalid_email_format(String invalidEmail, String errorMessage) {
+    @Then("The user should receive a error message for Invalid Email Format {string}")
+    public void the_user_should_receive_a_error_message_for_invalid_email_format(String errorMessage) {
         if (invalidEmail.contains("@")){
-            Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),errorMessage);
-        }
+         Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),errorMessage);
+         }
     }
+
 
 
 
@@ -142,8 +143,6 @@ public class EditAccountPage_Step_Defs {
     }
 
 
-
-
     @When("updates user E-Mail details with an already registered E-Mail address")    // TC11
     public void updates_user_e_mail_details_with_an_already_registered_e_mail_address() {
         editAccountPage.emailInput.clear();
@@ -158,6 +157,7 @@ public class EditAccountPage_Step_Defs {
 
     @When("The user attempted update with invalid Email format {string}")
     public void the_user_attempted_update_with_invalid_email_format(String invalidEmailFormat) {
+        invalidEmail = invalidEmailFormat;
         editAccountPage.emailInput.clear();
         editAccountPage.emailInput.sendKeys(invalidEmailFormat);
 
