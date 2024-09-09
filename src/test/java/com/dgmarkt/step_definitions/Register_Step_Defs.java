@@ -59,7 +59,6 @@ public class Register_Step_Defs {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         WebElement element = Driver.getDriver().findElement(By.xpath("//h2[.='Your Account Has Been Created!']"));
         String text = (String) js.executeScript("return arguments[0].innerText;", element);
-        System.out.println(text);
         Assert.assertTrue(text.contains(message));
     }
 
