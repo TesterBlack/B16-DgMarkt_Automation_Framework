@@ -65,7 +65,6 @@ public class EditAccountPage_Step_Defs {
         Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Die E-Mail-Adresse muss ein @-Zeichen enthalten. In der Angabe \"sevgisezergmail.com\" fehlt ein @-Zeichen.");
     }
 
-
     @When("The user attempted update with invalid E-Mail format vordem @-Zeichen")
     public void the_user_attempted_update_with_invalid_e_mail_format_vordem_zeichen() {
         editAccountPage.emailInput.clear();
