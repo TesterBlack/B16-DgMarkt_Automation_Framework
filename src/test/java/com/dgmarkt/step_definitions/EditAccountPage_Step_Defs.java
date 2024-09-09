@@ -56,9 +56,26 @@ public class EditAccountPage_Step_Defs {
         Assert.assertEquals(errorMessageForRegisteredEmail,editAccountPage.messageForRegisteredEmail.getText());
     }
 
-    @Then("The user should receive a success message for invalid E-Mail Format \"Die E-Mail-Adresse muss ein @-Zeichen enthalte. Inder Angabe \"sevgisezergmail.com\" fehlt ein @-Zeichen.\"")
-    public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_die_e_mail_adresse_muss_ein_zeichen_enthalte_inder_angabe_sevgisezergmail_com_fehlt_ein_zeichen() {
-        // ikisi icin de alert var burada da alert mesajlarini locator ve assert yap tek tek
+    @When("The user attempted update with invalid E-Mail format without @-Zeichen")
+    public void the_user_attempted_update_with_invalid_e_mail_format_without_zeichen() {
+        editAccountPage.emailInput.clear();
+        editAccountPage.emailInput.sendKeys("sevgisezergmail.com");
+    }
+    @Then("The user should receive a success message for invalid E-Mail Format without @-Zeichen")
+    public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_without_zeichen() {
+        Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Die E-Mail-Adresse muss ein @-Zeichen enthalten. In der Angabe \"sevgisezergmail.com\" fehlt ein @-Zeichen.");
+    }
+
+
+    @When("The user attempted update with invalid E-Mail format vordem @-Zeichen")
+    public void the_user_attempted_update_with_invalid_e_mail_format_vordem_zeichen() {
+        editAccountPage.emailInput.clear();
+        editAccountPage.emailInput.sendKeys("@gmail.com");
+    }
+    @Then("The user should receive a success message for invalid E-Mail Format vordem @-Zeichen")
+    public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_vordem_zeichen() {
+        Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Gib etwas vor dem @-Zeichen ein. Die Angabe „@gmail.com“ ist unvollständig.");
+
     }
 
 

@@ -56,14 +56,17 @@ Feature: edit Account Functionality
     Then The user should receive a success message for empty Email  "E-Mail Address does not appear to be valid!"
 
 
-  Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC09, TC10
-    When The user attempted update with invalid E-Mail format "<invalidEmailFormat>"
+  Scenario: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC09
+    When The user attempted update with invalid E-Mail format without @-Zeichen
     And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message for invalid E-Mail Format "<errorMessage>"
-    Examples:
-      | invalidEmailFormat  | errorMessage                                                                                            |
-      | sevgisezergmail.com | Die E-Mail-Adresse muss ein @-Zeichen enthalte. Inder Angabe "sevgisezergmail.com" fehlt ein @-Zeichen. |
-      | @gmail.com          | Gibt etwas vor dem @-Zeichen ein. Die Angabe "@gmail.com" ist unvollständig.                            |
+    Then The user should receive a success message for invalid E-Mail Format without @-Zeichen
+
+
+
+  Scenario: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC10
+    When The user attempted update with invalid E-Mail format vordem @-Zeichen
+    And The user clicks Continue button on Edit Account site
+    Then The user should receive a success message for invalid E-Mail Format vordem @-Zeichen
 
 
   Scenario: The user tries to update with the existing E-Mail and receives an error message - TC11
@@ -72,12 +75,10 @@ Feature: edit Account Functionality
     Then The user should receive a success message for registered Email "Warning: E-Mail address is already registered!"
 
 
-
-  @wip
   Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC13
     When The user attempted update with invalid Email format "<invalidEmail>"
     And The user clicks Continue button on Edit Account site
     Then The user should receive a error message for Invalid Email Format "<errorMessage>"
     Examples:
-      | invalidEmail          | errorMessage                                  |
+      | invalidEmail          | errorMessage                                                   |
       | sevgi sezer@gmail.com | Vor dem @-Zeichen darf das Zeichen " " nicht verwendet werden. |
