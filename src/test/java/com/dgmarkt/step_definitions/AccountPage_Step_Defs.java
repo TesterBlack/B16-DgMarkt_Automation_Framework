@@ -11,7 +11,7 @@ public class AccountPage_Step_Defs {
     @When("user clicks Edit Account")
     public void user_clicks_edit_account() {
         BrowserUtils.waitFor(3);
-       // accountPage.editAccount.click();
+
         BrowserUtils.waitForClickablility(accountPage.editAccount,10);
         accountPage.editAccount.click();
 

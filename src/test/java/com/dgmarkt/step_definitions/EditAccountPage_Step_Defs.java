@@ -59,6 +59,7 @@ public class EditAccountPage_Step_Defs {
         editAccountPage.emailInput.clear();
         editAccountPage.emailInput.sendKeys("sevgisezergmail.com");
     }
+
     @Then("The user should receive a success message for invalid E-Mail Format without @-Zeichen")
     public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_without_zeichen() {
         Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Die E-Mail-Adresse muss ein @-Zeichen enthalten. In der Angabe \"sevgisezergmail.com\" fehlt ein @-Zeichen.");
@@ -83,7 +84,6 @@ public class EditAccountPage_Step_Defs {
          Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),errorMessage);
          }
     }
-
 
     @When("The user updates the Last Name field with valid information")
     public void the_user_updates_the_last_name_field_with_valid_information() {
@@ -156,7 +156,6 @@ public class EditAccountPage_Step_Defs {
     @Then("The user should receive a success message for Invalid Email Format {string}")
     public void the_user_should_receive_a_success_message_for_invalid_email_format(String errorMessage) {
         Assert.assertEquals(errorMessage, accountPage.messageForEdit.getText());
-
     }
 
 

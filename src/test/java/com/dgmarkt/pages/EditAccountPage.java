@@ -35,8 +35,6 @@ public class EditAccountPage extends BasePage {
     @FindBy(xpath = "//*[text()= ' Warning: E-Mail address is already registered!']")
     public WebElement messageForRegisteredEmail;
 
-    @FindBy(xpath= "//div[@class='alert alert-danger']")
-    public WebElement warningMessage;
 
 
 
