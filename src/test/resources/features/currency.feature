@@ -2,8 +2,6 @@
 
 Feature: Currency functionality test
 
-
-  @wip
   Scenario:Currency Selection Reflects on Product Page - TC01
     Given The user is on the first login page
     When The user is on the login page
@@ -19,7 +17,6 @@ Feature: Currency functionality test
     Then The user should be see the currency options(Euro-Pound-Dolar)
     And User selects pounds as the currency
     And sees that pounds have been selected
-
 
   Scenario:Currency Selection Reflects on Product Page - TC03
     Given The user is on the first login page

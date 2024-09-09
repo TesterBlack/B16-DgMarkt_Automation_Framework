@@ -11,10 +11,6 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[@id='pt-register-link']")
     public WebElement accountRegisterButton;
 
-
-
-
-
     @FindBy(xpath = "//span[text()='Currency']")
     public WebElement currencyButton;
 
@@ -33,9 +29,9 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
     public WebElement verifyEuro ;
 
-
-    //TC04
-    @FindBy(xpath = "//button[@name='USD']")
-    public WebElement checkoutButton;
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
+    public WebElement verifyPounds ;
+    @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
+    public WebElement verifyDolar ;
 
 }
