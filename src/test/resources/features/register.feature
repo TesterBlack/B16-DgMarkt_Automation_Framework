@@ -16,7 +16,7 @@ Feature: register Functionality
     When user enters "<passwordConfirm>" password Confirm
     And user clicks checkBox
     And user clicks Continue
-    #Then verify that user can see "<message>" message
+    Then verify that user can see "<message>" message
     Examples:
       | firstname   | lastname | email                   | telephone | password        | passwordConfirm | message                               |
       |  sevgi      | sezgi    | amazon@gmail.com        | 2222222222| sevgi.SSHs123   | sevgi.SSHs123   | Your Account Has Been Created!        |
