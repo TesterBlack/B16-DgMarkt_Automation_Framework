@@ -16,7 +16,6 @@ public class MainPage_Step_Defs {
     public void user_clicks_my_account_on_the_main_page() throws InterruptedException {
         Thread.sleep(2000);
         BrowserUtils.clickWithJS(mainPage.myAccountButton);
-
     }
 
     @When("user clicks Register on My Account")
@@ -24,11 +23,11 @@ public class MainPage_Step_Defs {
         mainPage.accountRegisterButton.click();
     }
 
-
     @When("user clicks My Account from Dropdown menu")
     public void user_clicks_my_account_from_dropdown_menu() {
         mainPage.myAccount2Button.click();
     }
+
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page() {
         BrowserUtils.waitFor(4);
