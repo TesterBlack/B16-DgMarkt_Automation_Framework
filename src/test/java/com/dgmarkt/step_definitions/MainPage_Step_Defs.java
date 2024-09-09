@@ -34,7 +34,7 @@ public class MainPage_Step_Defs {
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page() {
         BrowserUtils.waitFor(4);
-        mainPage.currencyButton.click();
+        BrowserUtils.clickWithJS(mainPage.currencies);
     }
     @Then("The user should be see the currency options\\(Euro-Pound-Dolar).")
     public void the_user_should_be_see_the_currency_options_euro_pound_euro() throws InterruptedException{
@@ -48,7 +48,8 @@ public class MainPage_Step_Defs {
     }
     @Then("sees that Euro have been selected")
     public void sees_that_euro_have_been_selected() {
-        Assert.assertEquals("€", mainPage.currencyEuroButton.getText());
+        //System.out.println("mainPage.currencyEuroButton.getText() = " + mainPage.verifyEuro.getText());
+        Assert.assertEquals("€", mainPage.verifyEuro.getText());
 
     }
     @When("The user should be see the currency options\\(Euro-Pound-Dolar)")
