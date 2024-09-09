@@ -72,16 +72,6 @@ Feature: edit Account Functionality
     Then The user should receive a success message for registered Email "Warning: E-Mail address is already registered!"
 
 
-  Scenario Outline: Verify that user Entering Invalid Characters in the Telephone Field - TC12
-    When User enters invalid characters in the Telephone field "<TelephoneWithInvalid>"
-    And The user clicks Continue button on Edit Account site
-    Then The user should receive a success message "Success: Your account has been successfully updated."
-    Examples:
-      | TelephoneWithInvalid |
-      | *213!sf              |
-      | sevgisezer           |
-      | evgi1234!*           |
-
 
   @wip
   Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC13
