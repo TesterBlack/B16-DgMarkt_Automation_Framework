@@ -43,7 +43,6 @@ public class MainPage_Step_Defs {
 
     @Then("sees that Euro have been selected")
     public void sees_that_euro_have_been_selected() {
-
         Assert.assertEquals("€", mainPage.verifyEuro.getText());
     }
 
@@ -61,7 +60,6 @@ public class MainPage_Step_Defs {
 
     @Then("sees that pounds have been selected")
     public void sees_that_pounds_have_been_selected() {
-
         Assert.assertTrue(mainPage.verifyPounds.getText().contains("£"));
     }
 
