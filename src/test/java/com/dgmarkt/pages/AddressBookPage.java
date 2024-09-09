@@ -70,6 +70,78 @@ public class AddressBookPage extends BasePage {
         continueButton.click();
     }
 
+    @FindBy(xpath = "//a[@class='btn btn-info']")
+    public WebElement editButton;
+
+
+    public void fillnewAdresswithoutrequiredAddress1(){
+        firstNameInput.sendKeys("Stefan");
+        lastNameInput.sendKeys("Smith");
+        companyInput.sendKeys("Deutsche Bank");
+        address1Input.clear();
+        address1Input.sendKeys("");
+        address2Input.sendKeys("Klinikum str. No:2");
+        cityInput.sendKeys("Eschborn");
+        postCodeInput.sendKeys("67414");
+        WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
+        Select select = new Select(country);
+        select.selectByVisibleText("Venezuela");
+        WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
+        Select select2 = new Select(regionState);
+        select2.selectByVisibleText("Bolivar");
+        continueButton.click();
+    }
+
+    @FindBy(xpath = "//div[@class='text-danger']")
+    public WebElement errorMessageForwithoutAddress1;
+
+    public void filleditAdresswithoutrequiredAddress1(){
+        firstNameInput.clear();
+        firstNameInput.sendKeys("Stefan");
+        lastNameInput.clear();
+        lastNameInput.sendKeys("Smith");
+        companyInput.clear();
+        companyInput.sendKeys("Deutsche Bank");
+        address1Input.clear();
+        address1Input.sendKeys("");
+        address2Input.clear();
+        address2Input.sendKeys("Klinikum str. No:2");
+        cityInput.clear();
+        cityInput.sendKeys("Eschborn");
+        postCodeInput.clear();
+        postCodeInput.sendKeys("67414");
+        WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
+        Select select = new Select(country);
+        select.selectByVisibleText("Venezuela");
+        WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
+        Select select2 = new Select(regionState);
+        select2.selectByVisibleText("Bolivar");
+        continueButton.click();
+    }
+
+    public void fillnewAdresswithdefaultAddressYes(){
+        firstNameInput.sendKeys("Mauro");
+        lastNameInput.sendKeys("Icardi");
+        companyInput.sendKeys("Gs");
+        address1Input.sendKeys("Florya");
+        address2Input.sendKeys("Florya");
+        cityInput.sendKeys("istanbul");
+        postCodeInput.sendKeys("34");
+        WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
+        Select select = new Select(country);
+        select.selectByVisibleText("Turkey");
+        WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
+        Select select2 = new Select(regionState);
+        select2.selectByVisibleText("İstanbul");
+        defaultAddressYes.click();
+
+    }
+
+
+
+
+
+
 
 
 

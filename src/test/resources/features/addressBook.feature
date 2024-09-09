@@ -12,9 +12,47 @@ Feature: address Book Functionality
     And The user should be successfully navigated to the Address Book page
 
 
-  @wip
   Scenario: Verify that the user can add a new address with valid data -  TC02   - B16DDM-108
     When The user clicks on Address Book from Account Page
     And The user clicks on New Address button
     And The user enters valid credentials on add address page
     And The user should receive a success message for new addresse "Your address has been successfully added"
+
+
+  Scenario: Verify that the user can successfully update an existing address with valid data -  TC03   - B16DDM-109
+    When The user clicks on Address Book from Account Page
+    And The user clicks on Edit button
+    And The user enters valid credential address1 field
+    And The user clicks on Continue button on edit address page
+    Then The user should receive a success message for new addresse "Your address has been successfully updated"
+
+
+
+  Scenario: Verify that an error message is displayed when the required fields are not filled in when adding a new address -  TC04   - B16DDM-110
+    When The user clicks on Address Book from Account Page
+    And The user clicks on New Address button
+    And The user enters valid credentials without required address1 field on add address page
+    Then The user should receive a message "Address must be between 3 and 128 characters!"
+
+
+  Scenario: Verify that the error message is displayed when the user incorrectly fills in or does not fill in the required field by editing the address -  TC05   - B16DDM-112
+    When The user clicks on Address Book from Account Page
+    When The user clicks on Edit button
+    And The user enters valid credentials without required address1 field on add address page
+    Then The user should receive a message "Address must be between 3 and 128 characters!"
+
+
+
+  Scenario: Verify that the user can add a new address as the default address -  TC06   - B16DDM-113
+    When The user clicks on Address Book from Account Page
+    And The user clicks on New Address button
+    And The user enters valid credentials with default address yes on add address page
+    And The user clicks on Continue button on add address page
+    Then The user should receive a success message for new addresse "Your address has been successfully added"
+
+  @wip
+  Scenario: Verify that the user can edit a address as the default address -  TC08   - B16DDM-116
+    When The user clicks on Address Book from Account Page
+   # When The user clicks on Edit button for default address
+   # Then The user should be see that default address is selected as Yes
+
