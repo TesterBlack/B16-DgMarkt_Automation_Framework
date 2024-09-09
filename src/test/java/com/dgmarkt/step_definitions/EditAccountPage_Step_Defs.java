@@ -15,16 +15,13 @@ public class EditAccountPage_Step_Defs {
 
     @When("The user updates the First Name field with valid information")
     public void the_user_updates_the_first_name_field_with_valid_information() {
-       // editAccountPage.firstNameInput.click();
         editAccountPage.firstNameInput.clear();
         editAccountPage.firstNameInput.sendKeys("Hakan");
-       // BrowserUtils.waitFor(4);
     }
 
     @When("The user clicks Continue button on Edit Account site")
     public void the_user_clicks_continue_button_on_edit_account_site() {
         editAccountPage.continueButton.click();
-       // BrowserUtils.waitFor(4);
     }
 
     @Then("The user should receive a success message {string}")
@@ -73,10 +70,10 @@ public class EditAccountPage_Step_Defs {
         editAccountPage.emailInput.clear();
         editAccountPage.emailInput.sendKeys("@gmail.com");
     }
+
     @Then("The user should receive a success message for invalid E-Mail Format vordem @-Zeichen")
     public void the_user_should_receive_a_success_message_for_invalid_e_mail_format_vordem_zeichen() {
         Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Gib etwas vor dem @-Zeichen ein. Die Angabe „@gmail.com“ ist unvollständig.");
-
     }
 
 
@@ -88,20 +85,14 @@ public class EditAccountPage_Step_Defs {
     }
 
 
-
-
-
-
     @When("The user updates the Last Name field with valid information")
     public void the_user_updates_the_last_name_field_with_valid_information() {
-       //editAccountPage.lastNameInput.click();
-       editAccountPage.lastNameInput.clear();
-       editAccountPage.lastNameInput.sendKeys("Kaya");
+        editAccountPage.lastNameInput.clear();
+        editAccountPage.lastNameInput.sendKeys("Kaya");
     }
 
     @When("The user updates the Telephone field with valid information")
     public void the_user_updates_the_telephone_field_with_valid_information() {
-       // editAccountPage.telephoneInput.click();
         editAccountPage.telephoneInput.clear();
         editAccountPage.telephoneInput.sendKeys("987654321");
     }
@@ -160,7 +151,6 @@ public class EditAccountPage_Step_Defs {
         invalidEmail = invalidEmailFormat;
         editAccountPage.emailInput.clear();
         editAccountPage.emailInput.sendKeys(invalidEmailFormat);
-
     }
 
     @Then("The user should receive a success message for Invalid Email Format {string}")

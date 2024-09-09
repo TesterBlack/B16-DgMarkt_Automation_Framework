@@ -62,7 +62,6 @@ Feature: edit Account Functionality
     Then The user should receive a success message for invalid E-Mail Format without @-Zeichen
 
 
-
   Scenario: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC10
     When The user attempted update with invalid E-Mail format vordem @-Zeichen
     And The user clicks Continue button on Edit Account site
@@ -74,7 +73,7 @@ Feature: edit Account Functionality
     And The user clicks Continue button on Edit Account site
     Then The user should receive a success message for registered Email "Warning: E-Mail address is already registered!"
 
-  @wip
+
   Scenario Outline: Verify that the user is attempting to update with an Invalid Email Format and receiving an error message - TC13
     When The user attempted update with invalid Email format "<invalidEmail>"
     And The user clicks Continue button on Edit Account site
