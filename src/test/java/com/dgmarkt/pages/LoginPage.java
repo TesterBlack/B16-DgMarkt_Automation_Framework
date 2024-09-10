@@ -60,7 +60,11 @@ public class LoginPage extends BasePage{
     @FindBy (xpath = "//div[contains(text(), ' Warning')]")
     public WebElement warningMessage;
 
+    @FindBy (xpath = "//a[text()='Forgotten Password']")
+    public WebElement forgottenPasswordButton;
 
+    @FindBy (xpath = "//input[@value='Continue']")
+    public WebElement continueButton2;
 
 
 
