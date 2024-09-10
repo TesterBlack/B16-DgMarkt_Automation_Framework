@@ -11,7 +11,10 @@ public class ShoppingCartPage {
     public WebElement checkOutBtn;
 
     @FindBy(xpath = "(//td[@class='text-right'])[2]")
-    public WebElement verifyTotalAmount;
+    public WebElement verifySubTotalAmount;
+
+
+
 
 
 }
