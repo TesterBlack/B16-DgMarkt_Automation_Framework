@@ -47,7 +47,7 @@ public class AddressBook_Step_Defs {
 
     @When("The user enters valid credentials without required address1 field on add address page")
     public void the_user_enters_valid_credentials_without_required_address1_field_on_add_address_page() {
-       addressBookPage.filleditAdresswithoutrequiredAddress1();
+       addressBookPage.fillnewAdresswithoutrequiredAddress1();
     }
 
     @Then("The user should receive a message {string}")
@@ -67,7 +67,7 @@ public class AddressBook_Step_Defs {
 
     @When("The user clicks on first Delete button for first address book")
     public void the_user_clicks_on_first_delete_button_for_first_address_book() {
-        addressBookPage.deleted();
+        addressBookPage.deletedAddress();
     }
 
     @When("The user clicks ok for alert message")

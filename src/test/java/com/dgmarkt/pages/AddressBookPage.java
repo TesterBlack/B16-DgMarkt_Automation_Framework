@@ -6,11 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class AddressBookPage extends BasePage {
@@ -60,18 +57,14 @@ public class AddressBookPage extends BasePage {
     @FindBy(xpath = "//div[@class='text-danger']")
     public WebElement errorMessageForwithoutAddress1;
 
-
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     public WebElement actualMessageForDeleted;
 
     @FindBy(xpath = "//a[text()='Back']")
     public WebElement backButton;
 
-    @FindBy(xpath = "//a[@class='btn btn-danger']")
-    public WebElement deleteButton;
 
-
-    public void deleted() {
+    public void deletedAddress() {
         List<WebElement> editElements = Driver.getDriver().findElements(By.xpath("//a[text()='Edit']"));
         List<WebElement> deleteElements = Driver.getDriver().findElements(By.xpath("//a[text()='Delete']"));
 

@@ -1,4 +1,4 @@
-@address
+
 Feature: address Book Functionality
   As a user, I should be able to update and add new address information by clicking the Address Book tab under the My Account module.
 
@@ -8,7 +8,7 @@ Feature: address Book Functionality
     When user clicks My Account from Dropdown menu
 
 
-  Scenario: Verify that the user can navigate to Address Book from My Account page successfully -  TC01
+  Scenario: Verify that the user can navigate to Address Book from My Account page successfully -  B16DDM-107
     When The user clicks on Address Book from Account Page
     And The user should be successfully navigated to the Address Book page
 
@@ -35,7 +35,6 @@ Feature: address Book Functionality
     Then The user should receive a message "Address must be between 3 and 128 characters!"
 
 
-
   Scenario: Verify that the error message is displayed when the user incorrectly fills in or does not fill in the required field by editing the address - B16DDM-112
     When The user clicks on Address Book from Account Page
     When The user clicks on Edit button
@@ -51,7 +50,7 @@ Feature: address Book Functionality
     Then The user should receive a success message for new addresse "Your address has been successfully added"
 
 
-  Scenario: Verify that the user can edit a address as the default address -  TC08   - B16DDM-116
+  Scenario: Verify that the user can edit a address as the default address - B16DDM-116
     When The user clicks on Address Book from Account Page
     When The user clicks on Edit button
     When The user select as default address Yes
@@ -60,7 +59,7 @@ Feature: address Book Functionality
     Then The user should be see default address Yes
 
 
-  Scenario: Verify that the user can delete an address - TC10 - B16DDM-156
+  Scenario: Verify that the user can delete an address - B16DDM-156
     When The user clicks on Address Book from Account Page
     And The user clicks on first Delete button for first address book
     Then The user should receive a success message for Delete "Your address has been successfully deleted"
