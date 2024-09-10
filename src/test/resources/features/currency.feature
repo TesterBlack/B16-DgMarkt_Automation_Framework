@@ -1,4 +1,4 @@
-
+@wip
 
 Feature: Currency functionality test
 
