@@ -67,8 +67,7 @@ public class AddressBook_Step_Defs {
 
     @When("The user clicks on first Delete button for first address book")
     public void the_user_clicks_on_first_delete_button_for_first_address_book() {
-      //  addressBookPage.deleteButtonForFirstAddress.click();
-        addressBookPage.Deleted();
+        addressBookPage.deleted();
     }
 
     @When("The user clicks ok for alert message")
@@ -80,6 +79,17 @@ public class AddressBook_Step_Defs {
     public void the_user_should_receive_a_success_message_for_delete(String successMessageForDeleted) {
         Assert.assertEquals(successMessageForDeleted, addressBookPage.actualMessageForDeleted.getText());
     }
+
+    @When("The user select as default address Yes")
+    public void the_user_select_as_default_address_yes() {
+        addressBookPage.defaultAddressYes.click();
+    }
+
+    @Then("The user should be see default address Yes")
+    public void the_user_should_be_see_default_address_yes() {
+        Assert.assertTrue(addressBookPage.defaultAddressYes.isDisplayed());
+    }
+
 
 
 }

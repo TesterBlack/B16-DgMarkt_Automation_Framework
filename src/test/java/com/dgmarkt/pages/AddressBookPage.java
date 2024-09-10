@@ -3,10 +3,14 @@ package com.dgmarkt.pages;
 import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class AddressBookPage extends BasePage {
@@ -38,16 +42,10 @@ public class AddressBookPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Post Code']")
     public WebElement postCodeInput;
 
-    @FindBy(xpath = "//select[@id='input-country']")
-    public WebElement countryInput;
-
-    @FindBy(xpath = "//select[@id='input-zone']")
-    public WebElement regionStateInput;
-
-    @FindBy(xpath = "(//label[@class='radio-inline'])[1]")
+    @FindBy(xpath = "(//input[@name='default'])[1]")
     public WebElement defaultAddressYes;
 
-    @FindBy(xpath = "(//label[@class='radio-inline'])[2]")
+    @FindBy(xpath = "(//input[@name='default'])[2]")
     public WebElement defaultAddressNo;
 
     @FindBy(xpath = "//div[@class='pull-right']/input")
@@ -62,46 +60,57 @@ public class AddressBookPage extends BasePage {
     @FindBy(xpath = "//div[@class='text-danger']")
     public WebElement errorMessageForwithoutAddress1;
 
-    @FindBy(xpath = "(//a[@class='btn btn-danger'])[1]")
-    public WebElement deleteButtonForFirstAddress;
 
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     public WebElement actualMessageForDeleted;
 
-    @FindBy(xpath = "//a[@class='btn btn-default']")
+    @FindBy(xpath = "//a[text()='Back']")
     public WebElement backButton;
 
     @FindBy(xpath = "//a[@class='btn btn-danger']")
     public WebElement deleteButton;
 
 
-    public void Deleted (){
-        List<WebElement> editButtons =
-                Driver.getDriver().findElements(By.xpath("//a[@class='btn btn-info']"));
+    public void deleted() {
+        List<WebElement> editElements = Driver.getDriver().findElements(By.xpath("//a[text()='Edit']"));
+        List<WebElement> deleteElements = Driver.getDriver().findElements(By.xpath("//a[text()='Delete']"));
 
-        List<WebElement> deleteButtons = Driver.getDriver().findElements(By.xpath("//a[@class='btn btn-danger']"));
+        if (editElements.size() > 0) {
+            for (int i = 0; i < editElements.size(); i++) {
+                try {
+                    BrowserUtils.clickWithJS(editElements.get(i));
+                }catch (StaleElementReferenceException e){
+                    editElements = Driver.getDriver().findElements(By.xpath("//a[text()='Edit']"));
+                    BrowserUtils.clickWithJS(editElements.get(i));
+                }
+                if (defaultAddressYes.isSelected()) {
+                    backButton.click();
+                    BrowserUtils.waitFor(2);
+                } else if (defaultAddressNo.isSelected()) {
+                    backButton.click();
+                    try {
+                        BrowserUtils.waitFor(2);
+                       //
+                        deleteElements.get(i).click();
+                        Driver.getDriver().switchTo().alert().accept();
+                        BrowserUtils.waitFor(3);
+                        break;
+                    }catch (StaleElementReferenceException e){
+                        BrowserUtils.waitFor(2);
+                        deleteElements = Driver.getDriver().findElements(By.xpath("//a[text()='Delete']"));
+                        deleteElements.get(i).click();
+                        Driver.getDriver().switchTo().alert().accept();
+                        BrowserUtils.waitFor(3);
+                        break;
+                    }
 
-        for (int i = 0; i < editButtons.size(); i++) {
-            BrowserUtils.clickWithJS(editButtons.get(i));
-            BrowserUtils.waitFor(2);
-            if (defaultAddressYes.isSelected()) {
-                backButton.click();
-                BrowserUtils.waitFor(2);
-
-            }else if (defaultAddressNo.isSelected()){
-                backButton.click();
-                BrowserUtils.waitFor(2);
-                deleteButtons.get(i).click();
-                BrowserUtils.waitFor(3);
+                }
             }
         }
     }
 
 
-
-
-
-    public void fillnewAdress(){
+    public void fillnewAdress() {
         firstNameInput.sendKeys("Dominik");
         lastNameInput.sendKeys("Smith");
         companyInput.sendKeys("Amazon");
@@ -119,7 +128,7 @@ public class AddressBookPage extends BasePage {
     }
 
 
-    public void fillnewAdresswithoutrequiredAddress1(){
+    public void fillnewAdresswithoutrequiredAddress1() {
         firstNameInput.sendKeys("Stefan");
         lastNameInput.sendKeys("Smith");
         companyInput.sendKeys("Deutsche Bank");
@@ -138,7 +147,7 @@ public class AddressBookPage extends BasePage {
     }
 
 
-    public void filleditAdresswithoutrequiredAddress1(){
+    public void filleditAdresswithoutrequiredAddress1() {
         firstNameInput.clear();
         firstNameInput.sendKeys("Stefan");
         lastNameInput.clear();
@@ -162,7 +171,7 @@ public class AddressBookPage extends BasePage {
         continueButton.click();
     }
 
-    public void fillnewAdresswithdefaultAddressYes(){
+    public void fillnewAdresswithdefaultAddressYes() {
         firstNameInput.sendKeys("Mauro");
         lastNameInput.sendKeys("Icardi");
         companyInput.sendKeys("Gs");
@@ -178,19 +187,6 @@ public class AddressBookPage extends BasePage {
         select2.selectByVisibleText("İstanbul");
         defaultAddressYes.click();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
