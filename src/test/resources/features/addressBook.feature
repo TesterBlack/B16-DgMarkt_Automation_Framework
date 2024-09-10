@@ -50,9 +50,15 @@ Feature: address Book Functionality
     And The user clicks on Continue button on add address page
     Then The user should receive a success message for new addresse "Your address has been successfully added"
 
-  @wip
+
   Scenario: Verify that the user can edit a address as the default address -  TC08   - B16DDM-116
     When The user clicks on Address Book from Account Page
    # When The user clicks on Edit button for default address
    # Then The user should be see that default address is selected as Yes
 
+  @wip
+  Scenario: Verify that the user can delete an address - TC10 - B16DDM-156
+    When The user clicks on Address Book from Account Page
+    And The user clicks on first Delete button for first address book
+    And The user clicks ok for alert message
+    Then The user should receive a success message for Delete "Your address has been successfully deleted"

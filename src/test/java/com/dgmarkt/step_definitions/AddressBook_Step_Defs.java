@@ -1,6 +1,7 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.AddressBookPage;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 
@@ -17,10 +18,12 @@ public class AddressBook_Step_Defs {
     public void the_user_clicks_on_new_address_button() {
         addressBookPage.newAddressButton.click();
     }
+
     @When("The user enters valid credentials on add address page")
     public void the_user_enters_valid_credentials_on_add_address_page() {
         addressBookPage.fillnewAdress();
     }
+
     @When("The user should receive a success message for new addresse {string}")
     public void the_user_should_receive_a_success_message_for_new_addresse(String successMessage) {
         Assert.assertEquals(addressBookPage.actualMessageForNewAddress.getText(), successMessage);
@@ -30,6 +33,7 @@ public class AddressBook_Step_Defs {
     public void the_user_clicks_on_edit_button() {
         addressBookPage.editButton.click();
     }
+
     @When("The user enters valid credential address1 field")
     public void the_user_enters_valid_credential_address1_field() {
        addressBookPage.address1Input.clear();
@@ -54,11 +58,27 @@ public class AddressBook_Step_Defs {
     @When("The user enters valid credentials with default address yes on add address page")
     public void the_user_enters_valid_credentials_with_default_address_yes_on_add_address_page() {
         addressBookPage.fillnewAdresswithdefaultAddressYes();
-
     }
+
     @When("The user clicks on Continue button on add address page")
     public void the_user_clicks_on_continue_button_on_add_address_page() {
         addressBookPage.continueButton.click();
+    }
+
+    @When("The user clicks on first Delete button for first address book")
+    public void the_user_clicks_on_first_delete_button_for_first_address_book() {
+      //  addressBookPage.deleteButtonForFirstAddress.click();
+        addressBookPage.Deleted();
+    }
+
+    @When("The user clicks ok for alert message")
+    public void the_user_clicks_ok_for_alert_message() {
+        Driver.getDriver().switchTo().alert().accept();
+    }
+
+    @Then("The user should receive a success message for Delete {string}")
+    public void the_user_should_receive_a_success_message_for_delete(String successMessageForDeleted) {
+        Assert.assertEquals(successMessageForDeleted, addressBookPage.actualMessageForDeleted.getText());
     }
 
 
