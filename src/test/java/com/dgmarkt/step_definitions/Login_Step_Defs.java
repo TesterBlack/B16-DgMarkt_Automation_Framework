@@ -26,6 +26,7 @@ public class Login_Step_Defs {
         loginPage.accountLogin();
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/", currentUrl);
+        
     }
 
 
