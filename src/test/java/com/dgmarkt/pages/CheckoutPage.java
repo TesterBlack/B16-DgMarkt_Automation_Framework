@@ -1,5 +1,7 @@
 package com.dgmarkt.pages;
 
+import com.dgmarkt.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -52,7 +54,14 @@ public class CheckoutPage {
     @FindBy(xpath = "(//td[@class='text-right'])[17]")
     public WebElement verifyTotalAmount;
 
+    public void productCategory(String categoryName) {
+        String productCategory = "//img[@alt='" + categoryName + "']";
+        Driver.getDriver().findElement(By.xpath(categoryName)).click();
+    }
+    public void productToAdd(String productNamen){
+        String productWahlen = "//img[@alt='"+productNamen+"']";
+        Driver.getDriver().findElement(By.xpath(productWahlen)).click();
 
+        }
 
-
-}
+    }

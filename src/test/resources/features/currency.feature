@@ -29,7 +29,7 @@ Feature: Currency functionality test
 
 
 
-
+@wip
   Scenario:Purchase Completion in Selected Currency  -> US04- TC04
     When The user proceeds to the Checkout page
     Then Verify that the total amount is displayed in the selected currency.

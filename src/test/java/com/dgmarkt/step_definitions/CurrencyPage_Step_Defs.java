@@ -102,7 +102,8 @@ public class CurrencyPage_Step_Defs {
     }
     @Then("The user sees the Shopping Cart Page in the currency they selected")
     public void the_user_sees_the_shopping_cart_page_in_the_currency_they_selected() {
-
+        checkoutPage.productCategory("Televisions");
+        checkoutPage.productToAdd("Cello C1920FS 19");
     }
 
 
