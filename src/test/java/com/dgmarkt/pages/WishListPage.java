@@ -10,9 +10,10 @@ public class WishListPage extends BasePage{
 
     @FindBy(id = "wishlist-total")
     public WebElement wishListIcon;
-    public void checkWishList(String productName){
-        String productsInWishList = "//a[.='"+productName+"']";
-        //Driver.getDriver().findElement(By.xpath(productsInWishList));
-        Assert.assertTrue(Driver.getDriver().findElement(By.xpath(productsInWishList)).isDisplayed());
-    }
+
+    @FindBy(xpath = "//a[.='BaByliss 3663U - Hair rollers']")
+    public WebElement firstProduct;
+
+    @FindBy(xpath = "//a[.='Capsule Plate 6pcs']")
+    public WebElement secondProduct;
 }

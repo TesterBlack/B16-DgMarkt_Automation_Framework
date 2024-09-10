@@ -1,4 +1,4 @@
-@wish
+
 Feature: Like Icon (Wish List) functionality test
 
   Scenario Outline: Wish List Test - The user should be able to see products in the wish list - B16DDM-59
