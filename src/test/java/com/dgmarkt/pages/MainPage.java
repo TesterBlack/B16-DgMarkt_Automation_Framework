@@ -1,5 +1,6 @@
 package com.dgmarkt.pages;
 
+import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,8 +40,12 @@ public class MainPage extends BasePage{
   
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle']/span)[1]")
     public WebElement verifyDolar ;
+
+    @FindBy(xpath = "//a[contains(text(), 'Health & Beauty')]")
+    public WebElement healthAndBeauty;
   
    public WebElement getHeader (String headerName){
+       BrowserUtils.waitFor(2);
         return Driver.getDriver().findElement(By.xpath("//a[@class='a-top-link']//span[contains(text(),'"+headerName+"')]"));
     }
     public WebElement getPage (){
