@@ -154,9 +154,33 @@ public class Login_Step_Defs {
         String actualAccountLoginButton = loginPage.accountLoginButton.getText();
         Assert.assertEquals(expectedAccountLoginButton,actualAccountLoginButton);
     }
+    @Then("The user should be able to see the password as bullet signs")
+    public void the_user_should_be_able_to_see_the_password_as_bullet_signs() {
+        Assert.assertEquals("password",loginPage.accountPasswordBox.getAttribute("type"));
+    }
+    @When("The user clicks Forgotten Password button")
+    public void the_user_clicks_forgotten_password_button() {
+        loginPage.forgottenPasswordButton.click();
+
+    }
+    @When("The user clicks Continue button")
+    public void the_user_clicks_continue_button() {
+        loginPage.continueButton2.click();
+
+    }
+    @Then("The user should be able to see {string} message")
+    public void the_user_should_be_able_to_see_message(String expectedMessage) {
+        String actualMessage = loginPage.warningMessage.getText();
+
+        Assert.assertEquals(actualMessage, expectedMessage);
+
+
+    }
+
+    }
 
 
 
 
 
-}
+
