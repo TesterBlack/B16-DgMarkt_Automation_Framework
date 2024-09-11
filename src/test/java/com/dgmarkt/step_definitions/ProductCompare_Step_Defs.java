@@ -6,7 +6,7 @@ import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 
 public class ProductCompare_Step_Defs {
 
@@ -37,5 +37,39 @@ public class ProductCompare_Step_Defs {
     public void the_user_should_be_able_to_see_and(String firstProduct, String secondProduct) {
         productComparePage.getProductOnProductComparePage(firstProduct, secondProduct);
     }
+
+    @When("The user clicks add to cart button products")
+    public void the_user_clicks_add_to_cart_button_products() {
+        productComparePage.addToCartProducts();
+    }
+
+    @When("The user clicks on basket icon")
+    public void the_user_clicks_on_basket_icon() {
+        productComparePage.basketButton.click();
+    }
+
+    @When("The user should be able to see the products he added {string} and {string}")
+    public void the_user_should_be_able_to_see_the_products_he_added_and(String firstProductName, String secondProductName) {
+        productComparePage.verifyProductAddToCart(firstProductName,secondProductName);
+    }
+
+    @When("The user clicks remove button products")
+    public void the_user_clicks_remove_button_products() {
+        productComparePage.removeToCartProducts();
+    }
+
+    @Then("The user should be able to see message for product comparison {string}")
+    public void the_user_should_be_able_to_see_message_for_product_comparison(String expectedMessage) {
+        String actualMessage = productComparePage.productMessage.getText().substring(0, productComparePage.productMessage.getText().length() - 1);
+        actualMessage = actualMessage.trim();
+        Assert.assertEquals(actualMessage,expectedMessage);
+    }
+
+
+
+
+
+
+
 
 }
