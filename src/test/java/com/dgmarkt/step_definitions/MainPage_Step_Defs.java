@@ -36,4 +36,20 @@ public class MainPage_Step_Defs {
         Assert.assertEquals(expectedPage,actualPage);
     }
 
+    @When("The user hover over the Category header on the main page")
+    public void the_user_hover_over_the_category_header_on_the_main_page() {
+        BrowserUtils.waitFor(3);
+        BrowserUtils.hover(mainPage.getHeader("Category"));
+    }
+
+    @Then("The user should be able to see on the submenu-header {string} submenus")
+    public void the_user_should_be_able_to_see_on_the_submenu_header_submenus(String expectedSubMenu) {
+        Assert.assertTrue(mainPage.healthAndBeauty.isDisplayed());
+    }
+
+    @When("The user clicks Health & Beauty submenu")
+    public void the_user_clicks_health_beauty_submenu() {
+        mainPage.healthAndBeauty.click();
+    }
+
 }
