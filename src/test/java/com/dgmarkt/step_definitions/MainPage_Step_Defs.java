@@ -15,7 +15,7 @@ public class MainPage_Step_Defs {
 
     @When("user clicks My Account on the main page")
     public void user_clicks_my_account_on_the_main_page() throws InterruptedException {
-        Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
         BrowserUtils.clickWithJS(mainPage.myAccountButton);
     }
 
