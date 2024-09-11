@@ -86,11 +86,11 @@ public class CheckoutPage extends BasePage {
     }
 
     public void existingAdressBillingDetails() {
-         continueButton(1).click();
-         continueButton(2).click();
-         continueButton(3).click();
+         continueButton(1);
+         continueButton(2);
+         continueButton(3);
          BrowserUtils.clickWithJS(termsConditionsAgreeBtn);
-         BrowserUtils.clickWithJS( continueButton(4));
+         continueButton(4);
          verifyAmount();
          BrowserUtils.clickWithJS(confirmOrderBtn);
          lastContinue.click();
@@ -111,17 +111,21 @@ public class CheckoutPage extends BasePage {
         WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
         Select select2 = new Select(regionState);
         select2.selectByVisibleText("Bolivar");
-        continueButton(1).click();
-        continueButton(2).click();
-        continueButton(3).click();
+        continueButton(1);
+        continueButton(2);
+        continueButton(3);
         termsConditionsAgreeBtn.click();
-        continueButton(4).click();
+        continueButton(4);
         verifyAmount();
         confirmOrderBtn.click();
         lastContinue.click();
 
     }
-    public  WebElement continueButton(int index){
-        return Driver.getDriver().findElement(By.xpath("(//input[@value='Continue'])["+index+"]"));
+    public  void continueButton(int index){
+        String webelement  = "//input[@value='Continue'])"+"["+index+"]";
+        WebElement element = Driver.getDriver().findElement(By.xpath(webelement));
+        BrowserUtils.clickWithJS(element);
+
+       // return Driver.getDriver().findElement(By.xpath("(//input[@value='Continue'])["+index+"]"));
     }
 }
