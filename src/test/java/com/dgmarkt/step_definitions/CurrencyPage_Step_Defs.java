@@ -151,22 +151,27 @@ public class CurrencyPage_Step_Defs {
     @When("The user proceeds to the Checkout page")
     public void the_user_proceeds_to_the_checkout_page() {
         BrowserUtils.waitFor(4);
-        BrowserUtils.clickWithJS(shoppingCartPage.shoppingCartBtn);
-        shoppingCartPage.checkOutBtn.click();
+        shoppingCartPage.shoppingCartBtn.click();
     }
 
     @Then("Verify that the total amount is displayed in the selected currency.")
     public void verify_that_the_total_amount_is_displayed_in_the_selected_currency() {
-        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("€"));
-        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("£"));
-        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
+        shoppingCartPage.setverifySubTotalAmount();
+
     }
     @Then("The user completes the purchase process \\(choose payment method, enter details, confirm payment).")
     public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_payment() {
-        shoppingCartPage.shoppingCartBtn.click();
+       shoppingCartPage.checkOutBtn.click();
+
     }
     @Then("The purchase should be successfully completed and the order confirmation should show the total amount in the selected currency.")
     public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency(String firstname, String lastname, String company, String adress1, String adress2, String city, String postcode, String county, String region) {
+        shoppingCartPage.checkOutBtn.click();
+        if (){//locater.isselected 1. secenek
+
+
+        }else if(){
+
 
         checkoutPage.firstName.sendKeys(firstname);
         checkoutPage.lastName.sendKeys(lastname);
@@ -185,9 +190,11 @@ public class CurrencyPage_Step_Defs {
         checkoutPage.continueBtn.click();
         checkoutPage.confirmOrderBtn.click();
         checkoutPage.lastContinue.click();
-        Assert.assertTrue(checkoutPage.verifyTotalAmount.getText().contains("€"));
-        Assert.assertTrue(checkoutPage.verifyTotalAmount.getText().contains("£"));
-        Assert.assertTrue(checkoutPage.verifyTotalAmount.getText().contains("$"));
+        
+        }
+
+
+        //3 continue- 1 checkbox,1 continue, verify
     }
 
 

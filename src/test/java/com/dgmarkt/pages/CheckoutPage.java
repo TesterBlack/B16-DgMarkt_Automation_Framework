@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckoutPage {
+public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//input[@name='firstname']")
     public WebElement firstName;
 
@@ -56,12 +56,13 @@ public class CheckoutPage {
 
     public void productCategory(String categoryName) {
         String productCategory = "//img[@alt='" + categoryName + "']";
-        Driver.getDriver().findElement(By.xpath(categoryName)).click();
+        Driver.getDriver().findElement(By.xpath(productCategory)).click();
     }
     public void productToAdd(String productNamen){
         String productWahlen = "//img[@alt='"+productNamen+"']";
         Driver.getDriver().findElement(By.xpath(productWahlen)).click();
 
         }
+
 
     }
