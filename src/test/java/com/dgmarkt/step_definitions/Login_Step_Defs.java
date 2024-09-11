@@ -1,6 +1,7 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.LoginPage;
+import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
@@ -13,6 +14,7 @@ import org.openqa.selenium.By;
 
 public class Login_Step_Defs {
     LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
 
     @Given("The user is on the first login page")
     public void the_user_is_on_the_first_login_page() {
@@ -51,7 +53,8 @@ public class Login_Step_Defs {
 
     @When("The user clicks on My Account menu")
     public void the_user_clicks_on_My_Account_menu() {
-        loginPage.myAccountButton.click();
+        BrowserUtils.waitFor(3);
+        BrowserUtils.clickWithJS(loginPage.myAccountButton);
     }
     @Then("The user clicks on Logout button")
     public void the_user_clicks_on_Logout_button() {
