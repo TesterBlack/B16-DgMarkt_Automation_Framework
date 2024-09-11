@@ -64,5 +64,9 @@ public class CheckoutPage extends BasePage {
 
         }
 
+    @FindBy(xpath = "(//input[@type='radio'])[1]")
+    public WebElement billingDetails;
+
+
 
     }
