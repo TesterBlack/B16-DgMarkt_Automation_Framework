@@ -4,9 +4,13 @@ import com.dgmarkt.pages.CheckoutPage;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.pages.ShoppingCartPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class CurrencyPage_Step_Defs {
     MainPage mainPage = new MainPage();
@@ -164,39 +168,16 @@ public class CurrencyPage_Step_Defs {
        shoppingCartPage.checkOutBtn.click();
 
     }
+
     @Then("The purchase should be successfully completed and the order confirmation should show the total amount in the selected currency.")
-    public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency(String firstname, String lastname, String company, String adress1, String adress2, String city, String postcode, String county, String region) {
-        shoppingCartPage.checkOutBtn.click();
-        if (){//locater.isselected 1. secenek
-
-
-        }else if(){
-
-
-        checkoutPage.firstName.sendKeys(firstname);
-        checkoutPage.lastName.sendKeys(lastname);
-        checkoutPage.company.sendKeys(company);
-        checkoutPage.adress1.sendKeys(adress1);
-        checkoutPage.adress2.sendKeys(adress2);
-        checkoutPage.city.sendKeys(city);
-        checkoutPage.postCode.sendKeys(postcode);
-        checkoutPage.country.sendKeys(county);
-        checkoutPage.region.sendKeys(region);
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.termsConditionsAgreeBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.confirmOrderBtn.click();
-        checkoutPage.lastContinue.click();
-        
+    public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency() {
+        //shoppingCartPage.checkOutBtn.click();
+        if(checkoutPage.existingAdress.isSelected()){
+            checkoutPage.existingAdressBillingDetails();
+        } else if (checkoutPage.newAdress.isSelected()) {
+            checkoutPage.newAdressBillingDetails();
         }
-
-
-        //3 continue- 1 checkbox,1 continue, verify
     }
-
 
     @When("The user proceeds to the checkout page")
     public void theUserProceedsToTheCheckoutPage() {

@@ -41,8 +41,6 @@ public class ShoppingCartPage extends BasePage{
         } else if (currencyValue.getText().contains("$")) {
             Assert.assertTrue(verifySubTotalAmount.getText().contains("$"));
         }
-
-
     }
 
 

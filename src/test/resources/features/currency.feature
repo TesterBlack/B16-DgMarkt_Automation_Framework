@@ -26,9 +26,10 @@ Feature: Currency functionality test
 
 
 
-@wip
-
+  @wip
   Scenario:Purchase Completion in Selected Currency  -> US04- TC04
+    Given The user is on the first login page
+    When The user is on the login page
     When The user proceeds to the Checkout page
     Then Verify that the total amount is displayed in the selected currency.
     Then The user completes the purchase process (choose payment method, enter details, confirm payment).
