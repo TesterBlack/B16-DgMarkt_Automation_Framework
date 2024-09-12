@@ -7,10 +7,11 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 
 public class AddressBookPage extends BasePage {
+
+    Select select;
 
     @FindBy(xpath = "//h2[text()='Address Book Entries']")
     public WebElement addressBookEnties;
@@ -55,7 +56,7 @@ public class AddressBookPage extends BasePage {
     public WebElement editButton;
 
     @FindBy(xpath = "//div[@class='text-danger']")
-    public WebElement errorMessageForwithoutAddress1;
+    public WebElement errorMessageForWithoutAddress1;
 
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
     public WebElement actualMessageForDeleted;
@@ -96,14 +97,13 @@ public class AddressBookPage extends BasePage {
                         BrowserUtils.waitFor(3);
                         break;
                     }
-
                 }
             }
         }
     }
 
 
-    public void fillnewAdress() {
+    public void fillNewAdress() {
         firstNameInput.sendKeys("Dominik");
         lastNameInput.sendKeys("Smith");
         companyInput.sendKeys("Amazon");
@@ -112,16 +112,16 @@ public class AddressBookPage extends BasePage {
         cityInput.sendKeys("Kronberg");
         postCodeInput.sendKeys("67424");
         WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
-        Select select = new Select(country);
+        select=new Select(country);
         select.selectByVisibleText("Venezuela");
         WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
-        Select select2 = new Select(regionState);
-        select2.selectByVisibleText("Bolivar");
+        select=new Select(regionState);
+        select.selectByVisibleText("Bolivar");
         continueButton.click();
     }
 
 
-    public void fillnewAdresswithoutrequiredAddress1() {
+    public void fillNewAdressWithoutRequiredAddress1() {
         firstNameInput.sendKeys("Stefan");
         lastNameInput.sendKeys("Smith");
         companyInput.sendKeys("Deutsche Bank");
@@ -131,16 +131,15 @@ public class AddressBookPage extends BasePage {
         cityInput.sendKeys("Eschborn");
         postCodeInput.sendKeys("67414");
         WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
-        Select select = new Select(country);
+        select = new Select(country);
         select.selectByVisibleText("Venezuela");
         WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
-        Select select2 = new Select(regionState);
-        select2.selectByVisibleText("Bolivar");
+        select = new Select(regionState);
+        select.selectByVisibleText("Bolivar");
         continueButton.click();
     }
 
-
-    public void filleditAdresswithoutrequiredAddress1() {
+    public void fillEditAdressWithoutRequiredAddress1() {
         firstNameInput.clear();
         firstNameInput.sendKeys("Stefan");
         lastNameInput.clear();
@@ -156,15 +155,15 @@ public class AddressBookPage extends BasePage {
         postCodeInput.clear();
         postCodeInput.sendKeys("67414");
         WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
-        Select select = new Select(country);
+        select = new Select(country);
         select.selectByVisibleText("Venezuela");
         WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
-        Select select2 = new Select(regionState);
-        select2.selectByVisibleText("Bolivar");
+        select = new Select(regionState);
+        select.selectByVisibleText("Bolivar");
         continueButton.click();
     }
 
-    public void fillnewAdresswithdefaultAddressYes() {
+    public void fillNewAdressWithDefaultAddressYes() {
         firstNameInput.sendKeys("Mauro");
         lastNameInput.sendKeys("Icardi");
         companyInput.sendKeys("Gs");
@@ -173,13 +172,11 @@ public class AddressBookPage extends BasePage {
         cityInput.sendKeys("istanbul");
         postCodeInput.sendKeys("34");
         WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
-        Select select = new Select(country);
+        select = new Select(country);
         select.selectByVisibleText("Turkey");
         WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
-        Select select2 = new Select(regionState);
-        select2.selectByVisibleText("İstanbul");
+        select = new Select(regionState);
+        select.selectByVisibleText("İstanbul");
         defaultAddressYes.click();
     }
-
-
 }

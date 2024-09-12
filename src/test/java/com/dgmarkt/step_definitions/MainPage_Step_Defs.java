@@ -3,11 +3,13 @@ package com.dgmarkt.step_definitions;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.pages.ShoppingCartPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class MainPage_Step_Defs {
 
@@ -52,5 +54,24 @@ public class MainPage_Step_Defs {
         //mainPage.healthAndBeauty.click();
         BrowserUtils.clickWithJS(mainPage.healthAndBeauty);
     }
+
+
+    @When("The user clicks Category module on main page")
+    public void the_user_clicks_category_module_on_main_page() {
+        BrowserUtils.waitFor(2);
+        BrowserUtils.hover(mainPage.categoryButtonOnMainPage);
+    }
+
+    @When("The user clicks on a subcategory {string}")
+    public void the_user_clicks_on_a_subcategory(String subCategoryMenu) {
+        mainPage.getSubCategoryMenu(subCategoryMenu);
+    }
+
+    @When("The user clicks on a Tv Accessories")
+    public void the_user_clicks_on_a_tv_accessories() {
+       mainPage.getSubCategoryMenu("TV Accessories");
+    }
+
+
 
 }

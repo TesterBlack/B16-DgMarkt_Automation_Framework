@@ -45,20 +45,20 @@ public class Register_Step_Defs {
 
     @When("user clicks checkBox")
     public void user_clicks_check_box() {
-        registerPage.checkBoxFürAgree.click();
+        registerPage.checkBoxForAgree.click();
     }
 
     @When("user clicks Continue")
-    public void user_clicks_continue() throws InterruptedException {
+    public void user_clicks_continue() {
        registerPage.continueButton.click();
     }
 
     @Then("verify that user can see {string} message")
     public void verify_that_user_can_see_message(String message) {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        WebElement element = Driver.getDriver().findElement(By.xpath("//h2[.='Your Account Has Been Created!']"));
-        String text = (String) js.executeScript("return arguments[0].innerText;", element);
-        Assert.assertTrue(text.contains(message));
+        WebElement text = Driver.getDriver().findElement(By.xpath("//h2[.='Your Account Has Been Created!']"));
+        String actualMessage = (String) js.executeScript("return arguments[0].innerText;", text);
+        Assert.assertTrue(actualMessage.contains(message));
     }
 
     @Then("verify that user can see error message for Email {string}")
@@ -91,9 +91,9 @@ public class Register_Step_Defs {
        Assert.assertEquals(errorMessageForCheckbox,registerPage.actualErrorMessageForCheckbox.getText());
     }
 
-    @Then("verify that user can see error message for beide Password {string}")
+    @Then("verify that user can see error message for Passwords {string}")
     public void verify_that_user_can_see_error_message_for_beide_password(String errorMessageForBeidePassword) {
-       Assert.assertEquals(errorMessageForBeidePassword,registerPage.actualErrorMessageForBeidePassword.getText());
+       Assert.assertEquals(errorMessageForBeidePassword,registerPage.actualErrorMessageForPasswords.getText());
     }
 
     @Then("verify that user can see error message for Register Email {string}")
@@ -103,13 +103,7 @@ public class Register_Step_Defs {
 
     @Then("verify that user can see message for invalid Telephone {string}")
     public void verify_that_user_can_see_message_for_invalid_telephone(String messageForInvalidTelephone) {
-        Assert.assertEquals(messageForInvalidTelephone,registerPage.actualmessageForInvalidTelephone.getText());
+        Assert.assertEquals(messageForInvalidTelephone,registerPage.actualMessageForInvalidTelephone.getText());
     }
-
-
-
-
-
-
 
 }
