@@ -76,7 +76,6 @@ public class EditAccountPage_Step_Defs {
         Assert.assertEquals(editAccountPage.emailInput.getAttribute("validationMessage"),"Gib etwas vor dem @-Zeichen ein. Die Angabe „@gmail.com“ ist unvollständig.");
     }
 
-
     @Then("The user should receive a error message for Invalid Email Format {string}")
     public void the_user_should_receive_a_error_message_for_invalid_email_format(String errorMessage) {
         if (invalidEmail.contains("@")){
@@ -132,7 +131,6 @@ public class EditAccountPage_Step_Defs {
         editAccountPage.emailInput.sendKeys(invalidEmailFormat);
     }
 
-
     @When("updates user E-Mail details with an already registered E-Mail address")    // TC11
     public void updates_user_e_mail_details_with_an_already_registered_e_mail_address() {
         editAccountPage.emailInput.clear();
@@ -156,20 +154,5 @@ public class EditAccountPage_Step_Defs {
     public void the_user_should_receive_a_success_message_for_invalid_email_format(String errorMessage) {
         Assert.assertEquals(errorMessage, accountPage.messageForEdit.getText());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

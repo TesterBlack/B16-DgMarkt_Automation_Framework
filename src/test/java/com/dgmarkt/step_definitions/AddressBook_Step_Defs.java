@@ -21,11 +21,11 @@ public class AddressBook_Step_Defs {
 
     @When("The user enters valid credentials on add address page")
     public void the_user_enters_valid_credentials_on_add_address_page() {
-        addressBookPage.fillnewAdress();
+        addressBookPage.fillNewAdress();
     }
 
-    @When("The user should receive a success message for new addresse {string}")
-    public void the_user_should_receive_a_success_message_for_new_addresse(String successMessage) {
+    @When("The user should receive a success message for new address {string}")
+    public void the_user_should_receive_a_success_message_for_new_address(String successMessage) {
         Assert.assertEquals(addressBookPage.actualMessageForNewAddress.getText(), successMessage);
     }
 
@@ -47,17 +47,22 @@ public class AddressBook_Step_Defs {
 
     @When("The user enters valid credentials without required address1 field on add address page")
     public void the_user_enters_valid_credentials_without_required_address1_field_on_add_address_page() {
-       addressBookPage.fillnewAdresswithoutrequiredAddress1();
+       addressBookPage.fillNewAdressWithoutRequiredAddress1();
+    }
+
+    @When("The user enters valid credentials without required address1 field on edit address page")
+    public void the_user_enters_valid_credentials_without_required_address1_field_on_edit_address_page() {
+        addressBookPage.fillEditAdressWithoutRequiredAddress1();
     }
 
     @Then("The user should receive a message {string}")
     public void the_user_should_receive_a_message(String expectedMessage) {
-        Assert.assertEquals(expectedMessage, addressBookPage.errorMessageForwithoutAddress1.getText());
+        Assert.assertEquals(expectedMessage, addressBookPage.errorMessageForWithoutAddress1.getText());
     }
 
     @When("The user enters valid credentials with default address yes on add address page")
     public void the_user_enters_valid_credentials_with_default_address_yes_on_add_address_page() {
-        addressBookPage.fillnewAdresswithdefaultAddressYes();
+        addressBookPage.fillNewAdressWithDefaultAddressYes();
     }
 
     @When("The user clicks on Continue button on add address page")
