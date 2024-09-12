@@ -21,7 +21,12 @@ public class MainPage_Step_Defs {
         BrowserUtils.clickWithJS(mainPage.myAccountButton);
     }
 
-    @When("user clicks Register on My Account")
+      @When("user clicks My Account from Dropdown menu")
+    public void user_clicks_my_account_from_dropdown_menu() {
+        mainPage.myAccount2Button.click();
+    }
+
+     @When("user clicks Register on My Account")
     public void user_clicks_register_on_my_account() {
         mainPage.accountRegisterButton.click();
     }
