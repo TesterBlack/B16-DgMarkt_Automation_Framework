@@ -1,15 +1,14 @@
-
-Feature: register Functionality
+Feature: Register Functionality
   As a user, I should be able to register
 
-  Background:
+  Background: The user is on the my Account page
     Given The user is on the first login page
     When The user enters valid credentials
     When user clicks My Account on the main page
     When user clicks Register on My Account
 
 
-  Scenario Outline: Registering with Correct Information test with DDT - TC01
+  Scenario Outline: Registering with Correct Information test with DDT - B16DDM-31
     When user enters "<firstname>" firstname
     When user enters "<lastname>" lastname
     When user enters "<email>" email
@@ -25,7 +24,7 @@ Feature: register Functionality
       |  mauro      | icardi   | mauroicardi@gmail.com   | 2222222221| mauro123        | mauro123        | Your Account Has Been Created!        |
 
 
-  Scenario: Attempting to Register with Empty Required Fields (E-Mail Field) - TC02
+  Scenario: Attempting to Register with Empty Required Fields (E-Mail Field) - B16DDM-35
     When user enters "lucas" firstname
     When user enters "torreria" lastname
     When user enters "" email
@@ -37,7 +36,7 @@ Feature: register Functionality
     Then verify that user can see error message for Email "E-Mail Address does not appear to be valid!"
 
 
-  Scenario: Attempting to Register with Empty Required Fields (First Name Field) - TC03
+  Scenario: Attempting to Register with Empty Required Fields (First Name Field) - B16DDM-36
     When user enters "" firstname
     When user enters "torreria" lastname
     When user enters "lucas@gmail.com" email
@@ -49,7 +48,7 @@ Feature: register Functionality
     Then verify that user can see error message for Firstname "First Name must be between 1 and 32 characters!"
 
 
-  Scenario: Attempting to Register with Empty Required Fields (Last Name Field) - TC04
+  Scenario: Attempting to Register with Empty Required Fields (Last Name Field) - B16DDM-37
     When user enters "kaan" firstname
     When user enters "" lastname
     When user enters "kaangs@gmail.com" email
@@ -61,7 +60,7 @@ Feature: register Functionality
     Then verify that user can see error message for Lastname "Last Name must be between 1 and 32 characters!"
 
 
-  Scenario: Attempting to Register with Empty Required Fields (Telephone Field) - TC05
+  Scenario: Attempting to Register with Empty Required Fields (Telephone Field) - B16DDM-38
     When user enters "kaan" firstname
     When user enters "ayhan" lastname
     When user enters "kaangs1@gmail.com" email
@@ -73,7 +72,7 @@ Feature: register Functionality
     Then verify that user can see error message for Telephone "Telephone must be between 3 and 32 characters!"
 
 
-  Scenario: Attempting to Register with Empty Required Fields (Password Field) - TC06
+  Scenario: Attempting to Register with Empty Required Fields (Password Field) - B16DDM-39
     When user enters "kaan" firstname
     When user enters "ayhan" lastname
     When user enters "kaan@gmail.com" email
@@ -85,7 +84,7 @@ Feature: register Functionality
     Then verify that user can see error message for Password "Password must be between 4 and 20 characters!"
 
 
-  Scenario: User clicks not checkbox - TC07
+  Scenario: User clicks not checkbox - B16DDM-40
     When user enters "hakan" firstname
     When user enters "ayhan" lastname
     When user enters "hakan@gmail.com" email
@@ -96,7 +95,7 @@ Feature: register Functionality
     Then verify that user can see error message for checkbox "Warning: You must agree to the Privacy Policy!"
 
 
-  Scenario Outline: Registierung with Invalid E-Mail Format - TC08
+  Scenario Outline: Registierung with Invalid E-Mail Format - B16DDM-41
     When user enters "victor" firstname
     When user enters "osimhen" lastname
     When user enters "<email>" email
@@ -114,7 +113,7 @@ Feature: register Functionality
       | victorhotmailcom |
 
 
-  Scenario Outline: Attempt to register when the password and confirm password fields do not match - TC09
+  Scenario Outline: Attempt to register when the password and confirm password fields do not match - B16DDM-42
     When user enters "victor" firstname
     When user enters "nelson" lastname
     When user enters "victornelson@gmail.com" email
@@ -123,7 +122,7 @@ Feature: register Functionality
     When user enters "<passwordConfirm>" password Confirm
     And user clicks checkBox
     And user clicks Continue
-    Then verify that user can see error message for beide Password "Password confirmation does not match password!"
+    Then verify that user can see error message for Passwords "Password confirmation does not match password!"
     Examples:
       | password  | passwordConfirm |
       | 1234      | 123456          |
@@ -131,7 +130,7 @@ Feature: register Functionality
       | nelson123 | nelson122424    |
 
 
-  Scenario Outline: Registierung with Invalid Password - TC10
+  Scenario Outline: Registerer with Invalid Password - B16DDM-43
     When user enters "kerem" firstname
     When user enters "aks" lastname
     When user enters "kerem@gmail.com" email
@@ -149,7 +148,7 @@ Feature: register Functionality
       | ab4      | ab4             |
 
 
-  Scenario Outline: Attempt to register with an E-Mail already in use - TC11
+  Scenario Outline: Attempt to register with an E-Mail already in use - B16DDM-45
     When user enters "kenan" firstname
     When user enters "yildiz" lastname
     When user enters "<email>" email
@@ -164,7 +163,3 @@ Feature: register Functionality
       | sevgisezer@gmail.com |
       | batch16@gmail.com    |
       | sdet1607@gmail.com   |
-
-
-
-

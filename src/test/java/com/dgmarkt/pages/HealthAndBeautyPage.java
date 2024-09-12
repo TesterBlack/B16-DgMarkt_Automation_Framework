@@ -25,5 +25,10 @@ public class HealthAndBeautyPage extends BasePage{
         this.alertMessage.getText().contains(alertMessage);
     }
 
+    @FindBy(css = "[alt='Fitbit Aria Air Smart Bathroom Scale']")
+    public WebElement product_FitBit;
+    @FindBy(xpath = "//button[@id='button-cart']")
+    public WebElement product_AddToCart;
+
 
 }

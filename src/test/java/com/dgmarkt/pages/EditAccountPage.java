@@ -36,13 +36,4 @@ public class EditAccountPage extends BasePage {
     public WebElement messageForRegisteredEmail;
 
 
-
-
-
-
-
-
-
-
-
 }

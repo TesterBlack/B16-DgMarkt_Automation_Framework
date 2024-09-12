@@ -63,4 +63,15 @@ public class MainPage extends BasePage{
     }
 
 
+    @FindBy(xpath = "//span[text()='Category']")
+    public WebElement categoryButtonOnMainPage;
+
+    public void getSubCategoryMenu(String subCategoryMenu) {
+        Driver.getDriver().findElement(By.xpath("//h4//a[text()='"+subCategoryMenu+"']")).click();
+    }
+
+
+
+
+
 }
