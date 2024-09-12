@@ -13,7 +13,6 @@ public class Currency_Step_Defs {
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
 
-
     @When("user clicks My Account from Dropdown menu")
     public void user_clicks_my_account_from_dropdown_menu() {
         mainPage.myAccount2Button.click();
@@ -69,8 +68,6 @@ public class Currency_Step_Defs {
         Assert.assertTrue(mainPage.verifyDolar.getText().contains("$"));
     }
 
-
-    //TC04
     @When("The user selects the currency from the Currency section")
     public void theUserSelectsTheCurrencyFromTheCurrencySection() {
         BrowserUtils.waitFor(4);
@@ -78,6 +75,7 @@ public class Currency_Step_Defs {
         BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
         BrowserUtils.clickWithJS(new LoginPage().poupClose);
     }
+
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
         LoginPage loginPage=new LoginPage();
@@ -86,10 +84,10 @@ public class Currency_Step_Defs {
         Driver.getDriver().navigate().refresh();
         BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
         BrowserUtils.waitFor(2);
-
         BrowserUtils.clickWithJS(healthAndBeautyPage.product_FitBit);
         BrowserUtils.clickWithJS(healthAndBeautyPage.product_AddToCart);
     }
+
     @When("The user clicks on the shopping cart")
     public void theUserClicksOnTheShoppingCart() {
         BrowserUtils.waitFor(4);
@@ -100,13 +98,13 @@ public class Currency_Step_Defs {
     public void verify_that_the_user_sees_the_checkout_page() {
         shoppingCartPage.verifySubTotalAmount.isDisplayed();
     }
+
     @Then("The user clicks on the Checkout button.")
     public void the_user_clicks_on_the_checkout_button() {
         if (shoppingCartPage.checkOutBtn.isDisplayed()) {
             shoppingCartPage.checkOutBtn.click();
         }else
             shoppingCartPage.checkOutBtnStock.click();
-
     }
 
     @Then("Verify that the user sees the total amount is displayed in the selected currency.")
@@ -115,24 +113,23 @@ public class Currency_Step_Defs {
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("£"));
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
     }
+
     @Then("The user sees the Shopping Cart Page in the currency they selected")
     public void the_user_sees_the_shopping_cart_page_in_the_currency_they_selected() {
         checkoutPage.productCategory("Televisions");
         checkoutPage.productToAdd("Cello C1920FS 19");
     }
 
-
-
-
-    //TC5
     @Then("The user clicks the Checkout button to complete the purchase process")
     public void the_user_clicks_the_checkout_button_to_complete_the_purchase_process() {
         shoppingCartPage.checkOutBtn.click();
     }
+
     @Then("The user should be see the Checkout Options")
     public void the_user_should_be_see_the_checkout_options() {
         checkoutPage.checkoutOptionsArea.isDisplayed();
     }
+
     @Then("the User fills in the checkout options and click the confirm order button")
     public void the_user_fills_in_the_checkout_options_and_click_the_confirm_order_button(String firstname, String lastname, String company, String adress1, String adress2, String city, String postcode, String county, String region) {
         checkoutPage.firstName.sendKeys(firstname);
@@ -176,19 +173,10 @@ public class Currency_Step_Defs {
         checkoutPage.existingAdressBillingDetails();
     }
 
-
-    @When("The user proceeds to the checkout page")
-    public void theUserProceedsToTheCheckoutPage() {
-    }
-
-    @When("The user click on the shopping cart.")
-    public void theUserClickOnTheShoppingCart() {
-    }
     @Then("Verify that the user see that the checkout page reflects the selected currency.")
     public void verify_that_the_user_see_that_the_checkout_page_reflects_the_selected_currency() {
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("€"));
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("£"));
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
     }
-
 }

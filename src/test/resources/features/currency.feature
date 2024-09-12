@@ -1,4 +1,4 @@
-Feature: Currency functionality test
+  Feature: Currency functionality test
   As a user I should be able to select the currency and complete transactions
 
   Background:
@@ -22,7 +22,6 @@ Feature: Currency functionality test
     Then The user should be see the currency options(Euro-Pound-Dolar).
     And User selects dolar as the currency
     And sees that dolar have been selected
-
 
   Scenario:Purchase Completion in Selected Currency  - B16DDM-49
     When The user selects the currency from the Currency section

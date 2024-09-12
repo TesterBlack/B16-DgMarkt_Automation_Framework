@@ -66,7 +66,6 @@ public class CheckoutPage extends BasePage {
     public void productToAdd(String productNamen) {
         String productWahlen = "//img[@alt='" + productNamen + "']";
         Driver.getDriver().findElement(By.xpath(productWahlen)).click();
-
     }
 
     @FindBy(xpath = "(//input[@type='radio'])[1]")

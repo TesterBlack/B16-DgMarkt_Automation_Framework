@@ -23,40 +23,11 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "(//td[@class='text-right'])[2]")
     public WebElement currencyValue;
 
-/*
-    public void productAddToCart(String productName) {
-        String product1 = "//a[text()='"+productName+"']/../../../..//button[2]";
-        Driver.getDriver().findElement(By.xpath(product1)).click();
-    }
-
- */
-/*
-    @FindBy(xpath = " (//span)[1]")
-    public WebElement categoryTab;
-    @FindBy(xpath = "(//div[@class='image'])[1]")
-    public WebElement Televisions;
-
- */
-
     @FindBy(xpath = "//img[@class='img-responsive img-mod-471-7403979 ls-is-cached lazyloaded']")
     public WebElement celloLcdTV;
 
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement celloLcdTVAddToCartBtn;
-
-/*
-    public void verifyCurrency(String Euro, String Pounds, String Dolar){
-        if(currencyValue.contains("€")){
-            currencyValue=Euro;
-        }
-        else if(currencyValue.contains("£")){
-            currencyValue=Pounds;
-        }else if(currencyValue.contains("$")){
-            currencyValue=Dolar;
-        }
-    }
-
- */
 
     public void setverifySubTotalAmount(){
         if(currencyValue.getText().contains("€")){
@@ -67,7 +38,4 @@ public class ShoppingCartPage extends BasePage{
             Assert.assertTrue(verifySubTotalAmount.getText().contains("$"));
         }
     }
-
-
-
 }
