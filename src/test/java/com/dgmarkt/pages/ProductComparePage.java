@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
 public class ProductComparePage extends BasePage{
@@ -68,6 +67,5 @@ public class ProductComparePage extends BasePage{
             BrowserUtils.waitFor(1);
         }
     }
-
 
 }
