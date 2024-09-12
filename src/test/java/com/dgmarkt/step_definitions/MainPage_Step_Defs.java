@@ -49,7 +49,8 @@ public class MainPage_Step_Defs {
 
     @When("The user clicks Health & Beauty submenu")
     public void the_user_clicks_health_beauty_submenu() {
-        mainPage.healthAndBeauty.click();
+        //mainPage.healthAndBeauty.click();
+        BrowserUtils.clickWithJS(mainPage.healthAndBeauty);
     }
 
 }

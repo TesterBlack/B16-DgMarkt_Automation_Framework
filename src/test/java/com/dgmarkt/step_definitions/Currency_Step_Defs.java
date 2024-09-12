@@ -7,15 +7,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-    public class CurrencyPage_Step_Defs {
+public class Currency_Step_Defs {
     MainPage mainPage = new MainPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
+
 
     @When("user clicks My Account from Dropdown menu")
     public void user_clicks_my_account_from_dropdown_menu() {
@@ -78,18 +75,20 @@ import org.openqa.selenium.support.ui.Select;
     public void theUserSelectsTheCurrencyFromTheCurrencySection() {
         BrowserUtils.waitFor(4);
         BrowserUtils.clickWithJS(mainPage.currencies);
-       // BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
+        BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
+        BrowserUtils.clickWithJS(new LoginPage().poupClose);
     }
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
         LoginPage loginPage=new LoginPage();
-       // BrowserUtils.clickWithJS(loginPage.popupClose);
+        //BrowserUtils.clickWithJS(loginPage.popupClose);
         HealthAndBeautyPage healthAndBeautyPage=new HealthAndBeautyPage();
+        Driver.getDriver().navigate().refresh();
+        BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
+        BrowserUtils.waitFor(2);
+
         BrowserUtils.clickWithJS(healthAndBeautyPage.product_FitBit);
-
-        healthAndBeautyPage.product_AddToCart.click();
-
-
+        BrowserUtils.clickWithJS(healthAndBeautyPage.product_AddToCart);
     }
     @When("The user clicks on the shopping cart")
     public void theUserClicksOnTheShoppingCart() {
@@ -103,7 +102,10 @@ import org.openqa.selenium.support.ui.Select;
     }
     @Then("The user clicks on the Checkout button.")
     public void the_user_clicks_on_the_checkout_button() {
-       shoppingCartPage.checkOutBtn.click();
+        if (shoppingCartPage.checkOutBtn.isDisplayed()) {
+            shoppingCartPage.checkOutBtn.click();
+        }else
+            shoppingCartPage.checkOutBtnStock.click();
 
     }
 
@@ -158,10 +160,6 @@ import org.openqa.selenium.support.ui.Select;
         checkoutPage.successMessage.isDisplayed();
     }
 
-
-
-
-
     @When("The user proceeds to the Checkout page")
     public void the_user_proceeds_to_the_checkout_page() {
         BrowserUtils.waitFor(4);
@@ -175,23 +173,13 @@ import org.openqa.selenium.support.ui.Select;
     }
     @Then("The user completes the purchase process \\(choose payment method, enter details, confirm payment).")
     public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_payment() {
-       shoppingCartPage.checkOutBtn.click();
-
+        checkoutPage.existingAdressBillingDetails();
     }
 
-    @Then("The purchase should be successfully completed and the order confirmation should show the total amount in the selected currency.")
+    @Then("The purchase should be successfully " +
+            "completed and the order confirmation should show the total amount in the selected currency.")
     public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency() {
-        //shoppingCartPage.checkOutBtn.click();
-        /*
-        if(checkoutPage.existingAdress.isSelected()){
-            checkoutPage.existingAdressBillingDetails();
-
-        } else if (checkoutPage.newAdress.isSelected()) {
-            checkoutPage.newAdressBillingDetails();
-        }
-
-         */
-        checkoutPage.existingAdressBillingDetails();
+        checkoutPage.verifyAmount();
     }
 
     @When("The user proceeds to the checkout page")
@@ -202,11 +190,10 @@ import org.openqa.selenium.support.ui.Select;
     public void theUserClickOnTheShoppingCart() {
     }
     @Then("Verify that the user see that the checkout page reflects the selected currency.")
-public void verify_that_the_user_see_that_the_checkout_page_reflects_the_selected_currency() {
-    Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("€"));
-    Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("£"));
-    Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
-}
-
+    public void verify_that_the_user_see_that_the_checkout_page_reflects_the_selected_currency() {
+        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("€"));
+        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("£"));
+        Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
+    }
 
 }

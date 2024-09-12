@@ -11,7 +11,10 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")
     public WebElement shoppingCartBtn;
 
-    @FindBy(xpath = "//strong[contains(.,'Checkout')]")
+    @FindBy(xpath = "//a[text()=\"Checkout\"]")
+    public WebElement checkOutBtnStock;
+
+    @FindBy(xpath = "//strong[text()=\" Checkout\"]")
     public WebElement checkOutBtn;
 
     @FindBy(xpath = "(//td[@class='text-right'])[2]")

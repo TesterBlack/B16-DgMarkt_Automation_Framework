@@ -75,6 +75,25 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "(//input[@type='radio'])[2]")
     public WebElement newAdress;
 
+    @FindBy(css = "#button-payment-address")
+    public WebElement continueBtnAddress;
+
+    @FindBy(css = "#button-shipping-address")
+    public WebElement continueBtnDeliveryDetails;
+
+    @FindBy(xpath = "//input[@id='button-shipping-method']")
+    public WebElement continueBtnDeliveryMethod;
+
+    @FindBy(css = "#button-confirm")
+    public WebElement confirmOrder;
+
+    @FindBy(id = "button-payment-method")
+    public WebElement paymentMethod;
+
+    @FindBy(xpath = "//tfoot[1]//td[2]")
+    public WebElement subTotal;
+
+
     public void verifyAmount() {
         if (verifyAmount.getText().contains("€")) {
             Assert.assertTrue(verifyAmount.getText().contains("€"));
@@ -86,14 +105,14 @@ public class CheckoutPage extends BasePage {
     }
 
     public void existingAdressBillingDetails() {
-         continueButton(1);
-         continueButton(2);
-         continueButton(3);
+         BrowserUtils.waitFor(4);
+         BrowserUtils.clickWithJS(continueBtnAddress);
+         BrowserUtils.clickWithJS(continueBtnDeliveryDetails);
+         BrowserUtils.clickWithJS(continueBtnDeliveryMethod);
          BrowserUtils.clickWithJS(termsConditionsAgreeBtn);
-         continueButton(4);
+         paymentMethod.click();
          verifyAmount();
-         BrowserUtils.clickWithJS(confirmOrderBtn);
-         lastContinue.click();
+         BrowserUtils.clickWithJS(confirmOrder);
     }
 
     public void newAdressBillingDetails() {
@@ -124,8 +143,19 @@ public class CheckoutPage extends BasePage {
     public  void continueButton(int index){
         String webelement  = "//input[@value='Continue'])"+"["+index+"]";
         WebElement element = Driver.getDriver().findElement(By.xpath(webelement));
+        BrowserUtils.scrollToElement(element);
         BrowserUtils.clickWithJS(element);
 
        // return Driver.getDriver().findElement(By.xpath("(//input[@value='Continue'])["+index+"]"));
+    }
+    public void subTotalVerify() {
+        System.out.println("subTotal.getText() = " + subTotal.getText());
+        if (subTotal.getText().contains("€")) {
+            Assert.assertTrue(subTotal.getText().contains("€"));
+        } else if (subTotal.getText().contains("£")) {
+            Assert.assertTrue(subTotal.getText().contains("£"));
+        } else if (subTotal.getText().contains("$")) {
+            Assert.assertTrue(subTotal.getText().contains("$"));
+        }
     }
 }
