@@ -176,11 +176,6 @@ public class Currency_Step_Defs {
         checkoutPage.existingAdressBillingDetails();
     }
 
-    @Then("The purchase should be successfully " +
-            "completed and the order confirmation should show the total amount in the selected currency.")
-    public void the_purchase_should_be_successfully_completed_and_the_order_confirmation_should_show_the_total_amount_in_the_selected_currency() {
-        checkoutPage.verifyAmount();
-    }
 
     @When("The user proceeds to the checkout page")
     public void theUserProceedsToTheCheckoutPage() {

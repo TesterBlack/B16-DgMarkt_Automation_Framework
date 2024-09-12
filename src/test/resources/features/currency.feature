@@ -1,4 +1,3 @@
-
 Feature: Currency functionality test
   As a user I should be able to select the currency and complete transactions
 
@@ -24,7 +23,7 @@ Feature: Currency functionality test
     And User selects dolar as the currency
     And sees that dolar have been selected
 
-  @wip
+
   Scenario:Purchase Completion in Selected Currency  - B16DDM-49
     When The user selects the currency from the Currency section
     When The user hover over the Category header on the main page
@@ -34,7 +33,7 @@ Feature: Currency functionality test
     When The user clicks on the Checkout button.
     Then Verify that the total amount is displayed in the selected currency.
     Then The user completes the purchase process (choose payment method, enter details, confirm payment).
-    #And The purchase should be successfully completed and the order confirmation should show the total amount in the selected currency.
+
 
 
 
