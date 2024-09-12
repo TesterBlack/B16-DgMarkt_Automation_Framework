@@ -43,6 +43,16 @@ public class MainPage extends BasePage{
 
     @FindBy(xpath = "//a[contains(text(), 'Health & Beauty')]")
     public WebElement healthAndBeauty;
+
+    @FindBy(xpath = "(//div[@data-toggle='dropdown'])[1]")
+    public WebElement searchIcon;
+
+    @FindBy(id = "text-search")
+    public WebElement searchField;
+
+    @FindBy(id = "btn-search-category")
+    public WebElement searchButtonClick;
+
   
    public WebElement getHeader (String headerName){
        BrowserUtils.waitFor(2);
