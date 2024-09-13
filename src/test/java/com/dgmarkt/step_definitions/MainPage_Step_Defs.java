@@ -26,11 +26,11 @@ public class MainPage_Step_Defs {
         mainPage.myAccount2Button.click();
     }
 
+
      @When("user clicks Register on My Account")
     public void user_clicks_register_on_my_account() {
         mainPage.accountRegisterButton.click();
     }
-
 
     @When("The user clicks {string} header")
     public void the_user_clicks_header(String headerText) {
