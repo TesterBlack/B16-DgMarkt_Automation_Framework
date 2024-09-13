@@ -13,11 +13,6 @@ public class Currency_Step_Defs {
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
 
-    @When("user clicks My Account from Dropdown menu")
-    public void user_clicks_my_account_from_dropdown_menu() {
-        mainPage.myAccount2Button.click();
-    }
-
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page() {
         BrowserUtils.waitFor(4);
