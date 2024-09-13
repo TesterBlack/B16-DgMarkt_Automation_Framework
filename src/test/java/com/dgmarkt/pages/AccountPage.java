@@ -26,7 +26,7 @@ public class AccountPage extends BasePage{
     @FindBy(xpath = "//input[@value='Continue']")
     public WebElement continueButton;
 
-    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    @FindBy(css= "div.alert.alert-success.alert-dismissible")//div[@class='alert alert-success alert-dismissible']   //i[@class='fa fa-check-circle']
     public WebElement successMessagePaswordChange;
 
     @FindBy(xpath = "//div[@class='text-danger']")
