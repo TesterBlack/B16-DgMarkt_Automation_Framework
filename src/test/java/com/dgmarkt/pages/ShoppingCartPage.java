@@ -30,6 +30,7 @@ public class ShoppingCartPage extends BasePage{
     public WebElement celloLcdTVAddToCartBtn;
 
     public void setverifySubTotalAmount(){
+        System.out.println("currencyValue = " + currencyValue);
         if(currencyValue.getText().contains("€")){
             Assert.assertTrue(verifySubTotalAmount.getText().contains("€"));
         } else if (currencyValue.getText().contains("£")) {

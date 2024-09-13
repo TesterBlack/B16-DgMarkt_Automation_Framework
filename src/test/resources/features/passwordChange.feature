@@ -7,7 +7,7 @@ Feature: My Account-User can Change password
     When user clicks My Account on the main page
     Then user clicks My Account from Dropdown menu
     Then user clicks Password button
-
+  @wip
   Scenario Outline: Verifies that the user can change the password - B16DDM-81
 
     Then the user enters the "<NewPassword>" in the blank in the password field.
@@ -18,7 +18,6 @@ Feature: My Account-User can Change password
       | NewPassword     | SameNewPassword    | SuccessMessage                                      |
       | 54321            |  54321            | Success: Your password has been successfully updated.|
       | 12.a*'T          |  12.a*'T          | Success: Your password has been successfully updated.|
-
 
 
   Scenario Outline: Verifies error message when user can't confirm password - B16DDM-83

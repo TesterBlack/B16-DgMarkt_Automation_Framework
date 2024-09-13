@@ -1,4 +1,3 @@
-@wip
 Feature: Currency functionality test
   As a user I should be able to select the currency and complete transactions
 
