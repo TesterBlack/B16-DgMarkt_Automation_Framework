@@ -66,12 +66,7 @@ public class Currency_Step_Defs {
 
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
-        HealthAndBeautyPage healthAndBeautyPage=new HealthAndBeautyPage();
-        Driver.getDriver().navigate().refresh();
-        BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickWithJS(healthAndBeautyPage.product_FitBit);
-        BrowserUtils.clickWithJS(healthAndBeautyPage.product_AddToCart);
+       checkoutPage.productAddToCart();
     }
 
     @When("The user clicks on the shopping cart")

@@ -94,6 +94,15 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//tfoot[1]//td[2]")
     public WebElement subTotal;
 
+    public void productAddToCart(){
+        HealthAndBeautyPage healthAndBeautyPage=new HealthAndBeautyPage();
+        Driver.getDriver().navigate().refresh();
+        BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
+        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithJS(healthAndBeautyPage.product_FitBit);
+        BrowserUtils.clickWithJS(healthAndBeautyPage.product_AddToCart);
+    }
+
     public void verifyAmount(String currency) {
         if(currency.equals("€")){
             Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("€"));
@@ -116,7 +125,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void verifySelectedCurrency(String selectedCurrency){
-        if(selectedCurrency.equals("Euro")){
+            if(selectedCurrency.equals("Euro")){
             BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
             currency="€";
         } else if (selectedCurrency.equals("Pounds")) {
