@@ -74,7 +74,6 @@ public class Currency_Step_Defs {
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
         LoginPage loginPage=new LoginPage();
-        //BrowserUtils.clickWithJS(loginPage.popupClose);
         HealthAndBeautyPage healthAndBeautyPage=new HealthAndBeautyPage();
         Driver.getDriver().navigate().refresh();
         BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
@@ -109,12 +108,6 @@ public class Currency_Step_Defs {
         Assert.assertTrue(shoppingCartPage.verifySubTotalAmount.getText().contains("$"));
     }
 
-    @Then("The user sees the Shopping Cart Page in the currency they selected")
-    public void the_user_sees_the_shopping_cart_page_in_the_currency_they_selected() {
-        checkoutPage.productCategory("Televisions");
-        checkoutPage.productToAdd("Cello C1920FS 19");
-    }
-
     @Then("The user clicks the Checkout button to complete the purchase process")
     public void the_user_clicks_the_checkout_button_to_complete_the_purchase_process() {
         shoppingCartPage.checkOutBtn.click();
@@ -125,30 +118,9 @@ public class Currency_Step_Defs {
         checkoutPage.checkoutOptionsArea.isDisplayed();
     }
 
-    @Then("the User fills in the checkout options and click the confirm order button")
-    public void the_user_fills_in_the_checkout_options_and_click_the_confirm_order_button(String firstname, String lastname, String company, String adress1, String adress2, String city, String postcode, String county, String region) {
-        checkoutPage.firstName.sendKeys(firstname);
-        checkoutPage.lastName.sendKeys(lastname);
-        checkoutPage.company.sendKeys(company);
-        checkoutPage.adress1.sendKeys(adress1);
-        checkoutPage.adress2.sendKeys(adress2);
-        checkoutPage.city.sendKeys(city);
-        checkoutPage.postCode.sendKeys(postcode);
-        checkoutPage.country.sendKeys(county);
-        checkoutPage.region.sendKeys(region);
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.termsConditionsAgreeBtn.click();
-        checkoutPage.continueBtn.click();
-        checkoutPage.confirmOrderBtn.click();
-        checkoutPage.lastContinue.click();
-        checkoutPage.confirmOrderBtn.click();
-    }
 
     @Then("User should be see the message on the page that {string}")
-    public void user_should_be_see_the_message_on_the_page_that(String string) {
+    public void user_should_be_see_the_message_on_the_page_that() {
         checkoutPage.successMessage.isDisplayed();
     }
 
@@ -161,7 +133,6 @@ public class Currency_Step_Defs {
     @Then("Verify that the total amount is displayed in the selected currency.")
     public void verify_that_the_total_amount_is_displayed_in_the_selected_currency() {
         shoppingCartPage.setverifySubTotalAmount();
-
     }
     @Then("The user completes the purchase process \\(choose payment method, enter details, confirm payment).")
     public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_payment() {
