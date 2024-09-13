@@ -5,7 +5,6 @@ Feature: Currency functionality test
     Given The user is on the first login page
     When The user is on the login page
 
-  @wip
   Scenario:Currency Selection Reflects on Product Page - B16DDM-28
     When The User navigates to the currency selector dropdown on the home page
     Then The user should be see the currency options(Euro-Pound-Dolar).
