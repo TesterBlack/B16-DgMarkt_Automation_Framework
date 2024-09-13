@@ -17,9 +17,6 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[text()='My Account']")
     public WebElement myAccount2Button;
   
-    @FindBy(xpath = "//span[text()='Currency']")
-    public WebElement currencyButton;
-
     @FindBy(xpath = "(//button[@class='btn btn-link dropdown-toggle'])[1]")
     public WebElement currencies;
 
@@ -53,8 +50,10 @@ public class MainPage extends BasePage{
     @FindBy(id = "btn-search-category")
     public WebElement searchButtonClick;
 
-  
-   public WebElement getHeader (String headerName){
+    @FindBy(xpath = "//span[text()='Category']")
+    public WebElement categoryButtonOnMainPage;
+
+    public WebElement getHeader (String headerName){
        BrowserUtils.waitFor(2);
         return Driver.getDriver().findElement(By.xpath("//a[@class='a-top-link']//span[contains(text(),'"+headerName+"')]"));
     }
@@ -62,16 +61,8 @@ public class MainPage extends BasePage{
         return Driver.getDriver().findElement(By.xpath(("//div[@class='breadcrumbs']//li[2]")));
     }
 
-
-    @FindBy(xpath = "//span[text()='Category']")
-    public WebElement categoryButtonOnMainPage;
-
     public void getSubCategoryMenu(String subCategoryMenu) {
         Driver.getDriver().findElement(By.xpath("//h4//a[text()='"+subCategoryMenu+"']")).click();
     }
-
-
-
-
 
 }
