@@ -2,7 +2,6 @@ package com.dgmarkt.pages;
 
 import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,7 +44,17 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[contains(text(), 'Health & Beauty')]")
     public WebElement healthAndBeauty;
 
-    public WebElement getHeader (String headerName){
+    @FindBy(xpath = "(//div[@data-toggle='dropdown'])[1]")
+    public WebElement searchIcon;
+
+    @FindBy(id = "text-search")
+    public WebElement searchField;
+
+    @FindBy(id = "btn-search-category")
+    public WebElement searchButtonClick;
+
+  
+   public WebElement getHeader (String headerName){
        BrowserUtils.waitFor(2);
         return Driver.getDriver().findElement(By.xpath("//a[@class='a-top-link']//span[contains(text(),'"+headerName+"')]"));
     }

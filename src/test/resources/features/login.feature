@@ -135,7 +135,7 @@ Feature: Login functionality test
 
 
   @forgottenPassword
-  Scenario: The user can see the password as bullet signs by default - B16DDM-69
+  Scenario: The user see and use the ‘Forgotten Password’ functionality - B16DDM-70
     Given The user is on the first login page
     When The user enters valid credentials
     Then The user should be able to see main page
