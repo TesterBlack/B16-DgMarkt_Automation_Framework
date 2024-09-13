@@ -29,13 +29,14 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement celloLcdTVAddToCartBtn;
 
-    public void setverifySubTotalAmount(){
-        if(currencyValue.getText().contains("€")){
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("€"));
-        } else if (currencyValue.getText().contains("£")) {
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("£"));
-        } else if (currencyValue.getText().contains("$")) {
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("$"));
+    public void setverifySubTotalAmount(String currency){
+        if(currency.equals("€")){
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("€"));
+        } else if (currency.equals("£")) {
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("£"));
+        } else if (currency.equals("$")) {
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("$"));
         }
     }
+
 }

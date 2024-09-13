@@ -12,6 +12,7 @@ public class Currency_Step_Defs {
     MainPage mainPage = new MainPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
     CheckoutPage checkoutPage = new CheckoutPage();
+    String currency;
 
     @When("The User navigates to the currency selector dropdown on the home page")
     public void the_user_navigates_to_the_currency_selector_dropdown_on_the_home_page() {
@@ -63,14 +64,6 @@ public class Currency_Step_Defs {
         Assert.assertTrue(mainPage.verifyDolar.getText().contains("$"));
     }
 
-    @When("The user selects the currency from the Currency section")
-    public void theUserSelectsTheCurrencyFromTheCurrencySection() {
-        BrowserUtils.waitFor(4);
-        BrowserUtils.clickWithJS(mainPage.currencies);
-        BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
-        BrowserUtils.clickWithJS(new LoginPage().poupClose);
-    }
-
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
         HealthAndBeautyPage healthAndBeautyPage=new HealthAndBeautyPage();
@@ -97,11 +90,18 @@ public class Currency_Step_Defs {
 
     @Then("Verify that the total amount is displayed in the selected currency.")
     public void verify_that_the_total_amount_is_displayed_in_the_selected_currency() {
-        shoppingCartPage.setverifySubTotalAmount();
+        shoppingCartPage.setverifySubTotalAmount(currency);
     }
+
     @Then("The user completes the purchase process \\(choose payment method, enter details, confirm payment).")
     public void the_user_completes_the_purchase_process_choose_payment_method_enter_details_confirm_payment() {
-        checkoutPage.existingAdressBillingDetails();
+        checkoutPage.existingAdressBillingDetails(currency);
+    }
+
+    @When("The user select the {string} from the Currency section")
+    public void the_user_select_the_from_the_currency_section(String selectedCurrency) {
+        BrowserUtils.clickWithJS(mainPage.currencies);
+        checkoutPage.verifySelectedCurrency(selectedCurrency);
     }
 
 }

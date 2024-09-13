@@ -23,8 +23,9 @@ Feature: Currency functionality test
     And User selects dolar as the currency
     And sees that dolar have been selected
 
-  Scenario:Purchase Completion in Selected Currency  - B16DDM-49
-    When The user selects the currency from the Currency section
+    
+  Scenario Outline: Purchase Completion in Selected Currency
+    When The user select the "<currency>" from the Currency section
     When The user hover over the Category header on the main page
     When The user clicks Health & Beauty submenu
     Given The user adds a product to the cart
@@ -33,10 +34,11 @@ Feature: Currency functionality test
     Then Verify that the total amount is displayed in the selected currency.
     Then The user completes the purchase process (choose payment method, enter details, confirm payment).
 
-
-
-
-
+    Examples:
+      | currency |
+      | Euro     |
+      | Pounds   |
+      | Dollar   |
 
 
 

@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class CheckoutPage extends BasePage {
+    String currency;
+    MainPage mainPage=new MainPage();
     @FindBy(xpath = "//input[@name='firstname']")
     public WebElement firstName;
 
@@ -92,25 +94,38 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//tfoot[1]//td[2]")
     public WebElement subTotal;
 
-    public void verifyAmount() {
-        if (verifyAmount.getText().contains("€")) {
-            Assert.assertTrue(verifyAmount.getText().contains("€"));
-        } else if (verifyAmount.getText().contains("£")) {
-            Assert.assertTrue(verifyAmount.getText().contains("£"));
-        } else if (verifyAmount.getText().contains("$")) {
-            Assert.assertTrue(verifyAmount.getText().contains("$"));
+    public void verifyAmount(String currency) {
+        if(currency.equals("€")){
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("€"));
+        } else if (currency.equals("£")) {
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("£"));
+        } else if (currency.equals("$")) {
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("$"));
         }
     }
 
-    public void existingAdressBillingDetails() {
+    public void existingAdressBillingDetails(String currency) {
          BrowserUtils.waitFor(4);
          BrowserUtils.clickWithJS(continueBtnAddress);
          BrowserUtils.clickWithJS(continueBtnDeliveryDetails);
          BrowserUtils.clickWithJS(continueBtnDeliveryMethod);
          BrowserUtils.clickWithJS(termsConditionsAgreeBtn);
-         paymentMethod.click();
-         verifyAmount();
+         BrowserUtils.clickWithJS(paymentMethod);
+         verifyAmount(currency);
          BrowserUtils.clickWithJS(confirmOrder);
+    }
+
+    public void verifySelectedCurrency(String selectedCurrency){
+        if(selectedCurrency.equals("Euro")){
+            BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
+            currency="€";
+        } else if (selectedCurrency.equals("Pounds")) {
+            BrowserUtils.clickWithJS(mainPage.currencyPoundsButton);
+            currency="£";
+        } else if (selectedCurrency.equals("Dollar")) {
+            BrowserUtils.clickWithJS(mainPage.currencyDolarButton);
+            currency="$";
+        }
     }
 
 }
