@@ -23,7 +23,6 @@ Feature: Currency functionality test
     And User selects dolar as the currency
     And sees that dolar have been selected
 
-  @wip
   Scenario Outline: Purchase Completion in Selected Currency
     When The user select the "<currency>" from the Currency section
     When The user hover over the Category header on the main page
