@@ -4,6 +4,7 @@ import com.dgmarkt.pages.AccountPage;
 import com.dgmarkt.pages.EditAccountPage;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
@@ -20,110 +21,36 @@ public class PasswordChange_Step_Defs {
 
     @Then("the user enters the {string} in the blank in the password field.")
     public void the_user_enters_the_in_the_blank_in_the_password_field(String newPassword) {
+        BrowserUtils.waitFor(2);
        accountPage.inputPassword.sendKeys("");
     }
 
     @Then("the user enters the same {string} into the blank in the confirm password field.")
     public void the_user_enters_the_same_into_the_blank_in_the_confirm_password_field(String sameNewPassword) {
+        BrowserUtils.waitFor(2);
         accountPage.confirmPassword.sendKeys("");
     }
 
     @Then("the user clicks the continue button.")
     public void the_user_clicks_the_continue_button() {
+        BrowserUtils.waitFor(2);
+
         accountPage.continueButton.click();
+        BrowserUtils.waitFor(4);
     }
 
     @Then("User should be see the {string} {string}")
     public void user_should_be_see_the(String successMessage, String expectedMessage) {
         BrowserUtils.waitFor(4);
-        
-        //accountPage.successMessagePaswordChange.isDisplayed();
+        accountPage.successMessagePaswordChange.isDisplayed();
+        BrowserUtils.waitFor(4);
         Assert.assertEquals(successMessage,accountPage.successMessagePaswordChange.getText());
     }
-
-
-
-
-
-/*
-
-    @Then("the user enters the {string} in the blank in the password field.")
-    public void the_user_enters_the_in_the_blank_in_the_password_field(String string) {
-
+    @And("the user enters the {string} into the blank in the confirm password field.")
+    public void theUserEntersTheIntoTheBlankInTheConfirmPasswordField(String differentNewPassword) {
+        BrowserUtils.waitFor(2);
+        accountPage.confirmPassword.sendKeys("");
     }
-    @Then("the user enters the same {string} into the blank in the confirm password field.")
-    public void the_user_enters_the_same_into_the_blank_in_the_confirm_password_field(String string) {
-
-    }
-    @Then("the user clicks the continue button.")
-    public void the_user_clicks_the_continue_button() {
-
-    }
-    @Then("User should be see the {string} {string}")
-    public void user_should_be_see_the(String string, String string2) {
-
-    }
-
-
-
-
-
-
-    @Then("the user enters the {string} in the blank in the password field.")
-    public void the_user_enters_the_in_the_blank_in_the_password_field(String string) {
-
-    }
-    @Then("the user enters the {string} into the blank in the confirm password field.")
-    public void the_user_enters_the_into_the_blank_in_the_confirm_password_field(String string) {
-
-    }
-    @Then("the user clicks the continue button.")
-    public void the_user_clicks_the_continue_button() {
-
-    }
-    @Then("User should be see the {string} {string}")
-    public void user_should_be_see_the(String string, String string2) {
-
-    }
-
-
-
-
-
-
-    @Then("user clicks Password")
-    public void user_clicks_password() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the user enters the {string} in the blank in the password field.")
-    public void the_user_enters_the_in_the_blank_in_the_password_field(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the user enters the {string} into the blank in the confirm password field.")
-    public void the_user_enters_the_into_the_blank_in_the_confirm_password_field(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("the user clicks the continue button.")
-    public void the_user_clicks_the_continue_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("User should be see the {string} {string}")
-    public void user_should_be_see_the(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-
- */
-
-
-
-
-
 
 
 }
