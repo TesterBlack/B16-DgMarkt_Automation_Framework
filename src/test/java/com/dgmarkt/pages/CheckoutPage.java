@@ -92,7 +92,6 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//tfoot[1]//td[2]")
     public WebElement subTotal;
 
-
     public void verifyAmount() {
         if (verifyAmount.getText().contains("€")) {
             Assert.assertTrue(verifyAmount.getText().contains("€"));
@@ -114,47 +113,4 @@ public class CheckoutPage extends BasePage {
          BrowserUtils.clickWithJS(confirmOrder);
     }
 
-    public void newAdressBillingDetails() {
-        newAdress.click();
-        firstName.sendKeys("firstname");
-        lastName.sendKeys("lastname");
-        company.sendKeys("company");
-        adress1.sendKeys("adress1");
-        adress2.sendKeys("adress2");
-        city.sendKeys("city");
-        postCode.sendKeys("postcode");
-        WebElement country = Driver.getDriver().findElement(By.xpath("//select[@id='input-country']"));
-        Select select = new Select(country);
-        select.selectByVisibleText("Venezuela");
-        WebElement regionState = Driver.getDriver().findElement(By.xpath("//select[@id='input-zone']"));
-        Select select2 = new Select(regionState);
-        select2.selectByVisibleText("Bolivar");
-        continueButton(1);
-        continueButton(2);
-        continueButton(3);
-        termsConditionsAgreeBtn.click();
-        continueButton(4);
-        verifyAmount();
-        confirmOrderBtn.click();
-        lastContinue.click();
-
-    }
-    public  void continueButton(int index){
-        String webelement  = "//input[@value='Continue'])"+"["+index+"]";
-        WebElement element = Driver.getDriver().findElement(By.xpath(webelement));
-        BrowserUtils.scrollToElement(element);
-        BrowserUtils.clickWithJS(element);
-
-       // return Driver.getDriver().findElement(By.xpath("(//input[@value='Continue'])["+index+"]"));
-    }
-    public void subTotalVerify() {
-        System.out.println("subTotal.getText() = " + subTotal.getText());
-        if (subTotal.getText().contains("€")) {
-            Assert.assertTrue(subTotal.getText().contains("€"));
-        } else if (subTotal.getText().contains("£")) {
-            Assert.assertTrue(subTotal.getText().contains("£"));
-        } else if (subTotal.getText().contains("$")) {
-            Assert.assertTrue(subTotal.getText().contains("$"));
-        }
-    }
 }

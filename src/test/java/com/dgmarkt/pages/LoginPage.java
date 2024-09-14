@@ -1,14 +1,10 @@
 package com.dgmarkt.pages;
 
 import com.dgmarkt.utilities.BrowserUtils;
-import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.ConfigReader;
 import com.dgmarkt.utilities.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage{
@@ -47,9 +43,6 @@ public class LoginPage extends BasePage{
 
     @FindBy (xpath = "(//span[text()='Continue'])[2]")
     public WebElement continueButton;
-
-    @FindBy (xpath = "(//input[@type='checkbox'])[2]")
-    public WebElement checkbox;
 
     @FindBy (xpath = "//div[text()=' Congratulation! Login Successfully']")
     public WebElement successLoginMessage;
