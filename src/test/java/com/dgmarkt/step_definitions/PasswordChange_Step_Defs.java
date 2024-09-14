@@ -1,7 +1,6 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.AccountPage;
-import com.dgmarkt.pages.EditAccountPage;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
@@ -12,17 +11,16 @@ public class PasswordChange_Step_Defs {
     AccountPage accountPage = new AccountPage();
     MainPage mainPage = new MainPage();
 
-
     @Then("user clicks Password button")
     public void user_clicks_password_button() {
-       BrowserUtils.waitFor(3);
-       accountPage.passwordBtnMyAccount.click();
+        BrowserUtils.waitFor(3);
+        accountPage.passwordBtnMyAccount.click();
     }
 
     @Then("the user enters the {string} in the blank in the password field.")
     public void the_user_enters_the_in_the_blank_in_the_password_field(String newPassword) {
         BrowserUtils.waitFor(2);
-       accountPage.inputPassword.sendKeys(newPassword);
+        accountPage.inputPassword.sendKeys(newPassword);
     }
 
     @Then("the user enters the same {string} into the blank in the confirm password field.")
@@ -35,7 +33,6 @@ public class PasswordChange_Step_Defs {
     public void the_user_clicks_the_continue_button() {
         BrowserUtils.waitFor(2);
         accountPage.continueButton.click();
-      // BrowserUtils.waitFor(2);
     }
 
     @Then("User should be see the {string} {string}")
@@ -43,9 +40,10 @@ public class PasswordChange_Step_Defs {
         BrowserUtils.waitFor(4);
         accountPage.successMessagePaswordChange.isDisplayed();
         BrowserUtils.waitFor(4);
-        Assert.assertEquals(successMessage,accountPage.successMessagePaswordChange.getText());
+        Assert.assertEquals(successMessage, accountPage.successMessagePaswordChange.getText());
 
     }
+
     @And("the user enters the {string} into the blank in the confirm password field.")
     public void theUserEntersTheIntoTheBlankInTheConfirmPasswordField(String differentNewPassword) {
         BrowserUtils.waitFor(2);
@@ -57,9 +55,7 @@ public class PasswordChange_Step_Defs {
         BrowserUtils.waitFor(4);
         accountPage.warningMessagePaswordNotChange.isDisplayed();
         BrowserUtils.waitFor(4);
-        Assert.assertEquals(warningMessagePaswordNotChange,accountPage.warningMessagePaswordNotChange.getText());
+        Assert.assertEquals(warningMessagePaswordNotChange, accountPage.warningMessagePaswordNotChange.getText());
 
     }
-
-
 }
