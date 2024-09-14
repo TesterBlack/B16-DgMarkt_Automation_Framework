@@ -1,8 +1,9 @@
 package com.dgmarkt.step_definitions;
 
-import com.dgmarkt.pages.*;
+import com.dgmarkt.pages.CheckoutPage;
+import com.dgmarkt.pages.MainPage;
+import com.dgmarkt.pages.ShoppingCartPage;
 import com.dgmarkt.utilities.BrowserUtils;
-import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,7 +22,7 @@ public class Currency_Step_Defs {
     }
 
     @Then("The user should be see the currency options\\(Euro-Pound-Dolar).")
-    public void the_user_should_be_see_the_currency_options_euro_pound_euro(){
+    public void the_user_should_be_see_the_currency_options_euro_pound_euro() {
         Assert.assertTrue(mainPage.currencyEuroButton.isDisplayed());
         Assert.assertTrue(mainPage.currencyPoundsButton.isDisplayed());
         Assert.assertTrue(mainPage.currencyDolarButton.isDisplayed());
@@ -66,7 +67,7 @@ public class Currency_Step_Defs {
 
     @Given("The user adds a product to the cart")
     public void theUserAddsAProductToTheCart() {
-       checkoutPage.productAddToCart();
+        checkoutPage.productAddToCart();
     }
 
     @When("The user clicks on the shopping cart")
@@ -79,7 +80,7 @@ public class Currency_Step_Defs {
     public void the_user_clicks_on_the_checkout_button() {
         if (shoppingCartPage.checkOutBtn.isDisplayed()) {
             shoppingCartPage.checkOutBtn.click();
-        }else
+        } else
             shoppingCartPage.checkOutBtnStock.click();
     }
 
@@ -96,7 +97,7 @@ public class Currency_Step_Defs {
     @When("The user select the {string} from the Currency section")
     public void the_user_select_the_from_the_currency_section(String selectedCurrency) {
         BrowserUtils.clickWithJS(mainPage.currencies);
-        checkoutPage.verifySelectedCurrency(selectedCurrency);
+        currency = checkoutPage.verifySelectedCurrency(selectedCurrency);
     }
 
 }
