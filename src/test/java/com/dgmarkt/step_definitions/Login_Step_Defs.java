@@ -19,6 +19,7 @@ public class Login_Step_Defs {
     @Given("The user is on the first login page")
     public void the_user_is_on_the_first_login_page() {
         Driver.getDriver().get(ConfigReader.get("url"));
+
     }
     @Then("The user is on the login page")
     public void the_user_is_on_the_login_page() throws InterruptedException {
@@ -48,6 +49,7 @@ public class Login_Step_Defs {
                 "×";
         Assert.assertEquals(expectedMessage, actualMessage);
     }
+
     @When("The user clicks on My Account menu")
     public void the_user_clicks_on_My_Account_menu() {
         BrowserUtils.waitFor(3);
@@ -89,18 +91,17 @@ public class Login_Step_Defs {
         loginPage.accountEmailBox.sendKeys(accountEmail);
     }
     @When("The user enters {string} accountPassword")
-    public void the_user_enters_account_password(String accountPassword)  {
+    public void the_user_enters_account_password(String accountPassword) {
         loginPage.accountPasswordBox.sendKeys(accountPassword);
-
     }
     @When("The user clicks account login click button")
     public void the_user_clicks_account_login_click_button() {
         loginPage.accountLoginClickButton.click();
     }
+  
     @When("The user enters {string} wrong accountEmail")
-    public void the_user_enters_wrong_account_email(String wrongAccountEmail)  {
+    public void the_user_enters_wrong_account_email(String wrongAccountEmail) {
        loginPage.accountEmailBox.sendKeys(wrongAccountEmail);
-
     }
 
     @Then("The user should not be able to logged in with wrong email")
@@ -119,10 +120,12 @@ public class Login_Step_Defs {
     @When("The user enters {string} as wrong accountEmail")
     public void the_user_enters_as_wrong_account_email(String wrongAccountEmail) {
         loginPage.accountEmailBox.sendKeys(wrongAccountEmail);
+
     }
     @When("The user enters {string} as accountPassword")
     public void the_user_enters_as_account_password(String wrongAccountPassword) {
         loginPage.accountPasswordBox.sendKeys(wrongAccountPassword);
+
     }
   @When("The user clicks on Back button")
     public void the_user_clicks_on_back_button() {
@@ -154,7 +157,7 @@ public class Login_Step_Defs {
 
     }
 
-    }
+}
 
 
 

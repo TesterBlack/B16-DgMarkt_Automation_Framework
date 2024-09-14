@@ -49,14 +49,13 @@ public class MainPage_Step_Defs {
         BrowserUtils.hover(mainPage.getHeader("Category"));
     }
 
-    @Then("The user should be able to see on the submenu-header {string} submenus")
-    public void the_user_should_be_able_to_see_on_the_submenu_header_submenus(String expectedSubMenu) {
+    @Then("The user should be able to see on the submenu-header submenus")
+    public void the_user_should_be_able_to_see_on_the_submenu_header_submenus() {
         Assert.assertTrue(mainPage.healthAndBeauty.isDisplayed());
     }
 
     @When("The user clicks Health & Beauty submenu")
     public void the_user_clicks_health_beauty_submenu() {
-        //mainPage.healthAndBeauty.click();
         BrowserUtils.clickWithJS(mainPage.healthAndBeauty);
     }
 
