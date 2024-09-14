@@ -1,15 +1,10 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.MainPage;
-import com.dgmarkt.pages.ShoppingCartPage;
 import com.dgmarkt.utilities.BrowserUtils;
-import com.dgmarkt.utilities.Driver;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 
 public class MainPage_Step_Defs {
 
@@ -21,13 +16,13 @@ public class MainPage_Step_Defs {
         BrowserUtils.clickWithJS(mainPage.myAccountButton);
     }
 
-      @When("user clicks My Account from Dropdown menu")
+    @When("user clicks My Account from Dropdown menu")
     public void user_clicks_my_account_from_dropdown_menu() {
-        mainPage.myAccount2Button.click();
+        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithJS(mainPage.myAccount2Button);
     }
 
-
-     @When("user clicks Register on My Account")
+    @When("user clicks Register on My Account")
     public void user_clicks_register_on_my_account() {
         mainPage.accountRegisterButton.click();
     }
@@ -36,11 +31,12 @@ public class MainPage_Step_Defs {
     public void the_user_clicks_header(String headerText) {
         mainPage.getHeader(headerText).click();
     }
+
     @Then("The user should be able to see the {string} page")
     public void the_user_should_be_able_to_see_the_page(String expectedPage) {
         String actualPage = mainPage.getPage().getText();
         BrowserUtils.waitForVisibility(mainPage.getPage(), 5);
-        Assert.assertEquals(expectedPage,actualPage);
+        Assert.assertEquals(expectedPage, actualPage);
     }
 
     @When("The user hover over the Category header on the main page")
@@ -74,9 +70,8 @@ public class MainPage_Step_Defs {
 
     @When("The user clicks on a Tv Accessories")
     public void the_user_clicks_on_a_tv_accessories() {
-       mainPage.getSubCategoryMenu("TV Accessories");
+        mainPage.getSubCategoryMenu("TV Accessories");
     }
-
 
 
 }

@@ -22,21 +22,20 @@ public class PasswordChange_Step_Defs {
     @Then("the user enters the {string} in the blank in the password field.")
     public void the_user_enters_the_in_the_blank_in_the_password_field(String newPassword) {
         BrowserUtils.waitFor(2);
-       accountPage.inputPassword.sendKeys("");
+       accountPage.inputPassword.sendKeys(newPassword);
     }
 
     @Then("the user enters the same {string} into the blank in the confirm password field.")
     public void the_user_enters_the_same_into_the_blank_in_the_confirm_password_field(String sameNewPassword) {
         BrowserUtils.waitFor(2);
-        accountPage.confirmPassword.sendKeys("");
+        accountPage.confirmPassword.sendKeys(sameNewPassword);
     }
 
     @Then("the user clicks the continue button.")
     public void the_user_clicks_the_continue_button() {
         BrowserUtils.waitFor(2);
-
         accountPage.continueButton.click();
-        BrowserUtils.waitFor(4);
+      // BrowserUtils.waitFor(2);
     }
 
     @Then("User should be see the {string} {string}")
@@ -45,11 +44,21 @@ public class PasswordChange_Step_Defs {
         accountPage.successMessagePaswordChange.isDisplayed();
         BrowserUtils.waitFor(4);
         Assert.assertEquals(successMessage,accountPage.successMessagePaswordChange.getText());
+
     }
     @And("the user enters the {string} into the blank in the confirm password field.")
     public void theUserEntersTheIntoTheBlankInTheConfirmPasswordField(String differentNewPassword) {
         BrowserUtils.waitFor(2);
-        accountPage.confirmPassword.sendKeys("");
+        accountPage.confirmPassword.sendKeys(differentNewPassword);
+    }
+
+    @Then("User should see the {string} {string}")
+    public void user_should_see_the(String warningMessagePaswordNotChange, String expectedMessage) {
+        BrowserUtils.waitFor(4);
+        accountPage.warningMessagePaswordNotChange.isDisplayed();
+        BrowserUtils.waitFor(4);
+        Assert.assertEquals(warningMessagePaswordNotChange,accountPage.warningMessagePaswordNotChange.getText());
+
     }
 
 
