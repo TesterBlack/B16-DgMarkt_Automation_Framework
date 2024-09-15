@@ -19,9 +19,8 @@ public class WishListPage extends BasePage{
     @FindBy(xpath = "//a[@class='btn btn-danger']")
     public WebElement deleteButton;
 
-    @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+    @FindBy(css = "div.alert.alert-success.alert-dismissible")
     public WebElement successMessage;
-
     @FindBy(xpath = "//p[.='Your wish list is empty.']")
     public WebElement emptyWishListMessage;
 
@@ -36,6 +35,24 @@ public class WishListPage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='dropdown-menu pull-right']")
     public WebElement dropdownMenu;
+
+    @FindBy(css = "div.list-group a.list-group-item[href*='wishlist']")
+    public  WebElement  wishListBtnMyAccount;
+
+    @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
+    public WebElement successAddedBablissToWishList;
+
+    @FindBy(xpath = "//ul[@class='breadcrumb']")
+    public WebElement myWishListPageTitle;
+
+    @FindBy(xpath = "//ul[@class='breadcrumb']")
+    public WebElement wishListOnTheSuccessMessage;
+
+    @FindBy(xpath = "//i[@class='fa fa-shopping-cart']")
+    public WebElement cartBtnOnTheMyWishList;
+
+    @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
+    public WebElement successMessageAddToCartOnTheMyWishList;
 
 
 }

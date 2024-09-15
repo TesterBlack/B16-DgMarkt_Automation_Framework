@@ -14,7 +14,7 @@ public class AccountPage extends BasePage{
     @FindBy(xpath = "//a[text()='Address Book']")
     public WebElement addressBook;
 
-    @FindBy(xpath = "//a[@class='list-group-item'][3]")//*[text()='Password']
+    @FindBy(xpath = "//a[@class='list-group-item'][3]")
     public WebElement passwordBtnMyAccount;
 
     @FindBy(xpath = "//input[@id='input-password']")
