@@ -1,4 +1,3 @@
-@wip
 Feature: My Account-User can Modify wish list
   As a user, I should be able to modify My wish list by clicking the Wish List tab under the My Account module.
 
