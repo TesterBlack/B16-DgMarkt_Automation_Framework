@@ -5,32 +5,28 @@ import com.dgmarkt.pages.WishListPage;
 import com.dgmarkt.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 
 public class myWishList_Step_Defs {
     WishListPage wishListPage = new WishListPage();
     HealthAndBeautyPage healthAndBeautyPage = new HealthAndBeautyPage();
 
-
-
-
-     @Then("The user should be see the pop-up Message “ Success: You have added BaByliss U - Hair rollers to your wish list! „")
+    @Then("The user should be see the pop-up Message “ Success: You have added BaByliss U - Hair rollers to your wish list! „")
     public void theUserShouldBeSeeThePopUpMessageSuccessYouHaveAddedBaBylissUHairRollersToYourWishList() {
         System.out.println("wishListPage.successAddedBablissToWishList.getText() = " + wishListPage.successAddedBablissToWishList.getText());
-
     }
-
 
     @When("The user clicks Add to Wisch List tab on the pop-up to reach wish list")
     public void the_user_clicks_add_to_wisch_list_tab_on_the_pop_up_to_reach_wish_list() {
         BrowserUtils.waitFor(4);
         BrowserUtils.clickWithJS(wishListPage.wishListOnTheSuccessMessage);
     }
+
     @Then("The user should be see the My Wish List Page.")
     public void the_user_should_be_see_the_my_wish_list_page() {
         BrowserUtils.waitFor(4);
         wishListPage.myWishListPageTitle.isDisplayed();
     }
+
     @Then("The user should be able to reach wish list")
     public void the_user_should_be_able_to_reach_wish_list() {
         wishListPage.myWishListPageTitle.isDisplayed();

@@ -48,7 +48,7 @@ public class WishListPage extends BasePage{
     @FindBy(xpath = "//ul[@class='breadcrumb']")
     public WebElement wishListOnTheSuccessMessage;
 
-    @FindBy(xpath = "//i[@class='fa fa-shopping-cart']")
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
     public WebElement cartBtnOnTheMyWishList;
 
     @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
