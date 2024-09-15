@@ -15,10 +15,10 @@ Feature: My Account-User can Modify wish list
     Then The user clicks Wish List under the My Account module.
     And The user should be see the My Wish List Page.
 
-  Scenario: Verify that the user should be able to reach wish list from pop-up message after adding the product to the wish list.
+  Scenario:   Verify that the user should be able to add the products from wish list to cart - B16DDM-138
     Then The user should be see the pop-up Message “ Success: You have added BaByliss U - Hair rollers to your wish list! „
 
-  Scenario:
+  Scenario:Verify that the user should be able to reach wish list from pop-up message after adding the product to the wish list. - B16DDM-146
     And The user clicks Add to Wisch List tab on the pop-up to reach wish list
     Then The user should be able to reach wish list
 
