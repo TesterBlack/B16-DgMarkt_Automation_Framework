@@ -4,12 +4,12 @@ import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class CheckoutPage extends BasePage {
+    String currency;
+    MainPage mainPage = new MainPage();
     @FindBy(xpath = "//input[@name='firstname']")
     public WebElement firstName;
 
@@ -92,25 +92,49 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//tfoot[1]//td[2]")
     public WebElement subTotal;
 
-    public void verifyAmount() {
-        if (verifyAmount.getText().contains("€")) {
-            Assert.assertTrue(verifyAmount.getText().contains("€"));
-        } else if (verifyAmount.getText().contains("£")) {
-            Assert.assertTrue(verifyAmount.getText().contains("£"));
-        } else if (verifyAmount.getText().contains("$")) {
-            Assert.assertTrue(verifyAmount.getText().contains("$"));
+    public void productAddToCart() {
+        HealthAndBeautyPage healthAndBeautyPage = new HealthAndBeautyPage();
+        Driver.getDriver().navigate().refresh();
+        BrowserUtils.scrollToElement(healthAndBeautyPage.product_FitBit);
+        BrowserUtils.waitFor(2);
+        BrowserUtils.clickWithJS(healthAndBeautyPage.product_FitBit);
+        BrowserUtils.clickWithJS(healthAndBeautyPage.product_AddToCart);
+    }
+
+    public void verifyAmount(String currency) {
+        if (currency.equals("€")) {
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("€"));
+        } else if (currency.equals("£")) {
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("£"));
+        } else if (currency.equals("$")) {
+            Assert.assertTrue(verifyAmount.getAttribute("innerText").trim().contains("$"));
         }
     }
 
-    public void existingAdressBillingDetails() {
-         BrowserUtils.waitFor(4);
-         BrowserUtils.clickWithJS(continueBtnAddress);
-         BrowserUtils.clickWithJS(continueBtnDeliveryDetails);
-         BrowserUtils.clickWithJS(continueBtnDeliveryMethod);
-         BrowserUtils.clickWithJS(termsConditionsAgreeBtn);
-         paymentMethod.click();
-         verifyAmount();
-         BrowserUtils.clickWithJS(confirmOrder);
+    public void existingAdressBillingDetails(String currency) {
+        BrowserUtils.waitFor(4);
+        BrowserUtils.clickWithJS(continueBtnAddress);
+        BrowserUtils.clickWithJS(continueBtnDeliveryDetails);
+        BrowserUtils.clickWithJS(continueBtnDeliveryMethod);
+        BrowserUtils.clickWithJS(termsConditionsAgreeBtn);
+        BrowserUtils.clickWithJS(paymentMethod);
+        verifyAmount(currency);
+        BrowserUtils.clickWithJS(confirmOrder);
+    }
+
+    public String verifySelectedCurrency(String selectedCurrency) {
+        String currency="";
+        if (selectedCurrency.equals("Euro")) {
+            BrowserUtils.clickWithJS(mainPage.currencyEuroButton);
+            currency = "€";
+        } else if (selectedCurrency.equals("Pounds")) {
+            BrowserUtils.clickWithJS(mainPage.currencyPoundsButton);
+            currency = "£";
+        } else if (selectedCurrency.equals("Dollar")) {
+            BrowserUtils.clickWithJS(mainPage.currencyDolarButton);
+            currency = "$";
+        }
+        return currency;
     }
 
 }
