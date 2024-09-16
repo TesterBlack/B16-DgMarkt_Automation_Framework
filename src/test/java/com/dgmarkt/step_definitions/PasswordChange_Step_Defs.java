@@ -1,15 +1,20 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.AccountPage;
+import com.dgmarkt.pages.LoginPage;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.ConfigReader;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 public class PasswordChange_Step_Defs {
     AccountPage accountPage = new AccountPage();
     MainPage mainPage = new MainPage();
+    LoginPage loginPage=new LoginPage();
 
     @Then("user clicks Password button")
     public void user_clicks_password_button() {
@@ -56,6 +61,18 @@ public class PasswordChange_Step_Defs {
         accountPage.warningMessagePaswordNotChange.isDisplayed();
         BrowserUtils.waitFor(4);
         Assert.assertEquals(warningMessagePaswordNotChange, accountPage.warningMessagePaswordNotChange.getText());
+
+    }
+
+
+    @Given("The user logins with new {string}")
+    public void theUserLoginsWithNew(String password) throws InterruptedException{
+        Driver.getDriver().get(ConfigReader.get("url"));
+        loginPage.login();
+        loginPage.afterChangePasswordLogin(password);
+        BrowserUtils.waitFor(3);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals("https://dgmarkt.com/", currentUrl);
 
     }
 }
