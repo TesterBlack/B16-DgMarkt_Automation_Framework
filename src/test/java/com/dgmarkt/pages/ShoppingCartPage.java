@@ -29,6 +29,7 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement celloLcdTVAddToCartBtn;
 
+
     public void setverifySubTotalAmount(String currency){
         if(currency.equals("€")){
             Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("€"));
@@ -36,6 +37,8 @@ public class ShoppingCartPage extends BasePage{
             Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("£"));
         } else if (currency.equals("$")) {
             Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("$"));
+
+
         }
     }
 

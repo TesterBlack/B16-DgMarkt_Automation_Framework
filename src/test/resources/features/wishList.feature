@@ -38,7 +38,7 @@ Feature: Like Icon (Wish List) functionality test
     And The user should be able to see the empty message
 
 
-@wip
+
   Scenario: Wish List add to cart Test - The user should be able to products add to cart from wish list - B16DDM-128
 
     Given The user clicks wish list icon
