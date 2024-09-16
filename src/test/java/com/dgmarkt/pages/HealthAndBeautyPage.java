@@ -30,5 +30,9 @@ public class HealthAndBeautyPage extends BasePage{
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement product_AddToCart;
 
+    @FindBy(xpath = "//div[@class='filter-price']")
+    public WebElement priceSlider;
+
+
 
 }
