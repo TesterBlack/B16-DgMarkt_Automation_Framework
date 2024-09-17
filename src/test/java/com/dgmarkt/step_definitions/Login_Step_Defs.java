@@ -29,6 +29,19 @@ public class Login_Step_Defs {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/", currentUrl);
     }
+
+
+    @Given("The new user is on the login page")
+    public void the_new_user_is_on_the_login_page() throws InterruptedException {
+        loginPage.login();
+        loginPage.myAccountButton.click();
+        loginPage.accountLoginButton.click();
+        loginPage.accountEmailBox.sendKeys("test@mail.com");
+        loginPage.accountPasswordBox.sendKeys("test123");
+        loginPage.accountLoginClickButton.click();
+    }
+
+
     @When("The user enters valid credentials")
     public void the_user_enters_valid_credentials() throws InterruptedException {
         loginPage.login();

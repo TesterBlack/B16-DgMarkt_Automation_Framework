@@ -33,15 +33,19 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement celloLcdTVAddToCartBtn;
 
-    public void setverifySubTotalAmount(){
-        if(currencyValue.getText().contains("€")){
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("€"));
-        } else if (currencyValue.getText().contains("£")) {
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("£"));
-        } else if (currencyValue.getText().contains("$")) {
-            Assert.assertTrue(verifySubTotalAmount.getText().contains("$"));
+
+    public void setverifySubTotalAmount(String currency){
+        if(currency.equals("€")){
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("€"));
+        } else if (currency.equals("£")) {
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("£"));
+        } else if (currency.equals("$")) {
+            Assert.assertTrue(currencyValue.getAttribute("innerText").trim().contains("$"));
+
+
         }
     }
+
 
     @FindBy (xpath = "//*[contains(text(), 'not in stock')]")
     public WebElement notInStockMessage;
@@ -66,7 +70,6 @@ public class ShoppingCartPage extends BasePage{
 
     @FindBy (xpath = "  (//*[@class='icon-rt-close-circle-outline'])[2]")
     public WebElement removeProduct;
-
 
 
     public void productSelection() {
@@ -95,6 +98,7 @@ public class ShoppingCartPage extends BasePage{
         }
 
     }
+
 
 
 

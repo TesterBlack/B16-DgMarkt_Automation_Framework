@@ -6,8 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MainPage extends BasePage{
+import java.util.List;
 
+public class MainPage extends BasePage{
     @FindBy(xpath = "//span[text()='My Account']")
     public WebElement myAccountButton;
 
@@ -52,6 +53,9 @@ public class MainPage extends BasePage{
 
     @FindBy(xpath = "//span[text()='Category']")
     public WebElement categoryButtonOnMainPage;
+
+    @FindBy(xpath = "(//li[.='Order History'])[1]")
+    public WebElement orderHistoryButton;
 
     public WebElement getHeader (String headerName){
        BrowserUtils.waitFor(2);
