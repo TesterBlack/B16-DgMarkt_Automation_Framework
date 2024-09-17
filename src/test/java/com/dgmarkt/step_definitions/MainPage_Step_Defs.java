@@ -1,10 +1,15 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.MainPage;
+import com.dgmarkt.pages.ShoppingCartPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.Driver;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class MainPage_Step_Defs {
 
@@ -18,8 +23,7 @@ public class MainPage_Step_Defs {
 
     @When("user clicks My Account from Dropdown menu")
     public void user_clicks_my_account_from_dropdown_menu() {
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickWithJS(mainPage.myAccount2Button);
+        mainPage.myAccount2Button.click();
     }
 
     @When("user clicks Register on My Account")
@@ -36,7 +40,7 @@ public class MainPage_Step_Defs {
     public void the_user_should_be_able_to_see_the_page(String expectedPage) {
         String actualPage = mainPage.getPage().getText();
         BrowserUtils.waitForVisibility(mainPage.getPage(), 5);
-        Assert.assertEquals(expectedPage, actualPage);
+        Assert.assertEquals(expectedPage,actualPage);
     }
 
     @When("The user hover over the Category header on the main page")
@@ -55,7 +59,6 @@ public class MainPage_Step_Defs {
         BrowserUtils.clickWithJS(mainPage.healthAndBeauty);
     }
 
-
     @When("The user clicks Category module on main page")
     public void the_user_clicks_category_module_on_main_page() {
         BrowserUtils.waitFor(2);
@@ -69,9 +72,19 @@ public class MainPage_Step_Defs {
 
     @When("The user clicks on a Tv Accessories")
     public void the_user_clicks_on_a_tv_accessories() {
-        mainPage.getSubCategoryMenu("TV Accessories");
+       mainPage.getSubCategoryMenu("TV Accessories");
     }
 
+    @And("The user clicks on Order History button")
+    public void the_user_clicks_on_order_history_button() {
+        mainPage.orderHistoryButton.click();
+    }
+
+    @Then("The user should be able to see the {string} of My Account")
+    public void the_user_should_be_able_to_see_the_of_my_account(String submenuList) {
+       String menuList = Driver.getDriver().findElement(By.xpath("(//li[.='"+submenuList+"'])[1]")).getText();
+       Assert.assertEquals(submenuList,menuList);
+    }
 
 }
 

@@ -8,7 +8,9 @@ public class SearchPage {
     @FindBy(xpath = "//*[text()[contains(., ' Hair ' )]]")
     public WebElement searchHair;
 
-    @FindBy(xpath = "//*[text()[contains(., 'There' )]]")
+    @FindBy(xpath = "//*[text()[contains(., ' no product' )]]")
     public WebElement noProductMessage;
+
+
 
 }

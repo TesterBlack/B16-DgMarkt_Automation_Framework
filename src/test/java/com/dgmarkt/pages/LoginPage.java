@@ -68,8 +68,6 @@ public class LoginPage extends BasePage {
         popupClose.click();
 
     }
-
-
     public void accountLogin() throws InterruptedException {
         myAccountButton.click();
         accountLoginButton.click();
