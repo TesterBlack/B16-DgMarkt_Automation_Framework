@@ -2,6 +2,7 @@ package com.dgmarkt.pages;
 
 import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,7 +36,7 @@ public class HealthAndBeautyPage extends BasePage{
 
 
     @FindBy(xpath = "//div[@class='ui-slider-range ui-widget-header ui-corner-all']")
-    public WebElement priceSliderHealthAndBeauty;//div[@class='filter-price']
+    public WebElement priceSliderHandleHealthAndBeauty;
 
     @FindBy(xpath = "(//span[@class='ui-slider-handle ui-state-default ui-corner-all'])[1]")
     public WebElement minSliderHandle;
@@ -52,18 +53,28 @@ public class HealthAndBeautyPage extends BasePage{
     @FindBy(xpath = "//div[@class='product-item']//span[contains(@class,'price')]")
     public List <WebElement> pricesOfProducts;
 
-    @FindBy(className = "product-price")
-    public List<WebElement> productPrices;
+    @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
+    public WebElement  minPrice;
+
+    @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
+    public WebElement  maxPrice;
 
     public void resetSliders() {
         minSliderHandle.sendKeys("200");
         maxSliderHandle.sendKeys("300");
     }
+    public void getAllProductPrices(int minPrice) {
+        for (WebElement productPriceElement : pricesOfProducts) {
+            String priceText = productPriceElement.getText().replaceAll("[^0-9]", "");
+            int price = Integer.parseInt(priceText);
+            Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
+        }
+    }
 
-    @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
-    public WebElement  lowValueOfPrice;
-
-    @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
-    public WebElement  highValueOfPrice;
+    public int getSliderOffsetForPrice(int price) {
+        int sliderRange = 485 - 102;
+        int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
+        return (int) ((price-102) * 1.0 / sliderRange * sliderWidth);
+    }
 
 }
