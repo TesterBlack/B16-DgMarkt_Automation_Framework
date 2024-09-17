@@ -5,6 +5,7 @@ import com.dgmarkt.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -71,10 +72,45 @@ public class HealthAndBeautyPage extends BasePage{
         }
     }
 
+    /*
     public int getSliderOffsetForPrice(int price) {
         int sliderRange = 485 - 102;
         int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
         return (int) ((price-102) * 1.0 / sliderRange * sliderWidth);
+    }
+
+     */
+
+
+
+    public void adjustPriceSlider(int minPrice, int maxPrice) {
+        int sliderMinValue = 81;
+        int sliderMaxValue = 381;
+        int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
+        int minXOffset = getXOffsetForPrice(minPrice, sliderMinValue, sliderMaxValue, sliderWidth);
+        int maxXOffset = getXOffsetForPrice(maxPrice, sliderMinValue, sliderMaxValue, sliderWidth);
+
+        Actions move = new Actions(Driver.getDriver());
+        BrowserUtils.waitFor(3);
+        move.dragAndDropBy(minSliderHandle, minXOffset, 0).perform();
+        BrowserUtils.waitFor(3);
+        move.dragAndDropBy(maxSliderHandle, maxXOffset, 0).perform();
+    }
+
+    private int getXOffsetForPrice(int price, int sliderMinValue, int sliderMaxValue, int sliderWidth) {
+        int sliderRange = sliderMaxValue - sliderMinValue;
+        return (int) (((price - sliderMinValue) * 1.0 / sliderRange) * sliderWidth);
+    }
+
+    public void resetPriceSliderToDefault(int defaultMinPrice, int defaultMaxPrice) {
+        int PriceSliderMinValue = 81;
+        int PriceSliderMaxValue = 381;
+        int sliderWidth2 = priceSliderHandleHealthAndBeauty.getSize().getWidth();
+        int minXOffset = getXOffsetForPrice(defaultMinPrice, defaultMinPrice, defaultMaxPrice, sliderWidth2);
+        int maxXOffset = getXOffsetForPrice(defaultMaxPrice, defaultMinPrice, defaultMaxPrice, sliderWidth2);
+        Actions action = new Actions(Driver.getDriver());
+        action.dragAndDropBy(minSliderHandle, -minXOffset, 0).perform();
+        action.dragAndDropBy(maxSliderHandle, maxXOffset, 0).perform();
     }
 
 }

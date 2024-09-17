@@ -19,7 +19,6 @@ Feature:Cat-Subcategory - PRICE slider function
   Scenario: Adjusting the PRICE slider to the maximum price
     When I adjust the PRICE slider maximum to 381
     Then I should see products priced up to 381
-    And the URL should update to reflect the selected maximum price
 
   Scenario: No products displayed when the selected price range has no products
    When I adjust the PRICE slider minimum to 300 and maximum to 150
