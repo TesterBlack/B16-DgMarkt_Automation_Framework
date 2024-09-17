@@ -7,15 +7,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-    @FindBy (css = "[name='email']")
+    @FindBy(css = "[name='email']")
     public WebElement emailBox;
 
-    @FindBy (css = "[name='password']")
+    @FindBy(css = "[name='password']")
     public WebElement passwordBox;
 
-    @FindBy (css = "[name='login']")
+    @FindBy(css = "[name='login']")
     public WebElement loginButton;
 
     @FindBy(xpath = "//a[text()='Close']")
@@ -38,36 +38,32 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//span[text()='Login']")
     public WebElement accountLoginClickButton;
 
-    @FindBy (id = "pt-logout-link")
+    @FindBy(id = "pt-logout-link")
     public WebElement logoutButton;
 
-    @FindBy (xpath = "(//span[text()='Continue'])[2]")
+    @FindBy(xpath = "(//span[text()='Continue'])[2]")
     public WebElement continueButton;
 
-    @FindBy (xpath = "//div[text()=' Congratulation! Login Successfully']")
+    @FindBy(xpath = "//div[text()=' Congratulation! Login Successfully']")
     public WebElement successLoginMessage;
 
-    @FindBy (xpath = "//div[text()=' Warning: No match for E-Mail Address and/or Password.']")
+    @FindBy(xpath = "//div[text()=' Warning: No match for E-Mail Address and/or Password.']")
     public WebElement failedLoginMessage;
 
-    @FindBy (xpath = "//div[contains(text(), ' Warning')]")
+    @FindBy(xpath = "//div[contains(text(), ' Warning')]")
     public WebElement warningMessage;
 
-    @FindBy (xpath = "//a[text()='Forgotten Password']")
+    @FindBy(xpath = "//a[text()='Forgotten Password']")
     public WebElement forgottenPasswordButton;
 
-    @FindBy (xpath = "//input[@value='Continue']")
+    @FindBy(xpath = "//input[@value='Continue']")
     public WebElement continueButton2;
-
-
-
-
 
 
     public void login() throws InterruptedException {
         emailBox.sendKeys(ConfigReader.get("username"));
         passwordBox.sendKeys(ConfigReader.get("password"));
-        loginButton.click();   
+        loginButton.click();
         BrowserUtils.waitFor(2);
         popupClose.click();
 
@@ -80,9 +76,17 @@ public class LoginPage extends BasePage{
         accountLoginClickButton.click();
 
 
-
     }
 
 
-
+    /**
+     *After the user password is changed, you can log in with this login
+     */
+    public void afterChangePasswordLogin(String password){
+        myAccountButton.click();
+        accountLoginButton.click();
+        accountEmailBox.sendKeys(ConfigReader.get("accountUsername"));
+        accountPasswordBox.sendKeys(password);
+        accountLoginClickButton.click();
+    }
 }

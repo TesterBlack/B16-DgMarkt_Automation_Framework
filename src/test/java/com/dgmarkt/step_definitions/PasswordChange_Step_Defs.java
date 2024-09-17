@@ -1,42 +1,43 @@
 package com.dgmarkt.step_definitions;
 
 import com.dgmarkt.pages.AccountPage;
-import com.dgmarkt.pages.EditAccountPage;
+import com.dgmarkt.pages.LoginPage;
 import com.dgmarkt.pages.MainPage;
 import com.dgmarkt.utilities.BrowserUtils;
+import com.dgmarkt.utilities.ConfigReader;
+import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 public class PasswordChange_Step_Defs {
     AccountPage accountPage = new AccountPage();
     MainPage mainPage = new MainPage();
-
+    LoginPage loginPage=new LoginPage();
 
     @Then("user clicks Password button")
     public void user_clicks_password_button() {
-       BrowserUtils.waitFor(3);
-       accountPage.passwordBtnMyAccount.click();
+        BrowserUtils.waitFor(3);
+        accountPage.passwordBtnMyAccount.click();
     }
 
     @Then("the user enters the {string} in the blank in the password field.")
     public void the_user_enters_the_in_the_blank_in_the_password_field(String newPassword) {
         BrowserUtils.waitFor(2);
-       accountPage.inputPassword.sendKeys("");
+        accountPage.inputPassword.sendKeys(newPassword);
     }
 
     @Then("the user enters the same {string} into the blank in the confirm password field.")
     public void the_user_enters_the_same_into_the_blank_in_the_confirm_password_field(String sameNewPassword) {
         BrowserUtils.waitFor(2);
-        accountPage.confirmPassword.sendKeys("");
+        accountPage.confirmPassword.sendKeys(sameNewPassword);
     }
 
     @Then("the user clicks the continue button.")
     public void the_user_clicks_the_continue_button() {
         BrowserUtils.waitFor(2);
-
         accountPage.continueButton.click();
-        BrowserUtils.waitFor(4);
     }
 
     @Then("User should be see the {string} {string}")
@@ -44,13 +45,34 @@ public class PasswordChange_Step_Defs {
         BrowserUtils.waitFor(4);
         accountPage.successMessagePaswordChange.isDisplayed();
         BrowserUtils.waitFor(4);
-        Assert.assertEquals(successMessage,accountPage.successMessagePaswordChange.getText());
+        Assert.assertEquals(successMessage, accountPage.successMessagePaswordChange.getText());
+
     }
+
     @And("the user enters the {string} into the blank in the confirm password field.")
     public void theUserEntersTheIntoTheBlankInTheConfirmPasswordField(String differentNewPassword) {
         BrowserUtils.waitFor(2);
-        accountPage.confirmPassword.sendKeys("");
+        accountPage.confirmPassword.sendKeys(differentNewPassword);
+    }
+
+    @Then("User should see the {string} {string}")
+    public void user_should_see_the(String warningMessagePaswordNotChange, String expectedMessage) {
+        BrowserUtils.waitFor(4);
+        accountPage.warningMessagePaswordNotChange.isDisplayed();
+        BrowserUtils.waitFor(4);
+        Assert.assertEquals(warningMessagePaswordNotChange, accountPage.warningMessagePaswordNotChange.getText());
+
     }
 
 
+    @Given("The user logins with new {string}")
+    public void theUserLoginsWithNew(String password) throws InterruptedException{
+        Driver.getDriver().get(ConfigReader.get("url"));
+        loginPage.login();
+        loginPage.afterChangePasswordLogin(password);
+        BrowserUtils.waitFor(3);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals("https://dgmarkt.com/", currentUrl);
+
+    }
 }
