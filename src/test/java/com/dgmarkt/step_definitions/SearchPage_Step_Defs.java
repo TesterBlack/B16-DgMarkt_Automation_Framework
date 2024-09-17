@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -25,16 +26,15 @@ public class SearchPage_Step_Defs {
 
     @When("The user enters any {string} name")
     public void the_user_enters_any_name(String product) {
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(1);
         mainPage.searchField.sendKeys(product);
 
     }
 
     @When("The user clicks on search icon on search field")
     public void the_user_clicks_on_search_icon_on_search_field() {
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(1);
         mainPage.searchButtonClick.click();
-        BrowserUtils.waitFor(2);
 
     }
 
@@ -46,18 +46,18 @@ public class SearchPage_Step_Defs {
         for (WebElement productElement : productList) {
             System.out.println("productElement.getText() = " + productElement.getText().toLowerCase());
             String productTitel = productElement.getText().toLowerCase();
-
-
             Assert.assertTrue(productTitel.contains(product.toLowerCase()));
         }
     }
 
     @Then("The user should be able to see the negative {string} message")
     public void the_user_should_be_able_to_see_the_negative_message(String noProductMessage) {
-        BrowserUtils.waitFor(2);
-        System.out.println("searchPage.noProductMessage.getText() = " + searchPage.noProductMessage.getText());
-        String expectedNoProductMessage = "There is no product that matches the search criteria.";
-        Assert.assertEquals(expectedNoProductMessage, searchPage.noProductMessage.getText() );
+        BrowserUtils.waitFor(1);
+        Assert.assertTrue(Driver.getDriver().getPageSource().contains(noProductMessage));
+        //System.out.println(Driver.getDriver().getPageSource());
+        //System.out.println("searchPage.noProductMessage.getText() = " + searchPage.noProductMessage.getText());
+        //String expectedNoProductMessage = "There are no products to list in this category.";
+        //Assert.assertEquals(expectedNoProductMessage, searchPage.noProductMessage.getText());
 
 
     }

@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AccountPage extends BasePage{
-
     @FindBy(xpath = "//*[text()='Edit Account']")
     public WebElement editAccount;
 
@@ -31,7 +30,5 @@ public class AccountPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='text-danger']")
     public WebElement warningMessagePaswordNotChange;
-
-
 
 }

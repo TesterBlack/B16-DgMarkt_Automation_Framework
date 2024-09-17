@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 
 public class Login_Step_Defs {
     LoginPage loginPage = new LoginPage();
+    MainPage mainPage = new MainPage();
 
     @Given("The user is on the first login page")
     public void the_user_is_on_the_first_login_page() {
@@ -25,10 +26,19 @@ public class Login_Step_Defs {
         Driver.getDriver().get(ConfigReader.get("url"));
         loginPage.login();
         loginPage.accountLogin();
-        BrowserUtils.waitFor(3);
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/", currentUrl);
-        
+    }
+
+
+    @Given("The new user is on the login page")
+    public void the_new_user_is_on_the_login_page() throws InterruptedException {
+        loginPage.login();
+        loginPage.myAccountButton.click();
+        loginPage.accountLoginButton.click();
+        loginPage.accountEmailBox.sendKeys("test@mail.com");
+        loginPage.accountPasswordBox.sendKeys("test123");
+        loginPage.accountLoginClickButton.click();
     }
 
 
@@ -81,7 +91,6 @@ public class Login_Step_Defs {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("https://dgmarkt.com/",currentUrl);
     }
-
     @Then("The user clicks my account button")
     public void the_user_clicks_my_account_button() {
         loginPage.myAccountButton.click();
@@ -93,7 +102,6 @@ public class Login_Step_Defs {
     @When("The user enters {string} accountEmail")
     public void the_user_enters_account_username(String accountEmail)  {
         loginPage.accountEmailBox.sendKeys(accountEmail);
-
     }
     @When("The user enters {string} accountPassword")
     public void the_user_enters_account_password(String accountPassword) {
@@ -125,10 +133,12 @@ public class Login_Step_Defs {
     @When("The user enters {string} as wrong accountEmail")
     public void the_user_enters_as_wrong_account_email(String wrongAccountEmail) {
         loginPage.accountEmailBox.sendKeys(wrongAccountEmail);
+
     }
     @When("The user enters {string} as accountPassword")
     public void the_user_enters_as_account_password(String wrongAccountPassword) {
         loginPage.accountPasswordBox.sendKeys(wrongAccountPassword);
+
     }
   @When("The user clicks on Back button")
     public void the_user_clicks_on_back_button() {
@@ -157,6 +167,7 @@ public class Login_Step_Defs {
     public void the_user_should_be_able_to_see_message(String expectedMessage) {
         String actualMessage = loginPage.warningMessage.getText();
         Assert.assertEquals(actualMessage, expectedMessage);
+
     }
 
 }
