@@ -6,6 +6,7 @@ import com.dgmarkt.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 
 public class priceSlider_Step_Defs {
@@ -23,7 +24,6 @@ public class priceSlider_Step_Defs {
         healthAndBeautyPage.adjustPriceSlider(150, 300);
     }
 
-
     @Then("I should see products priced between {int} and {int}")
     public void i_should_see_products_priced_between_and(int minPrice, int maxPrice) {
         System.out.println("healthAndBeautyPage.productPrices = " + healthAndBeautyPage.pricesOfProducts);
@@ -31,23 +31,32 @@ public class priceSlider_Step_Defs {
         System.out.println("healthAndBeautyPage.pricesOfProducts.size() = " + healthAndBeautyPage.pricesOfProducts.size());
     }
 
-    @Then("the URL should update to reflect the selected minimum price")
-    public void the_url_should_update_to_reflect_the_selected_minimum_price(int maxPrice) {
-        healthAndBeautyPage.adjustPriceSlider(0, maxPrice);
+    @When("I adjust the PRICE slider minumum to {int}")
+    public void iAdjustThePRICESliderMinumumTo(int minPrice) {
+        healthAndBeautyPage.adjustPriceSlider(0, minPrice);
+    }
+
+    @Then("I should see products priced from {int}")
+    public void iShouldSeeProductsPricedFrom(int minPrice) {
+        healthAndBeautyPage.getAllProductPrices(minPrice);
     }
 
 
     @When("I adjust the PRICE slider maximum to {int}")
     public void i_adjust_the_price_slider_maximum_to(int maxPrice) {
-        healthAndBeautyPage.getAllProductPrices(maxPrice);
+        healthAndBeautyPage.adjustPriceSlider(0, maxPrice);
     }
 
     @Then("I should see products priced up to {int}")
     public void i_should_see_products_priced_up_to(int maxPrice) {
-        healthAndBeautyPage.adjustPriceSlider(485, 102);
+        healthAndBeautyPage.getAllProductPrices(maxPrice);
 
     }
+    @When("I adjust the PRICE slider maximum to {int} and minimum to {int} and")
+    public void iAdjustThePRICESliderMaximumToAndMinimumToAnd(int maxPrice, int minPrice) {
+        healthAndBeautyPage.adjustPriceSlider(150,300);
 
+    }
     @Then("I should see no products displayed")
     public void iShouldSeeNoProductsDisplayed() {
         healthAndBeautyPage.getAllProductPrices(0);
@@ -55,7 +64,8 @@ public class priceSlider_Step_Defs {
 
     @And("a message should be shown saying {string}")
     public void aMessageShouldBeShownSaying(String arg0) {
-        // Assert.assertEquals("", ;);
+        BrowserUtils.waitFor(5);
+        Assert.assertEquals("There are no products to list in this category.", healthAndBeautyPage.noProductsMessage.getText());
     }
 
     @When("I reset the PRICE slider to its default values")
@@ -67,5 +77,7 @@ public class priceSlider_Step_Defs {
     public void i_should_see_all_products_on_the_sub_category_page() {
         healthAndBeautyPage.getAllProductPrices(102);
     }
+
+
 
 }

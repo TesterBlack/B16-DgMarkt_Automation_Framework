@@ -12,12 +12,16 @@ Feature:Cat-Subcategory - PRICE slider function
     Then I adjust the PRICE slider minimum to 150 and maximum to 300
     Then I should see products priced between 150 and 300
 
+  Scenario: Adjusting the PRICE slider from the minumum price
+    When I adjust the PRICE slider minumum to 0
+    Then I should see products priced from 0
+
   Scenario: Adjusting the PRICE slider to the maximum price
     When I adjust the PRICE slider maximum to 381
     Then I should see products priced up to 381
 
   Scenario: No products displayed when the selected price range has no products
-   When I adjust the PRICE slider minimum to 300 and maximum to 150
+   When I adjust the PRICE slider maximum to 150 and minimum to 300 and
     Then I should see no products displayed
     And a message should be shown saying "No products found in this price range"
 

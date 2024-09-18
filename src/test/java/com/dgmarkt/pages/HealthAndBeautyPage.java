@@ -60,69 +60,48 @@ public class HealthAndBeautyPage extends BasePage {
     @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
     public WebElement maxPrice;
 
+    @FindBy(xpath = "//div[@class='custom-category']//p")
+    public WebElement noProductsMessage;
+
     public void resetSliders() {
         minSliderHandle.sendKeys("200");
         maxSliderHandle.sendKeys("300");
     }
-/*
+
     public void getAllProductPrices(int minPrice) {
         for (WebElement productPriceElement : pricesOfProducts) {
             String priceText = productPriceElement.getText().replaceAll("[^0-9]", "");
-            int price = Integer.parseInt(priceText);
-            Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
+
+            if (priceText.isEmpty()) {
+                System.err.println("Fiyat bilgisi boş veya geçersiz: " + productPriceElement.getText());
+                continue; // veya uygun bir hata yönetimi yapabilirsiniz
+            }
+
+            try {
+                int price = Integer.parseInt(priceText);
+                Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
+            } catch (NumberFormatException e) {
+                System.err.println("Fiyat verisi sayı formatında değil: " + priceText);
+            }
         }
     }
 
- */
-public void getAllProductPrices(int minPrice) {
-    for (WebElement productPriceElement : pricesOfProducts) {
-        String priceText = productPriceElement.getText().replaceAll("[^0-9]", "");
-
-        if (priceText.isEmpty()) {
-            System.err.println("Fiyat bilgisi boş veya geçersiz: " + productPriceElement.getText());
-            continue; // veya uygun bir hata yönetimi yapabilirsiniz
-        }
-
-        try {
-            int price = Integer.parseInt(priceText);
-            Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
-        } catch (NumberFormatException e) {
-            System.err.println("Fiyat verisi sayı formatında değil: " + priceText);
-        }
-    }
-}
     public void adjustPriceSlider(int minPrice, int maxPrice) {
         int sliderMinValue = 81;
         int sliderMaxValue = 381;
         int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
         int minXOffset = getXOffsetForPrice(minPrice, sliderMinValue, sliderMaxValue, sliderWidth);
         int maxXOffset = getXOffsetForPrice(maxPrice, sliderMinValue, sliderMaxValue, sliderWidth);
-/*
-        Actions move = new Actions(Driver.getDriver());
-        BrowserUtils.waitFor(5);
-        move.dragAndDropBy(minSliderHandle, minXOffset, 330/3).perform();
-        BrowserUtils.waitFor(5);
-        move.dragAndDropBy(maxSliderHandle, maxXOffset, -330/2).perform();
-
- */
-
 
         Actions move = new Actions(Driver.getDriver());
         BrowserUtils.waitFor(5);
         BrowserUtils.executeJScommand("document.getElementById('price-from').value = '100';");
         BrowserUtils.executeJScommand("document.getElementById('price-to').value = '300';");
-
-        // Sayfayı kaydırarak slider'ı görünür hale getirme
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);", priceSliderHandleHealthAndBeauty);
 
-        // Slider'ı hareket ettirme
-      //  Actions move2 = new Actions(Driver.getDriver());
-       // move2.dragAndDropBy(minSliderHandle, getSliderOffsetForPrice, 0);
-
-
-
     }
+
     private int getXOffsetForPrice(int price, int sliderMinValue, int sliderMaxValue, int sliderWidth) {
         int sliderRange = sliderMaxValue - sliderMinValue;
         return (int) (((price - sliderMinValue) * 1.0 / sliderRange) * sliderWidth);
@@ -136,15 +115,8 @@ public void getAllProductPrices(int minPrice) {
         int maxXOffset = getXOffsetForPrice(defaultMaxPrice, defaultMinPrice, defaultMaxPrice, sliderWidth2);
         Actions action = new Actions(Driver.getDriver());
         action.dragAndDropBy(minSliderHandle, -minXOffset, 0).perform();
+        BrowserUtils.waitFor(3);
         action.dragAndDropBy(maxSliderHandle, maxXOffset, 0).perform();
     }
 
 }
-   /*
-    public int getSliderOffsetForPrice(int price) {
-        int sliderRange = 485 - 102;
-        int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
-        return (int) ((price-102) * 1.0 / sliderRange * sliderWidth);
-    }
-
-     */
