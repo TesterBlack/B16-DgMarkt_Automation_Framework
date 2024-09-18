@@ -97,14 +97,16 @@ public void getAllProductPrices(int minPrice) {
         int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
         int minXOffset = getXOffsetForPrice(minPrice, sliderMinValue, sliderMaxValue, sliderWidth);
         int maxXOffset = getXOffsetForPrice(maxPrice, sliderMinValue, sliderMaxValue, sliderWidth);
-
+/*
         Actions move = new Actions(Driver.getDriver());
         BrowserUtils.waitFor(5);
         move.dragAndDropBy(minSliderHandle, minXOffset, 330/3).perform();
         BrowserUtils.waitFor(5);
         move.dragAndDropBy(maxSliderHandle, maxXOffset, -330/2).perform();
 
-/*
+ */
+
+
         Actions move = new Actions(Driver.getDriver());
         BrowserUtils.waitFor(5);
         BrowserUtils.executeJScommand("document.getElementById('price-from').value = '100';");
@@ -115,11 +117,11 @@ public void getAllProductPrices(int minPrice) {
         js.executeScript("arguments[0].scrollIntoView(true);", priceSliderHandleHealthAndBeauty);
 
         // Slider'ı hareket ettirme
-        Actions move2 = new Actions(Driver.getDriver());
-        move2.dragAndDropBy(minSliderHandle, getSliderOffsetForPrice, 0);
+      //  Actions move2 = new Actions(Driver.getDriver());
+       // move2.dragAndDropBy(minSliderHandle, getSliderOffsetForPrice, 0);
 
 
- */
+
     }
     private int getXOffsetForPrice(int price, int sliderMinValue, int sliderMaxValue, int sliderWidth) {
         int sliderRange = sliderMaxValue - sliderMinValue;
