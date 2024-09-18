@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class OrderHistoryPage extends BasePage{
 
     @FindBy(id = "content")
-    public WebElement orderHistoryContainer;
+    public WebElement orderHistoryTable;
     @FindBy(xpath = "//p[.='You have not made any previous orders!']")
     public WebElement orderHistoryMessage;
 

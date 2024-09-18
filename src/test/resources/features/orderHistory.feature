@@ -1,9 +1,11 @@
-Feature: My Account - Order History
+
+Feature: Order History functionality Test
+  As a user, I should be able to see and modify order history by clicking the Order History tab under the My Account module.
 
   Background:
     Given The user is on the first login page
 
-  Scenario Outline: Order History functionality Test - User should be able to see order history
+  Scenario Outline: User should be able to see order history
   (after completed a purchase) by clicking the Order History tab under the My Account module. - B16DDM-140
 
     When The user is on the login page
@@ -20,7 +22,7 @@ Feature: My Account - Order History
       | Logout        |
 
 
-  Scenario Outline: Order History functionality Test - User should be able to see order history
+  Scenario Outline: User should be able to see order history
   (before completed a purchase) by clicking the Order History tab under the My Account module. - B18DDM-180
 
     Given The new user is on the login page
@@ -37,7 +39,7 @@ Feature: My Account - Order History
       | Logout        |
 
 
-  Scenario Outline: Order History functionality Test - User should be able to modify order history
+  Scenario Outline: User should be able to modify order history
   by clicking the Order History tab under the My Account module. - B16DDM-141
 
     When The user is on the login page
@@ -56,7 +58,7 @@ Feature: My Account - Order History
       | Logout        |
 
 
-  Scenario Outline: Order History functionality Test - User can access the order detail by clicking the view icon - B16DDM-142
+  Scenario Outline: User can access the order detail by clicking the view icon - B16DDM-142
 
     When The user is on the login page
     And The user clicks on My Account menu
@@ -74,7 +76,7 @@ Feature: My Account - Order History
       | Logout        |
 
 
-  Scenario Outline: Order History functionality Test - User can re-order an item from their order history - B16DDM-143
+  Scenario Outline: User can re-order an item from their order history - B16DDM-143
 
     When The user is on the login page
     And The user clicks on My Account menu
@@ -95,7 +97,7 @@ Feature: My Account - Order History
 
 
 
-    Scenario Outline: Order History functionality Test - User can return an item from their order history - B16DDM-144
+    Scenario Outline: User can return an item from their order history - B16DDM-144
 
       When The user is on the login page
       And The user clicks on My Account menu

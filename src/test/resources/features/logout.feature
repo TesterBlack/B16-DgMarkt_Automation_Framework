@@ -1,7 +1,8 @@
 
-Feature: Logout functionality
+Feature: Logout functionality Test
+  As a user, I should be able to log out
 
-  Scenario: Logout Test - User should be logged out on the main page - B16DDM-23
+  Scenario: User should be logged out on the main page - B16DDM-23
 
     Given The user is on the login page
     When The user clicks on My Account menu
@@ -12,7 +13,7 @@ Feature: Logout functionality
     Then The user should be able to see login main page
 
 
-  Scenario: Logout Test - User should not be able to re-login by clicking “Back” button - B16DDM-27
+  Scenario: User should not be able to re-login by clicking “Back” button - B16DDM-27
 
     Given The user is on the login page
     When The user clicks on My Account menu
@@ -25,7 +26,7 @@ Feature: Logout functionality
     Then The user should able to see login button by clicking on My Account menu
 
 
-  Scenario Outline: Logout Test - User should be logged out every page by clicking "Logout" button - B16DDM-105
+  Scenario Outline: User should be logged out every page by clicking "Logout" button - B16DDM-105
 
     Given The user is on the login page
     When The user clicks "<header>" header
