@@ -4,9 +4,7 @@ import com.dgmarkt.utilities.BrowserUtils;
 import com.dgmarkt.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -73,17 +71,18 @@ public class HealthAndBeautyPage extends BasePage {
             String priceText = productPriceElement.getText().replaceAll("[^0-9]", "");
 
             /*if (priceText.isEmpty()) {
-                System.err.println("Fiyat bilgisi boş veya geçersiz: " + productPriceElement.getText());
-                continue; // veya uygun bir hata yönetimi yapabilirsiniz
+                System.err.println("Price information is blank or invalid: " + productPriceElement.getText());
+                continue;
             }*/
 
             try {
                 int price = Integer.parseInt(priceText);
-                Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
-                Assert.assertTrue("Ürün fiyatı minimum fiyatın ustunde!", price <= maxPrice);
+                Assert.assertTrue("Product price below the minimum price!", price >= minPrice);
+                BrowserUtils.waitFor(3);
+                Assert.assertTrue("Product price above the minimum price!", price <= maxPrice);
 
             } catch (NumberFormatException e) {
-                System.err.println("Fiyat verisi sayı formatında değil: " + priceText);
+                System.err.println("Price data is not in number format: " + priceText);
             }
         }
     }
@@ -127,5 +126,8 @@ public class HealthAndBeautyPage extends BasePage {
         BrowserUtils.waitFor(3);
         action.dragAndDropBy(maxSliderHandle, maxXOffset, 0).perform();
     }
+     private int getXOffsetForPrice(int price, int sliderMinValue, int sliderMaxValue, int sliderWidth) {
+        int sliderRange = sliderMaxValue - sliderMinValue;
+        return (int) (((price - sliderMinValue) * 1.0 / sliderRange) * sliderWidth);
+    }
 
-}

@@ -26,10 +26,34 @@ public class priceSlider_Step_Defs {
     }
 
     @Then("I should see products priced between {int} and {int}")
-    public void i_should_see_products_priced_between_and(String noProductMessage) {
-        BrowserUtils.waitFor(1);
-        Assert.assertTrue(Driver.getDriver().getPageSource().contains(noProductMessage));
+    public void i_should_see_products_priced_between_and(int minPrice, int maxPrice) {
+        BrowserUtils.waitFor(5);
+        healthAndBeautyPage.getAllProductPrices(minPrice, maxPrice);
     }
+
+    @And("a message should be shown saying {string}")
+    public void aMessageShouldBeShownSaying(String arg0) {
+
+        String actualMessage = healthAndBeautyPage.noProductsMessage.getText();
+        BrowserUtils.waitForVisibility(healthAndBeautyPage.noProductsMessage,10);
+        BrowserUtils.waitFor(5);
+        Assert.assertEquals("There are no products to list in this category.", actualMessage);
+    }
+
+    @When("I reset the PRICE slider to its default values")
+    public void i_reset_the_price_slider_to_its_default_values() {
+       healthAndBeautyPage.adjustPriceSlider(102,485 );
+    }
+
+
+
+
+
+    /*@Then("I should see all products on the Sub-Category Page")
+    public void i_should_see_all_products_on_the_sub_category_page() {
+        healthAndBeautyPage.getAllProductPrices(102);
+    }*/
+
 
    /* @When("I adjust the PRICE slider minumum to {int}")
     public void iAdjustThePRICESliderMinumumTo(int minPrice) {
@@ -61,36 +85,5 @@ public class priceSlider_Step_Defs {
     public void iShouldSeeNoProductsDisplayed() {
         healthAndBeautyPage.getAllProductPrices(0);
     }*/
-
-    @And("a message should be shown saying {string}")
-    public void aMessageShouldBeShownSaying(String arg0) {
-
-        String actualMessage = healthAndBeautyPage.noProductsMessage.getText();
-        BrowserUtils.waitForVisibility(healthAndBeautyPage.noProductsMessage,10);
-        BrowserUtils.waitFor(5);
-        Assert.assertEquals("There are no products to list in this category.", actualMessage);
-    }
-
-    @When("I reset the PRICE slider to its default values")
-    public void i_reset_the_price_slider_to_its_default_values() {
-       healthAndBeautyPage.resetPriceSliderToDefault(102,485 );
-    }
-
-    @When("I adjust the PRICE slider maximum to {int} and minimum to {int} and")
-    public void iAdjustThePRICESliderMaximumToAndMinimumToAnd(String noProductMatchesMessage) {
-        BrowserUtils.waitFor(1);
-        Assert.assertTrue(Driver.getDriver().getPageSource().contains(noProductMatchesMessage));
-    }
-
-    @Then("I should see no products displayed")
-    public void iShouldSeeNoProductsDisplayed() {
-    }
-
-    /*@Then("I should see all products on the Sub-Category Page")
-    public void i_should_see_all_products_on_the_sub_category_page() {
-        healthAndBeautyPage.getAllProductPrices(102);
-    }*/
-
-
 
 }
