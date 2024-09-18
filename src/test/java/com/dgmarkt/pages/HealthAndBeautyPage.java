@@ -12,12 +12,14 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class HealthAndBeautyPage extends BasePage {
-    
+
+
     @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
     public WebElement alertMessage;
 
     @FindBy(xpath = "//a[@id='wishlist-total']")
     public WebElement wishListButton;
+
 
     public void productAddToWishList(String productName) {
         String product1 = "//a[text()='" + productName + "']/../../../..//button[2]";
@@ -30,9 +32,9 @@ public class HealthAndBeautyPage extends BasePage {
 
     @FindBy(css = "[alt='Fitbit Aria Air Smart Bathroom Scale']")
     public WebElement product_FitBit;
-
     @FindBy(xpath = "//button[@id='button-cart']")
     public WebElement product_AddToCart;
+
 
     @FindBy(xpath = "//div[@class='ui-slider-range ui-widget-header ui-corner-all']")
     public WebElement priceSliderHandleHealthAndBeauty;
@@ -78,8 +80,51 @@ public class HealthAndBeautyPage extends BasePage {
         action.dragAndDropBy(minSliderHandle, minPrice, 0).perform();
         BrowserUtils.waitFor(3);
         action.dragAndDropBy(maxSliderHandle, -maxPrice, 0).perform();
+
+
+    }
+/*
+    public void adjustPriceSlider(int minPrice, int maxPrice) {
+        minPrice -= 5;
+        maxPrice += 25;
+        int sliderMinValue = 102;
+        int sliderMaxValue = 485;
+        int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
+        int minXOffset = getXOffsetForPrice(minPrice, sliderMinValue, sliderMaxValue, sliderWidth);
+        int maxXOffset = getXOffsetForPrice(maxPrice, sliderMinValue, sliderMaxValue, sliderWidth);
+
+        BrowserUtils.waitFor(5);
+        //BrowserUtils.executeJScommand("document.getElementById('price-from').value = '"+minPrice+"';");
+        //BrowserUtils.executeJScommand("document.getElementById('price-to').value = '"+ (-maxPrice)+"';");
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", priceSliderHandleHealthAndBeauty);
+        Actions action = new Actions(Driver.getDriver());
+        action.dragAndDropBy(minSliderHandle, minXOffset, 0).perform();
+        BrowserUtils.waitFor(3);
+        action.dragAndDropBy(maxSliderHandle, -maxXOffset, 0).perform();
+
     }
 
+    private int getXOffsetForPrice(int price, int sliderMinValue, int sliderMaxValue, int sliderWidth) {
+        int sliderRange = sliderMaxValue - sliderMinValue;
+        return (int) (((price - sliderMinValue) * 1.0 / sliderRange) * sliderWidth);
+    }
+
+
+
+    public void resetPriceSliderToDefault(int defaultMinPrice, int defaultMaxPrice) {
+        int PriceSliderMinValue = 81;
+        int PriceSliderMaxValue = 381;
+        int sliderWidth2 = priceSliderHandleHealthAndBeauty.getSize().getWidth();
+        int minXOffset = getXOffsetForPrice(defaultMinPrice, defaultMinPrice, defaultMaxPrice, sliderWidth2);
+        int maxXOffset = getXOffsetForPrice(defaultMaxPrice, defaultMinPrice, defaultMaxPrice, sliderWidth2);
+        Actions action = new Actions(Driver.getDriver());
+        action.dragAndDropBy(minSliderHandle, -minXOffset, 0).perform();
+        BrowserUtils.waitFor(3);
+        action.dragAndDropBy(maxSliderHandle, maxXOffset, 0).perform();
+    }
+
+ */
 }
 
 

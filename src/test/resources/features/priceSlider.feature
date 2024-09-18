@@ -1,3 +1,4 @@
+@wip
 Feature:Cat-Subcategory - PRICE slider function
   As a user, I should be able to bring the products in the price range I want on the Sub-Category Page by using the PRICE slider.
 
@@ -11,7 +12,6 @@ Feature:Cat-Subcategory - PRICE slider function
     Then I adjust the PRICE slider minimum to 110 and maximum to 150
     Then I should see that the product prices are within desired range
 
-  @wip
   Scenario Outline: No products displayed when the selected price range has no products
     Then I adjust the PRICE slider minimum to <minprice> and maximum to <maxprice>
     Then The user should be able to see the negative "<noProductMatchesMessage>" message
