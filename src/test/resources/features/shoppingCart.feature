@@ -9,20 +9,20 @@ Feature: Cart Icon Functionality Test
     Then The user should be able to logged in
 
   @addedProductPositive
-  Scenario Outline: Positive product add to cart Test - B16DDM-111
+  Scenario Outline: Positive product add to cart Test - B16DDM-111 - 157
     When The user hover over the Category header on the main page
     And The user clicks on a subcategory '<subCategoryName>'
-    #And The user clicks on input limit filter
-   # And The user selects size
     And The user clicks on the product
     And The user clicks on add to cart button
     And The user closes the received message
     And The user clicks on basket icon
     Then The user should be able to see the added product
+    When The user clicks View Cart button
+    Then User should be able to see the products added to the cart with correct quantity in checkout page
 
-     Examples:
-       | subCategoryName |
-       | Health & Beauty |
-       | Televisions     |
-       | TV Accessories  |
-       | Networking      |
+    Examples:
+      | subCategoryName |
+      | Health & Beauty |
+      | Televisions     |
+      | TV Accessories  |
+      | Networking      |

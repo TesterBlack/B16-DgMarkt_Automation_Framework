@@ -12,7 +12,7 @@ import java.sql.DriverManager;
 import java.util.List;
 
 public class ShoppingCartPage extends BasePage{
-    @FindBy(xpath = "//button[@class='btn btn-inverse btn-block btn-lg dropdown-toggle']")
+    @FindBy(xpath = "//div[@id='cart']")
     public WebElement shoppingCartBtn;
 
     @FindBy(xpath = "//a[text()=\"Checkout\"]")
@@ -50,8 +50,8 @@ public class ShoppingCartPage extends BasePage{
     @FindBy (xpath = "//*[contains(text(), 'not in stock')]")
     public WebElement notInStockMessage;
 
-    @FindBy (xpath = "//*[contains(@class, 'layout')]")
-    public List<WebElement> productSelect;
+    @FindBy (xpath = "(//*[contains(@class, 'layout')])[4]")
+    public WebElement productSelect;
 
     @FindBy (xpath = "//*[text()='Add to Cart']")
     public WebElement addToCartButton;
@@ -62,28 +62,41 @@ public class ShoppingCartPage extends BasePage{
     @FindBy (xpath = "  //*[text()='100']")
     public WebElement inputLimitSize;
 
-    @FindBy (xpath = "(//a[contains(@href, 'product_id')])[3]")
+    @FindBy (xpath = "//h1")
     public WebElement productNameInProductPage;
 
     @FindBy (xpath = "//*[@id=\"cart\"]/ul/li[1]/table/tbody/tr[1]/td[2]/a")
     public WebElement productNameInCart;
 
-    @FindBy (xpath = "  (//*[@class='icon-rt-close-circle-outline'])[2]")
-    public WebElement removeProduct;
+    @FindBy (xpath = "//i[@class='fa fa-times-circle']")
+    public WebElement removeProductInShoppingCart;
 
+    @FindBy (xpath = "//*[@id='cart']/ul/li[2]/div/p/a[1]")
+    public WebElement viewCartBtn;
+
+    @FindBy (xpath = "  (//td[@class='text-left'])[7]")
+    public WebElement productNameInShoppingCart;
+
+    @FindBy (xpath = "//table/tbody//td//div/input")
+        public WebElement quantityInShoppingCart;
+
+    @FindBy (xpath = "(//input[@value='1'])[7]")
+    public WebElement quantityInProductPage;
+
+
+    /*
+    NOT : Daha sonra kontrol eilmek üzere yoruma alindi. Lütfen silmeyin
 
     public void productSelection() {
         ProductComparePage productComparePage = new ProductComparePage();
-
-        BrowserUtils.waitFor(1);
         for (int i = 0; i < productSelect.size() && i < 1; i++) {
             List<WebElement> products = productSelect;
             WebElement product = products.get(i);
             product.click();
             addToCartButton.click();
-            productComparePage.alertCloseButton.click();
+            //productComparePage.alertCloseButton.click();
             productComparePage.basketButton.click();
-            BrowserUtils.waitFor(2);
+            BrowserUtils.waitFor(1);
             String expectedProduct = productNameInProductPage.getText().toLowerCase();
             String actualProduct = productNameInCart.getText().toLowerCase();
             Assert.assertEquals(expectedProduct, actualProduct);
@@ -94,8 +107,7 @@ public class ShoppingCartPage extends BasePage{
             //inputLimitSize.click();
             BrowserUtils.waitFor(1);
 
-
-        }
+        }*/
 
     }
 
@@ -107,4 +119,5 @@ public class ShoppingCartPage extends BasePage{
 
 
 
-}
+
+
