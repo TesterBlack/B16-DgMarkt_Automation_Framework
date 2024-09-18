@@ -34,10 +34,16 @@ public class Driver {
             }
             switch (browser.toLowerCase()) {
                 case "chrome":
+                    ChromeOptions options = new ChromeOptions();
+
+                    options.addArguments("--disable-popup-blocking");
+                    options.addArguments("--disable-default-apps");
+                    options.addArguments("--no-default-browser-check");
+                    options.addArguments("--no-first-run");
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+                    driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+                    driverPool.get().manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();

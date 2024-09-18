@@ -49,7 +49,7 @@ public class Login_Step_Defs {
     @Then("The user should be able to see main page")
     public void the_user_should_be_able_to_see_main_page() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals("https://dgmarkt.com/",currentUrl);
+        Assert.assertEquals("https://dgmarkt.com/", currentUrl);
     }
     @When("The user enters own login information")
     public void the_user_enters_own_login_information() throws InterruptedException {
@@ -75,8 +75,8 @@ public class Login_Step_Defs {
     @Then("The user should be able to logout")
     public void the_user_should_be_able_to_logout() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals("https://dgmarkt.com/",currentUrl);
-        BrowserUtils.waitForClickablility(loginPage.continueButton,1000);
+        Assert.assertEquals("https://dgmarkt.com/", currentUrl);
+        BrowserUtils.waitForClickablility(loginPage.continueButton, 1000);
     }
     @Then("The user clicks on Continue button")
     public void the_user_clicks_on_continue_button() {
@@ -89,8 +89,9 @@ public class Login_Step_Defs {
     @Then("The user should be able to see login main page")
     public void the_user_should_be_able_to_see_login_main_page() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals("https://dgmarkt.com/",currentUrl);
+        Assert.assertEquals("https://dgmarkt.com/", currentUrl);
     }
+
     @Then("The user clicks my account button")
     public void the_user_clicks_my_account_button() {
         loginPage.myAccountButton.click();
@@ -100,21 +101,25 @@ public class Login_Step_Defs {
         loginPage.accountLoginButton.click();
     }
     @When("The user enters {string} accountEmail")
-    public void the_user_enters_account_username(String accountEmail)  {
+    public void the_user_enters_account_username(String accountEmail) throws InterruptedException {
         loginPage.accountEmailBox.sendKeys(accountEmail);
+
     }
     @When("The user enters {string} accountPassword")
-    public void the_user_enters_account_password(String accountPassword) {
+    public void the_user_enters_account_password(String accountPassword) throws InterruptedException {
         loginPage.accountPasswordBox.sendKeys(accountPassword);
+        Thread.sleep(2000);
     }
+
     @When("The user clicks account login click button")
     public void the_user_clicks_account_login_click_button() {
         loginPage.accountLoginClickButton.click();
     }
   
     @When("The user enters {string} wrong accountEmail")
-    public void the_user_enters_wrong_account_email(String wrongAccountEmail) {
-       loginPage.accountEmailBox.sendKeys(wrongAccountEmail);
+    public void the_user_enters_wrong_account_email(String wrongAccountEmail) throws InterruptedException {
+        loginPage.accountEmailBox.sendKeys(wrongAccountEmail);
+        Thread.sleep(2000);
     }
 
     @Then("The user should not be able to logged in with wrong email")
@@ -124,6 +129,22 @@ public class Login_Step_Defs {
                 "×";
         Assert.assertEquals(expectedFailedLoginMessage,actualFailedLoginMessage);
         Driver.closeDriver();
+
+    }
+
+    // Bu asama silinecek
+    @Then("The user should not be able to logged in after five invalid login attempts")
+    public void the_user_should_not_be_able_to_logged_in_after_invalid_login_attempts() {
+        String actualExceededAttemptLoginMessage = loginPage.warningMessage.getText();
+        String expectedExceededAttemptLoginMessage = "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.\n" +
+                "×";
+        Assert.assertEquals(expectedExceededAttemptLoginMessage, actualExceededAttemptLoginMessage);
+        Driver.closeDriver();
+    }
+
+    @Then("The user should be able to see {string} after five invalid login attempts")
+    public void the_user_should_be_able_to_see_after_five_invalid_login_attempts(String ExpectedWarningMessage) {
+
     }
 
     @Then("The user should be able to see {string} for five invalid login attempts")
@@ -153,24 +174,28 @@ public class Login_Step_Defs {
     }
     @Then("The user should be able to see the password as bullet signs")
     public void the_user_should_be_able_to_see_the_password_as_bullet_signs() {
-        Assert.assertEquals("password",loginPage.accountPasswordBox.getAttribute("type"));
+        Assert.assertEquals("password", loginPage.accountPasswordBox.getAttribute("type"));
     }
     @When("The user clicks Forgotten Password button")
     public void the_user_clicks_forgotten_password_button() {
         loginPage.forgottenPasswordButton.click();
+
     }
     @When("The user clicks Continue button")
     public void the_user_clicks_continue_button() {
         loginPage.continueButton2.click();
+
     }
+
     @Then("The user should be able to see {string} message")
     public void the_user_should_be_able_to_see_message(String expectedMessage) {
         String actualMessage = loginPage.warningMessage.getText();
+
         Assert.assertEquals(actualMessage, expectedMessage);
 
     }
 
-}
+    }
 
 
 
