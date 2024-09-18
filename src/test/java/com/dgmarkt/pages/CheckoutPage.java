@@ -31,7 +31,7 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "//input[@name='postcode']")
     public WebElement postCode;
 
-    @FindBy(xpath = "//select[@name='country_id']")
+    @FindBy(xpath = "//select[@id='input-shipping-country']")
     public WebElement country;
 
     @FindBy(xpath = "//select[@name='zone_id']")
@@ -71,7 +71,7 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "(//input[@type='radio'])[1]")
     public WebElement existingAdress;
 
-    @FindBy(xpath = "(//input[@type='radio'])[2]")
+    @FindBy(xpath = "(//input[@value='new']")
     public WebElement newAdress;
 
     @FindBy(css = "#button-payment-address")
@@ -136,5 +136,7 @@ public class CheckoutPage extends BasePage {
         }
         return currency;
     }
+    @FindBy(xpath = "//a[text()='Checkout']")
+    public WebElement checkoutButton;
 
 }
