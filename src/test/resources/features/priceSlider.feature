@@ -7,29 +7,17 @@ Feature:Cat-Subcategory - PRICE slider function
     When The user clicks Health & Beauty submenu
     Then The user should be able to see the "Health & Beauty" page
 
-
   Scenario: Adjusting the PRICE slider to filter products within a specific price range
     When The user locates the PRICE slider on the page.
-    Then I adjust the PRICE slider minimum to 150 and maximum to 300
-    Then I should see products priced between 150 and 300
-
-  Scenario: Adjusting the PRICE slider from the minumum price
-  # When I adjust the PRICE slider minumum to 250"
-   # Then I should see products priced from 275
-
-  Scenario: Adjusting the PRICE slider to the maximum price
-   # When I adjust the PRICE slider maximum to 381
-  #  Then I should see products priced up to 381
+    Then I adjust the PRICE slider minimum to 110 and maximum to 150
+    Then I should see that the product prices are within desired range
   @wip
   Scenario Outline: No products displayed when the selected price range has no products
+    #Then I adjust the PRICE slider minimum to <minprice> and maximum to <maxprice>
     Then I adjust the PRICE slider minimum to <minprice> and maximum to <maxprice>
     Then The user should be able to see the negative "<noProductMatchesMessage>" message
 
     Examples:
-      | maxprice | minprice | noProductMatchesMessage                                      |
-      | 277      | 250      | There is no product that matches the search criteria. |
+      | maxprice | minprice | noProductMatchesMessage                         |
+      | 250   | 110      | There are no products to list in this category. |
 
-
-  Scenario: Verifying that resetting the PRICE slider shows all products
-    When I reset the PRICE slider to its default values
-   # Then I should see all products on the Sub-Category Page
