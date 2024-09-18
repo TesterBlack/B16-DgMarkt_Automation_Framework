@@ -10,51 +10,48 @@ import org.openqa.selenium.support.FindBy;
 public class CheckoutPage extends BasePage {
     String currency;
     MainPage mainPage = new MainPage();
-    @FindBy(xpath = "//input[@name='firstname']")
+    @FindBy(xpath = "(//input[@name='firstname'])[2]")
     public WebElement firstName;
 
-    @FindBy(xpath = "//input[@name='lastname']")
+    @FindBy(xpath = "(//input[@name='lastname'])[2]")
     public WebElement lastName;
 
     @FindBy(xpath = "//input[@name='company']")
     public WebElement company;
 
-    @FindBy(xpath = "//input[@name='address_1']")
+    @FindBy(xpath = "(//input[@name='address_1'])[2]")
     public WebElement adress1;
 
-    @FindBy(xpath = "//input[@name='address_2']")
-    public WebElement adress2;
-
-    @FindBy(xpath = "//input[@name='city']")
+    @FindBy(xpath = "(//input[@name='city'])[2]")
     public WebElement city;
 
-    @FindBy(xpath = "//input[@name='postcode']")
+    @FindBy(xpath = "(//input[@name='postcode'])[2]")
     public WebElement postCode;
 
     @FindBy(xpath = "//select[@id='input-shipping-country']")
     public WebElement country;
 
-    @FindBy(xpath = "//select[@name='zone_id']")
+    @FindBy(xpath = "(//select[@name='zone_id'])[2]")
     public WebElement region;
 
-    @FindBy(xpath = "//input[@value='Continue']")
-    public WebElement continueBtn;
-
+    @FindBy(xpath = "//*[@id='button-payment-address']")
+    public WebElement continueBtnBilling;
+    @FindBy(xpath = "//*[@id='button-shipping-address']")
+    public WebElement continueBtnDeliveryDetails;
+    @FindBy(xpath = "//*[@id='button-shipping-method']")
+    public WebElement continueBtnDeliveryMethod;
+    @FindBy(xpath = "//*[@id='button-payment-method']")
+    public WebElement continueBtnPaymentMethod;
     @FindBy(xpath = "//input[@name='agree']")
     public WebElement termsConditionsAgreeBtn;
-
     @FindBy(xpath = "//input[@id='button-confirm']")
     public WebElement confirmOrderBtn;
-
-    @FindBy(xpath = "//div[@class='container-inner']")
+    @FindBy(xpath = "//h1")
     public WebElement successMessage;
-
     @FindBy(xpath = "//a[@class='btn btn-primary']")
     public WebElement lastContinue;
-
     @FindBy(xpath = "(//h4[@class='panel-title'])[1]")
     public WebElement checkoutOptionsArea;
-
     @FindBy(xpath = "(//td[@class='text-right'])[8]")
     public WebElement verifyAmount;
 
@@ -71,17 +68,8 @@ public class CheckoutPage extends BasePage {
     @FindBy(xpath = "(//input[@type='radio'])[1]")
     public WebElement existingAdress;
 
-    @FindBy(xpath = "(//input[@value='new']")
-    public WebElement newAdress;
-
     @FindBy(css = "#button-payment-address")
     public WebElement continueBtnAddress;
-
-    @FindBy(css = "#button-shipping-address")
-    public WebElement continueBtnDeliveryDetails;
-
-    @FindBy(xpath = "//input[@id='button-shipping-method']")
-    public WebElement continueBtnDeliveryMethod;
 
     @FindBy(css = "#button-confirm")
     public WebElement confirmOrder;
@@ -138,5 +126,13 @@ public class CheckoutPage extends BasePage {
     }
     @FindBy(xpath = "//a[text()='Checkout']")
     public WebElement checkoutButton;
+
+    @FindBy(xpath = "//*[@id='collapse-shipping-address']/div/form/div[3]/label/input")
+    public WebElement newDeliveryAddressButton;
+
+    @FindBy (xpath = "//*[@id='checkout-cart']/div[1]")
+    public WebElement alertNotInStock;
+    @FindBy(xpath = "//a[@class='btn btn-primary']")
+    public WebElement continueBtnEmptyCart;
 
 }

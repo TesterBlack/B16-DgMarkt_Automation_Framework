@@ -21,8 +21,14 @@ public class ShoppingCart_Step_Defs {
 
     @When("The user clicks on the product")
     public void the_user_clicks_on_the_product() {
+        BrowserUtils.waitFor(1);
         shoppingCartPage.productSelect.click();
     }
+    @When("The user enters {string} quantity")
+    public void the_user_enters_quantity(String quantity) {
+        shoppingCartPage.quantityInProductPage.sendKeys(quantity);
+    }
+
     @When("The user clicks on add to cart button")
     public void the_user_clicks_on_add_to_cart_button() {
         shoppingCartPage.addToCartButton.click();
@@ -53,7 +59,7 @@ public class ShoppingCart_Step_Defs {
         System.out.println("expectedQuantity = " + expectedQuantity);
         System.out.println("actualQuantity = " + actualQuantity);
         Assert.assertEquals(expectedQuantity, actualQuantity);
-        //shoppingCartPage.removeProductInShoppingCart.click(); NOTE: Burasi B16DDM-185'de kapali olacak
+        //shoppingCartPage.removeProductInShoppingCart.click(); NOTE: Burasi B16DDM-185'de kapali, 111 ve 157'de acik olacak
 
     }
 

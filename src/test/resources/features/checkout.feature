@@ -8,11 +8,12 @@ Feature: Cart Icon Functionality Test
     When The user enters own login information
     Then The user should be able to logged in
 
-  @checkout
-  Scenario Outline: Completing the Checkout Test - B16DDM-185
+  @checkoutNegative
+  Scenario Outline: Checkout for products that are out of stock or not available in desired quantity Test - B16DDM-188
     When The user hover over the Category header on the main page
     And The user clicks on a subcategory '<subCategoryName>'
     And The user clicks on the product
+    And The user enters "<quantity>" quantity
     And The user clicks on add to cart button
     And The user closes the received message
     And The user clicks on basket icon
@@ -20,7 +21,31 @@ Feature: Cart Icon Functionality Test
     When The user clicks View Cart button
     Then User should be able to see the products added to the cart with correct quantity in checkout page
     And The user clicks Checkout button
-    And The user select an existing address for billing
+    Then The user should be able to see alert message that the product not available or not in stock
+    When The user clicks continue button in empty cart
+
+    Examples:
+      | subCategoryName | quantity |
+      | Health & Beauty | 400      |
+      | Televisions     | 400      |
+      | TV Accessories  | 400      |
+      | Networking      | 400      |
+
+
+  @checkoutPositive
+  Scenario Outline: Completing the Checkout Test - B16DDM-185
+    When The user hover over the Category header on the main page
+    And The user clicks on a subcategory '<subCategoryName>'
+    And The user clicks on the product
+    And The user enters "<quantity>" quantity
+    And The user clicks on add to cart button
+    And The user closes the received message
+    And The user clicks on basket icon
+    Then The user should be able to see the added product
+    When The user clicks View Cart button
+    Then User should be able to see the products added to the cart with correct quantity in checkout page
+    And The user clicks Checkout button
+    And The user select an existing address for billing and clicks continue
     And The user enters "<firstName>" first name
     And The user enters "<lastName>" last name
     And The user enters "<address>" address
@@ -34,11 +59,10 @@ Feature: Cart Icon Functionality Test
     Then The user should be able to see the order confirmation page
 
     Examples:
-      | subCategoryName |
-      | Health & Beauty |
-      | Televisions     |
-      | TV Accessories  |
-      | Networking      |
-    Examples:
-      | firstName | lastName | address          | city   | postCode |
-      | John      | Doe      | Muster Strasse 1 | Berlin | 44000    |
+      | subCategoryName | firstName | lastName | address          | city   | postCode | quantity |
+      | Health & Beauty | John      | Doe      | Muster Strasse 1 | Berlin | 44000    | 5        |
+      | Televisions     | John      | Doe      | Muster Strasse 1 | Berlin | 44000    | 5        |
+      | TV Accessories  | John      | Doe      | Muster Strasse 1 | Berlin | 44000    | 5        |
+      | Networking      | John      | Doe      | Muster Strasse 1 | Berlin | 44000    | 5        |
+
+
