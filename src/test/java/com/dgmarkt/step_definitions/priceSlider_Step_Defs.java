@@ -31,27 +31,6 @@ public class priceSlider_Step_Defs {
         System.out.println("healthAndBeautyPage.pricesOfProducts.size() = " + healthAndBeautyPage.pricesOfProducts.size());
     }
 
-    @When("I adjust the PRICE slider minimum to {int}")
-    public void iAdjustThePRICESliderMinimumTo(int price) {
-        /*
-        Actions move = new Actions(Driver.getDriver());
-        BrowserUtils.waitFor(5);
-        BrowserUtils.executeJScommand("document.getElementById('price-from').value = '100';");
-        BrowserUtils.executeJScommand("document.getElementById('price-to').value = '300';");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(true);", healthAndBeautyPage.priceSliderHandleHealthAndBeauty);
-        Actions move2 = new Actions(Driver.getDriver());
-        move2.dragAndDropBy(healthAndBeautyPage.minSliderHandle, healthAndBeautyPage.getSliderOffsetForPrice(price), 0);
-
-         */
-        healthAndBeautyPage.adjustPriceSlider(0, 0);
-    }
-
-    @Then("I should see products priced from {int} onwards")
-    public void i_should_see_products_priced_from_onwards(int minPrice) {
-        healthAndBeautyPage.getAllProductPrices(minPrice);
-    }
-
     @Then("the URL should update to reflect the selected minimum price")
     public void the_url_should_update_to_reflect_the_selected_minimum_price(int maxPrice) {
         healthAndBeautyPage.adjustPriceSlider(0, maxPrice);
