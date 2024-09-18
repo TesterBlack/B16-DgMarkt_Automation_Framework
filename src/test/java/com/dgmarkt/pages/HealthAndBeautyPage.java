@@ -51,7 +51,7 @@ public class HealthAndBeautyPage extends BasePage {
     @FindBy(xpath = "//div[@class='slider-values']//span[2]")
     public WebElement maxPriceOfSlider;
 
-    @FindBy(xpath = "//div[@class='product-item']//span[contains(@class,'price')]")
+    @FindBy(css = "div p.price")
     public List<WebElement> pricesOfProducts;
 
     @FindBy(xpath = "//div[@class='slider-values']//input[@id='price-to']/@value")
@@ -68,37 +68,46 @@ public class HealthAndBeautyPage extends BasePage {
         maxSliderHandle.sendKeys("300");
     }
 
-    public void getAllProductPrices(int minPrice) {
+    public void getAllProductPrices(int minPrice, int maxPrice) {
         for (WebElement productPriceElement : pricesOfProducts) {
             String priceText = productPriceElement.getText().replaceAll("[^0-9]", "");
 
-            if (priceText.isEmpty()) {
+            /*if (priceText.isEmpty()) {
                 System.err.println("Fiyat bilgisi boş veya geçersiz: " + productPriceElement.getText());
                 continue; // veya uygun bir hata yönetimi yapabilirsiniz
-            }
+            }*/
 
             try {
                 int price = Integer.parseInt(priceText);
                 Assert.assertTrue("Ürün fiyatı minimum fiyatın altında!", price >= minPrice);
+                Assert.assertTrue("Ürün fiyatı minimum fiyatın ustunde!", price <= maxPrice);
+
             } catch (NumberFormatException e) {
                 System.err.println("Fiyat verisi sayı formatında değil: " + priceText);
             }
         }
     }
 
+    @FindBy(id = "price-from")
+    public WebElement priceFrom;
+
+    @FindBy(id = "price-to")
+    public WebElement priceTo;
     public void adjustPriceSlider(int minPrice, int maxPrice) {
-        int sliderMinValue = 81;
+       /* int sliderMinValue = 81;
         int sliderMaxValue = 381;
         int sliderWidth = priceSliderHandleHealthAndBeauty.getSize().getWidth();
         int minXOffset = getXOffsetForPrice(minPrice, sliderMinValue, sliderMaxValue, sliderWidth);
         int maxXOffset = getXOffsetForPrice(maxPrice, sliderMinValue, sliderMaxValue, sliderWidth);
 
         Actions move = new Actions(Driver.getDriver());
-        BrowserUtils.waitFor(5);
-        BrowserUtils.executeJScommand("document.getElementById('price-from').value = '100';");
-        BrowserUtils.executeJScommand("document.getElementById('price-to').value = '300';");
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(true);", priceSliderHandleHealthAndBeauty);
+        BrowserUtils.waitFor(5);*/
+        BrowserUtils.scrollToElement(priceTo);
+        BrowserUtils.executeJScommand(priceFrom,"arguments[0].setAttribute('value', '"+minPrice+"');");
+        BrowserUtils.executeJScommand(priceTo,"arguments[0].setAttribute('value', '"+maxPrice+"');");
+        BrowserUtils.waitFor(3);
+        /*JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", priceSliderHandleHealthAndBeauty);*/
 
     }
 
