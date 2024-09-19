@@ -75,7 +75,7 @@ public class HealthAndBeautyPage extends BasePage {
         int width = priceSliderHandleHealthAndBeauty.getSize().getWidth();
         Actions action = new Actions(Driver.getDriver());
         action.dragAndDropBy(minSliderHandle, minPrice, 0).perform();
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(5);
         action.dragAndDropBy(maxSliderHandle, -maxPrice, 0).perform();
     }
 
