@@ -38,6 +38,8 @@ public class Driver {
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     Map<String, Object> prefs = new HashMap<>();
+                    prefs.put("profile.default_content_setting_values.geolocation", 2);  
+                    prefs.put("profile.default_content_setting_values.notifications", 2);
                     prefs.put("profile.default_search_engine", "Google");
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-popup-blocking");
