@@ -1,11 +1,12 @@
 
 Feature: Like Icon (Wish List) functionality test
+  As a user, I should be able to see the product in my wish list, when I like the product.
 
   Background:
     Given The user is on the first login page
     When The user is on the login page
 
-  Scenario: Wish List Test - The user should be able to see products in the wish list - B16DDM-59
+  Scenario: The user should be able to see products in the wish list - B16DDM-59
 
     When The user hover over the Category header on the main page
     Then The user should be able to see on the submenu-header submenus
@@ -24,7 +25,7 @@ Feature: Like Icon (Wish List) functionality test
 
 
 
-  Scenario: Wish List delete Product Test - The user should be able to delete products from wish list - B16DDM-63
+  Scenario: The user should be able to delete products from wish list - B16DDM-63
 
     Given The user clicks wish list icon
     Then The user should be able to see the products on the wish list page
@@ -38,8 +39,8 @@ Feature: Like Icon (Wish List) functionality test
     And The user should be able to see the empty message
 
 
-
-  Scenario: Wish List add to cart Test - The user should be able to products add to cart from wish list - B16DDM-128
+  #add 2 items to wishlist before testing
+  Scenario: The user should be able to products add to cart from wish list - B16DDM-128
 
     Given The user clicks wish list icon
     Then The user should be able to see the products on the wish list page

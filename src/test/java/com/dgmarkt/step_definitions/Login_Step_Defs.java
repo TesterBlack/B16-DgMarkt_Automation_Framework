@@ -65,7 +65,7 @@ public class Login_Step_Defs {
 
     @When("The user clicks on My Account menu")
     public void the_user_clicks_on_My_Account_menu() {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(1);
         BrowserUtils.clickWithJS(loginPage.myAccountButton);
     }
     @Then("The user clicks on Logout button")

@@ -15,16 +15,15 @@ public class WishList_Step_Defs {
     @When("The user clicks wish list icon")
     public void the_user_clicks_wish_list_icon() {
         BrowserUtils.waitFor(2);
-        System.out.println("wishlist is clicked");
         BrowserUtils.clickWithJS(wishListPage.wishListIcon);
     }
 
     @Then("The user should be able to see the products on the wish list page")
     public void the_user_should_be_able_to_see_the_products_on_the_wish_list_page() {
-        BrowserUtils.waitForVisibility(wishListPage.firstProduct.get(wishListPage.firstProduct.size() - 1), 5);
+        BrowserUtils.waitForVisibility(wishListPage.firstProduct.get(wishListPage.firstProduct.size() - 1), 1);
         BrowserUtils.waitFor(2);
         BrowserUtils.scrollToElement(wishListPage.secondProduct.get(wishListPage.secondProduct.size() - 1));
-        BrowserUtils.waitForVisibility(wishListPage.secondProduct.get(wishListPage.secondProduct.size() - 1), 5);
+        BrowserUtils.waitForVisibility(wishListPage.secondProduct.get(wishListPage.secondProduct.size() - 1), 1);
         String expectedProduct1 = "BaByliss 3663U - Hair rollers";
         String expectedProduct2 = "Capsule Plate 6pcs";
         String actualProduct1 = wishListPage.firstProduct.get(wishListPage.firstProduct.size() - 1).getText();
@@ -35,7 +34,7 @@ public class WishList_Step_Defs {
 
     @When("The user clicks the delete icon for the first product in the My Wish List table")
     public void the_user_clicks_the_delete_icon_for_the_first_product_in_the_my_wish_list_table() {
-        BrowserUtils.waitForVisibility(wishListPage.deleteButton, 4);
+        BrowserUtils.waitForVisibility(wishListPage.deleteButton, 1);
         wishListPage.deleteButton.click();
     }
 
@@ -49,7 +48,7 @@ public class WishList_Step_Defs {
 
     @When("The user clicks the delete icon for the second product in the My Wish List table")
     public void the_user_clicks_the_delete_icon_for_the_second_product_in_the_my_wish_list_table() {
-        BrowserUtils.waitForVisibility(wishListPage.deleteButton, 5);
+        BrowserUtils.waitForVisibility(wishListPage.deleteButton, 1);
         wishListPage.deleteButton.click();
     }
     @Then("The user should no longer see the second product in the wish list and  get the message")
@@ -67,7 +66,7 @@ public class WishList_Step_Defs {
     }
     @When("The user clicks the add to cart icon for the first product in the My Wish List table")
     public void the_user_clicks_the_add_to_cart_icon_for_the_first_product_in_the_my_wish_list_table() {
-        BrowserUtils.waitForVisibility(wishListPage.addToCartButton, 5);
+        BrowserUtils.waitForVisibility(wishListPage.addToCartButton, 1);
         wishListPage.addToCartButton.click();
     }
     @When("The user clicks the add to cart icon for the second product in the My Wish List table")
@@ -81,7 +80,7 @@ public class WishList_Step_Defs {
 
     @Then("The user clicks the add to cart icon")
     public void the_user_clicks_the_add_to_cart_icon() {
-        BrowserUtils.waitForVisibility(wishListPage.addToCartButton, 5);
+        BrowserUtils.waitForVisibility(wishListPage.addToCartButton, 1);
         wishListPage.cartIcon.click();
     }
     @Then("The user should be able to see a dropdown menu for the shopping cart that the products have been added to the cart.")
