@@ -27,6 +27,7 @@ public class priceSlider_Step_Defs {
 
     @Then("I adjust the PRICE slider minimum to {int} and maximum to {int}")
     public void i_adjust_the_price_slider_minimum_to_and_maximum_to(int minPrice, int maxPrice) {
+        BrowserUtils.waitFor(3);
         healthAndBeautyPage.adjustPriceSlider2(minPrice, maxPrice);
         minValue = Integer.parseInt(healthAndBeautyPage.l_minPrice.getAttribute("value"));
         maxValue = Integer.parseInt(healthAndBeautyPage.l_maxPrice.getAttribute("value"));
