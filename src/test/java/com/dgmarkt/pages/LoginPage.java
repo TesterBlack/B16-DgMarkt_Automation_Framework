@@ -50,7 +50,10 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[text()=' Warning: No match for E-Mail Address and/or Password.']")
     public WebElement failedLoginMessage;
 
-    @FindBy(xpath = "//div[contains(text(), ' Warning')]")
+    @FindBy(xpath = "//div[contains(text(), 'confirmation')]")
+    public WebElement emailSentMessage;
+
+    @FindBy(xpath = " //div[contains(text(), ' Warning')]")
     public WebElement warningMessage;
 
     @FindBy(xpath = "//a[text()='Forgotten Password']")

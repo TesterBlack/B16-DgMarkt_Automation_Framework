@@ -42,12 +42,14 @@ public class Driver {
 
                     prefs.put("profile.default_content_setting_values.geolocation", 2);
                     prefs.put("profile.default_content_setting_values.notifications", 2);
-                    prefs.put("profile.default_search_engine", "Google");
-                    options.setExperimentalOption("prefs", prefs);
+                    prefs.put("profile.default_search_provider_name", "Google");
+                    prefs.put("int1.accept_languages", "en-US");
                     options.addArguments("--disable-popup-blocking");
                     options.addArguments("--disable-default-apps");
                     options.addArguments("--no-default-browser-check");
                     options.addArguments("--no-first-run");
+                    options.addArguments("--lang=en");
+                    options.setExperimentalOption("prefs", prefs);
                     WebDriverManager.chromedriver().setup();
                     driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
