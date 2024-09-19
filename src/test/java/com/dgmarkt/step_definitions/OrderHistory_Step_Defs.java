@@ -34,8 +34,7 @@ public class OrderHistory_Step_Defs {
     }
 
     @When("The user clicks on Re-order button")
-    public void the_user_clicks_on_re_order_button() {
-        //BrowserUtils.waitFor(1);
+    public void the_user_clicks_on_re_order_button() {       
         orderHistoryPage.reOrderButton().click();
     }
 
@@ -45,8 +44,7 @@ public class OrderHistory_Step_Defs {
     }
 
     @When("The user clicks on Return button")
-    public void the_user_clicks_on_return_button() {
-        //BrowserUtils.waitFor(1);
+    public void the_user_clicks_on_return_button() {       
         orderHistoryPage.returnButton().click();
     }
 
@@ -60,8 +58,7 @@ public class OrderHistory_Step_Defs {
     @Then("The user checks the Product Information for correct product name")
     public void the_user_checks_the_product_information_for_correct_product_name() {
         BrowserUtils.scrollToElement(orderHistoryPage.productName);
-        orderHistoryPage.productName.getAttribute("value");
-        //BrowserUtils.waitFor(1);
+        orderHistoryPage.productName.getAttribute("value");      
         Assert.assertEquals("ASUS ROG STRIX GS-AX3000", orderHistoryPage.productName.getAttribute("value"));
     }
 
@@ -71,20 +68,17 @@ public class OrderHistory_Step_Defs {
     }
 
     @Then("The user should be able to see the Order Error button is clicked")
-    public void the_user_should_be_able_to_see_the_order_error_button_is_clicked() {
-        //BrowserUtils.waitFor(1);
+    public void the_user_should_be_able_to_see_the_order_error_button_is_clicked() {     
         Assert.assertTrue(orderHistoryPage.orderErrorRadioButton.isSelected());
     }
 
     @Then("The user clicks Submit button")
     public void the_user_clicks_submit_button() {
-        orderHistoryPage.submitButton.click();
-        //BrowserUtils.waitFor(1);
+        orderHistoryPage.submitButton.click();      
     }
 
     @Then("The user should be able to see a message {string}")
     public void the_user_should_be_able_to_see_a_message(String message) {
-        Assert.assertEquals(message, orderHistoryPage.productReturnMessage1.getText());
-        //BrowserUtils.waitFor(1);
+        Assert.assertEquals(message, orderHistoryPage.productReturnMessage1.getText());        
     }
 }
