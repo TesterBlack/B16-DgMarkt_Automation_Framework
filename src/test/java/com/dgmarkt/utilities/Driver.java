@@ -15,6 +15,8 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -35,7 +37,9 @@ public class Driver {
             switch (browser.toLowerCase()) {
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
-
+                    Map<String, Object> prefs = new HashMap<>();
+                    prefs.put("profile.default_search_engine", "Google");
+                    options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-popup-blocking");
                     options.addArguments("--disable-default-apps");
                     options.addArguments("--no-default-browser-check");
