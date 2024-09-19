@@ -1,7 +1,8 @@
+@loginFunctionTest
 Feature: Login functionality test
   As a user, I should be able to login with VALID credentials
 
-
+  @positiveLoginTest
   Scenario: Positive Login Test
     Given The user is on the first login page
     When The user enters valid credentials
@@ -9,26 +10,26 @@ Feature: Login functionality test
     When The user enters own login information
     Then The user should be able to logged in
 
-
+  @firstAuthentication
   Scenario: The user can login with given credentials for the first authentication - B16DDM-30
     Given The user is on the first login page
     When The user enters valid credentials
     Then The user should be able to see main page
 
-
+  @validLogintest
   Scenario: The user can login by entering the valid E-Mail and password - B16DDM-51
     Given The user is on the first login page
     When The user enters valid credentials
     Then The user should be able to see main page
     When The user clicks my account button
     And The user clicks account login button
-    And The user enters "login@gmail.com" accountEmail
-    And The user enters "Login123" accountPassword
+    And The user enters "login2@gmail.com" accountEmail
+    And The user enters "Login2" accountPassword
     And The user clicks account login click button
     And The user should be able to see main page
     Then The user should be able to logged in
 
-
+  @wrongCredentialsLoginTest
   Scenario Outline: The user can not login with wrong Credentials - B16DDM-57-58-61
     Given The user is on the first login page
     When The user enters valid credentials
@@ -46,6 +47,7 @@ Feature: Login functionality test
       | wrong@gmail.com | wrongPass3      | Warning: No match for E-Mail Address and/or Password. |
 
 
+  @invalidEmailLogin
   Scenario Outline: The user can not login with invalid email address - B16DDM-62
     Given The user is on the first login page
     When The user enters valid credentials
@@ -65,6 +67,7 @@ Feature: Login functionality test
       | login@gmal.com  | wrongPass4      | Warning: No match for E-Mail  Address and/or Password. |
 
 
+  @invalidPasswordLogin
   Scenario Outline: The user can not login with invalid password - B16DDM-64
     Given The user is on the first login page
     When The user enters valid credentials
@@ -84,6 +87,7 @@ Feature: Login functionality test
       | login@gmail.com | 1234                  | Warning: No match for E-Mail  Address and/or Password. |
 
 
+  @invalidEmail&PasswordLogin
   Scenario Outline: The user can not login with invalid email and password - B16DDM-65
     Given The user is on the first login page
     When The user enters valid credentials
@@ -103,6 +107,7 @@ Feature: Login functionality test
       | login@gmal.com  | 1234                   | Warning: No match for E-Mail  Address and/or Password. |
 
 
+  @blankInputboxLogin
   Scenario Outline: The user can not login with blank inputbox of email / password - B16DDM-66-67-68
     Given The user is on the first login page
     When The user enters valid credentials
@@ -127,8 +132,8 @@ Feature: Login functionality test
     Then The user should be able to see main page
     When The user clicks my account button
     And The user clicks account login button
-    And The user enters "login@gmail.com" accountEmail
-    And The user enters "Login123" accountPassword
+    And The user enters "login2@gmail.com" accountEmail
+    And The user enters "Login2" accountPassword
     Then The user should be able to see the password as bullet signs
     And The user clicks account login click button
     Then The user should be able to logged in
@@ -142,12 +147,12 @@ Feature: Login functionality test
     When The user clicks my account button
     And The user clicks account login button
     And The user clicks Forgotten Password button
-    And The user enters "login@gmail.com" accountEmail
+    And The user enters "login2@gmail.com" accountEmail
     And The user clicks Continue button
     Then The user should be able to see "An email with a confirmation link has been sent your email address." message
 
 
-  @login
+  @negativeLoginRepeatedly
   Scenario Outline: The user can not login with incorrect credentials after exceeded login 5 attempts - B16DDM-71
     Given The user is on the first login page
     When The user enters valid credentials
@@ -157,7 +162,7 @@ Feature: Login functionality test
     And The user enters "<wrongAccountEmail>" as wrong accountEmail
     And The user enters "<wrongAccountPassword>" as accountPassword
     And The user clicks account login click button
-    Then The user should be able to see "<expectedWarningMessage>" for five invalid login attempts
+    Then The user should be able to see "<expectedWarningMessage>" after five invalid login attempts
     Examples:
       | wrongAccountEmail | wrongAccountPassword | expectedWarningMessage                                                                          |
       | wrongUser1        | wrongPass1           | Warning: No match for E-Mail Address and/or Password.                                           |
