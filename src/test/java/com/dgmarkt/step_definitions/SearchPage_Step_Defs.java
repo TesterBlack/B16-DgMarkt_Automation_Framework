@@ -48,7 +48,7 @@ public class SearchPage_Step_Defs {
 
     @Then("The user should be able to see the negative {string} message")
     public void the_user_should_be_able_to_see_the_negative_message(String noProductMessage) {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitFor(3);
         Assert.assertTrue(Driver.getDriver().getPageSource().contains(noProductMessage));
         //System.out.println(Driver.getDriver().getPageSource());
         //System.out.println("searchPage.noProductMessage.getText() = " + searchPage.noProductMessage.getText());
