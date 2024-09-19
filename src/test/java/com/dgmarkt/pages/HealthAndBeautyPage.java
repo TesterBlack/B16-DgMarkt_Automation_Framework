@@ -16,9 +16,6 @@ public class HealthAndBeautyPage extends BasePage {
     @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
     public WebElement alertMessage;
 
-    @FindBy(xpath = "//a[@id='wishlist-total']")
-    public WebElement wishListButton;
-
     public void productAddToWishList(String productName) {
         String product1 = "//a[text()='" + productName + "']/../../../..//button[2]";
         Driver.getDriver().findElement(By.xpath(product1)).click();
@@ -43,12 +40,6 @@ public class HealthAndBeautyPage extends BasePage {
     @FindBy(xpath = "(//span[@class='ui-slider-handle ui-state-default ui-corner-all'])[2]")
     public WebElement maxSliderHandle;
 
-    @FindBy(xpath = "//div[@class='slider-values']//span[1]")
-    public WebElement minPriceOfSlider;
-
-    @FindBy(xpath = "//div[@class='slider-values']//span[2]")
-    public WebElement maxPriceOfSlider;
-
     @FindBy(css = "div p.price")
     public List<WebElement> pricesOfProducts;
 
@@ -66,11 +57,6 @@ public class HealthAndBeautyPage extends BasePage {
         maxSliderHandle.sendKeys("300");
     }
 
-    @FindBy(id = "price-from")
-    public WebElement priceFrom;
-
-    @FindBy(id = "price-to")
-    public WebElement priceTo;
     public void adjustPriceSlider2(int minPrice, int maxPrice) {
         Actions moveSlider=new Actions(Driver.getDriver());
         int width = priceSliderHandleHealthAndBeauty.getSize().getWidth();
