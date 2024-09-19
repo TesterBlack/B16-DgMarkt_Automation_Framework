@@ -1,3 +1,4 @@
+@category
 Feature: Cart Icon Functionality Test
   As a user, I should be able to manage the cart by clicking the cart icon
 
@@ -8,17 +9,10 @@ Feature: Cart Icon Functionality Test
     When The user enters own login information
     Then The user should be able to logged in
 
-  @addedProductPositive
-  Scenario Outline: Positive product add to cart Test - B16DDM-111 - 157
+  Scenario Outline: Subcategory selection under Category Module Test - B16DDM-91 - 94 - 95 - 96
     When The user hover over the Category header on the main page
     And The user clicks on a subcategory '<subCategoryName>'
-    And The user clicks on the product
-    And The user clicks on add to cart button
-    #And The user closes the received message
-    And The user clicks on basket icon
-    Then The user should be able to see the added product
-    When The user clicks View Cart button
-    Then User should be able to see the products added to the cart with correct quantity in checkout page
+    Then The user should be in "<subCategoryName>" page
 
     Examples:
       | subCategoryName |

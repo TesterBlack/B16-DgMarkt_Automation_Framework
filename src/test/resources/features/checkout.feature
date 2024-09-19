@@ -1,3 +1,4 @@
+@checkout
 Feature: Cart Icon Functionality Test
   As a user, I should be able to manage the cart by clicking the cart icon
 
@@ -15,7 +16,7 @@ Feature: Cart Icon Functionality Test
     And The user clicks on the product
     And The user enters "<quantity>" quantity
     And The user clicks on add to cart button
-    And The user closes the received message
+    #And The user closes the received message
     And The user clicks on basket icon
     Then The user should be able to see the added product
     When The user clicks View Cart button
@@ -39,7 +40,7 @@ Feature: Cart Icon Functionality Test
     And The user clicks on the product
     And The user enters "<quantity>" quantity
     And The user clicks on add to cart button
-    And The user closes the received message
+    #And The user closes the received message
     And The user clicks on basket icon
     Then The user should be able to see the added product
     When The user clicks View Cart button

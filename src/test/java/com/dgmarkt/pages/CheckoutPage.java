@@ -44,14 +44,10 @@ public class CheckoutPage extends BasePage {
     public WebElement continueBtnPaymentMethod;
     @FindBy(xpath = "//input[@name='agree']")
     public WebElement termsConditionsAgreeBtn;
-    @FindBy(xpath = "//input[@id='button-confirm']")
-    public WebElement confirmOrderBtn;
     @FindBy(xpath = "//h1")
     public WebElement successMessage;
     @FindBy(xpath = "//a[@class='btn btn-primary']")
     public WebElement lastContinue;
-    @FindBy(xpath = "(//h4[@class='panel-title'])[1]")
-    public WebElement checkoutOptionsArea;
     @FindBy(xpath = "(//td[@class='text-right'])[8]")
     public WebElement verifyAmount;
 
@@ -77,8 +73,6 @@ public class CheckoutPage extends BasePage {
     @FindBy(id = "button-payment-method")
     public WebElement paymentMethod;
 
-    @FindBy(xpath = "//tfoot[1]//td[2]")
-    public WebElement subTotal;
 
     public void productAddToCart() {
         HealthAndBeautyPage healthAndBeautyPage = new HealthAndBeautyPage();
