@@ -12,9 +12,22 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class HealthAndBeautyPage extends BasePage {
-    
+
     @FindBy(xpath = "//div[@class='alert alert-fix alert-success alert-dismissible']")
     public WebElement alertMessage;
+
+    @FindBy(xpath = "//button[normalize-space()='2']")
+    public WebElement webElementForScrollDown;
+
+    @FindBy (css = "#content div.product-layout")
+    public WebElement productLocation;
+
+    @FindBy(xpath = "//*[@id='content']/div/div[1]/div/div[1]/div/button[6]")
+    public WebElement getProductViewListIcon;
+
+    public WebElement getProductView(int view) {
+        return Driver.getDriver().findElement(By.xpath("//button[normalize-space()='" + view + "']"));
+    }
 
     public void productAddToWishList(String productName) {
         String product1 = "//a[text()='" + productName + "']/../../../..//button[2]";

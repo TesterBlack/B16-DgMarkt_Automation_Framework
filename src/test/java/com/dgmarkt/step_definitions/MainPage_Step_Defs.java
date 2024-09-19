@@ -39,13 +39,13 @@ public class MainPage_Step_Defs {
     @Then("The user should be able to see the {string} page")
     public void the_user_should_be_able_to_see_the_page(String expectedPage) {
         String actualPage = mainPage.getPage().getText();
-        BrowserUtils.waitForVisibility(mainPage.getPage(), 5);
+        BrowserUtils.waitForVisibility(mainPage.getPage(), 2);
         Assert.assertEquals(expectedPage,actualPage);
     }
 
     @When("The user hover over the Category header on the main page")
     public void the_user_hover_over_the_category_header_on_the_main_page() {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(1);
         BrowserUtils.hover(mainPage.getHeader("Category"));
     }
 
@@ -84,6 +84,12 @@ public class MainPage_Step_Defs {
     public void the_user_should_be_able_to_see_the_of_my_account(String submenuList) {
        String menuList = Driver.getDriver().findElement(By.xpath("(//li[.='"+submenuList+"'])[1]")).getText();
        Assert.assertEquals(submenuList,menuList);
+    }
+    @Then("The user should be in {string} page")
+    public void the_user_should_be_in_page(String subCategoryName) {
+        String expectedSubcategory = subCategoryName;
+        String actualSubCategory = mainPage.subcategoryHeader.getText();
+        Assert.assertEquals(expectedSubcategory, actualSubCategory);
     }
 
 }

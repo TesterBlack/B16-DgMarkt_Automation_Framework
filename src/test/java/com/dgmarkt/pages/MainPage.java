@@ -68,5 +68,7 @@ public class MainPage extends BasePage{
     public void getSubCategoryMenu(String subCategoryMenu) {
         Driver.getDriver().findElement(By.xpath("//h4//a[text()='"+subCategoryMenu+"']")).click();
     }
+    @FindBy (xpath = "//h1")
+    public WebElement subcategoryHeader;
 
 }
