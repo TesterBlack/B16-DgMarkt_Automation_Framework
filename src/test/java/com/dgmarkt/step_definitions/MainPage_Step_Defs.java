@@ -85,6 +85,12 @@ public class MainPage_Step_Defs {
        String menuList = Driver.getDriver().findElement(By.xpath("(//li[.='"+submenuList+"'])[1]")).getText();
        Assert.assertEquals(submenuList,menuList);
     }
+    @Then("The user should be in {string} page")
+    public void the_user_should_be_in_page(String subCategoryName) {
+        String expectedSubcategory = subCategoryName;
+        String actualSubCategory = mainPage.subcategoryHeader.getText();
+        Assert.assertEquals(expectedSubcategory, actualSubCategory);
+    }
 
 }
 

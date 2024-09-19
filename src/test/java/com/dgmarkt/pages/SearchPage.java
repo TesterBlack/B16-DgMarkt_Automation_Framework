@@ -5,11 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SearchPage {
 
-    @FindBy(xpath = "//*[text()[contains(., ' Hair ' )]]")
-    public WebElement searchHair;
 
-    @FindBy(xpath = "//*[text()[contains(., ' no product' )]]")
-    public WebElement noProductMessage;
 
 
 

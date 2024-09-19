@@ -15,27 +15,23 @@ import java.util.List;
 
 public class SearchPage_Step_Defs {
     MainPage mainPage = new MainPage();
-    SearchPage searchPage = new SearchPage();
 
     @When("The user clicks on search icon on the main page")
     public void the_user_clicks_on_search_icon_on_the_main_page() {
         BrowserUtils.waitFor(2);
         mainPage.searchIcon.click();
-
     }
 
     @When("The user enters any {string} name")
     public void the_user_enters_any_name(String product) {
         BrowserUtils.waitFor(1);
         mainPage.searchField.sendKeys(product);
-
     }
 
     @When("The user clicks on search icon on search field")
     public void the_user_clicks_on_search_icon_on_search_field() {
         BrowserUtils.waitFor(1);
         mainPage.searchButtonClick.click();
-
     }
 
     @Then("The user should be able to see the list of products with the {string} name")

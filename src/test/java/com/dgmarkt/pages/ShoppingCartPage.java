@@ -27,12 +27,6 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "(//td[@class='text-right'])[2]")
     public WebElement currencyValue;
 
-    @FindBy(xpath = "//img[@class='img-responsive img-mod-471-7403979 ls-is-cached lazyloaded']")
-    public WebElement celloLcdTV;
-
-    @FindBy(xpath = "//button[@id='button-cart']")
-    public WebElement celloLcdTVAddToCartBtn;
-
 
     public void setverifySubTotalAmount(String currency){
         if(currency.equals("€")){
@@ -46,21 +40,11 @@ public class ShoppingCartPage extends BasePage{
         }
     }
 
-
-    @FindBy (xpath = "//*[contains(text(), 'not in stock')]")
-    public WebElement notInStockMessage;
-
     @FindBy (xpath = "(//*[contains(@class, 'layout')])[4]")
     public WebElement productSelect;
 
     @FindBy (xpath = "//*[text()='Add to Cart']")
     public WebElement addToCartButton;
-
-    @FindBy (xpath = "//select[@id='input-limit']")
-    public WebElement inputLimitFilter;
-
-    @FindBy (xpath = "  //*[text()='100']")
-    public WebElement inputLimitSize;
 
     @FindBy (xpath = "//h1")
     public WebElement productNameInProductPage;
