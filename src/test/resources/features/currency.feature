@@ -1,10 +1,11 @@
+@regression
 Feature: Currency functionality test
   As a user I should be able to select the currency and complete transactions
 
   Background:
     Given The user is on the first login page
     When The user is on the login page
-
+  @smoke
   Scenario:Currency Selection Reflects on Product Page - B16DDM-28
     When The User navigates to the currency selector dropdown on the home page
     Then The user should be see the currency options(Euro-Pound-Dolar).

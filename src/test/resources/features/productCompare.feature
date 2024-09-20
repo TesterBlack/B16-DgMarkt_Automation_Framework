@@ -1,3 +1,4 @@
+@regression
 Feature: Product Compare Functionality
   As a user, I should be able to compare the features of the products I want
 
@@ -5,7 +6,7 @@ Feature: Product Compare Functionality
     Given The user is on the login page
     When The user clicks Category module on main page
 
-
+  @smoke
   Scenario Outline: Verify that the User should be able to navigate the Product Compare Page when the User clicks on the Product Compare sub-Tab. - B16DDM-159
     When The user clicks on a subcategory '<subCategoryName>'
     And The user clicks Product Compare on this page

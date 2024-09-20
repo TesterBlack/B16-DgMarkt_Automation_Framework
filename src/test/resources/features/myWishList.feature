@@ -1,3 +1,4 @@
+@regression
 Feature: My Account-User can Modify wish list
   As a user, I should be able to modify My wish list by clicking the Wish List tab under the My Account module.
 
@@ -8,7 +9,7 @@ Feature: My Account-User can Modify wish list
     When The user clicks Health & Beauty submenu
     Then The user should be able to see the "Health & Beauty" page
     When The user add the product "BaByliss 3663U - Hair rollers" to the wish list
-
+  @smoke
   Scenario:Verify that the user should be able to reach wish list on My wish list page - B16DDM-137
     When user clicks My Account on the main page
     Then user clicks My Account from Dropdown menu

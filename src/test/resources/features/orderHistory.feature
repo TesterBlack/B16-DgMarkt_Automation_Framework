@@ -1,10 +1,10 @@
-
+@regression
 Feature: Order History functionality Test
   As a user, I should be able to see and modify order history by clicking the Order History tab under the My Account module.
 
   Background:
     Given The user is on the first login page
-
+  @smoke
   Scenario Outline: User should be able to see order history
   (after completed a purchase) by clicking the Order History tab under the My Account module. - B16DDM-140
 

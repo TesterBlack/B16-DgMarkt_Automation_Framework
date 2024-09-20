@@ -1,7 +1,7 @@
-
+@regression
 Feature: Logout functionality Test
   As a user, I should be able to log out
-
+  @smoke
   Scenario: User should be logged out on the main page - B16DDM-23
 
     Given The user is on the login page
