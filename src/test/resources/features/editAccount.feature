@@ -1,3 +1,4 @@
+@regression
 Feature: Edit Account Functionality
   As a user, I should be able to update the user information by clicking the Edit Account tab under the My Account module
 
@@ -7,7 +8,7 @@ Feature: Edit Account Functionality
     When user clicks My Account from Dropdown menu
     When user clicks Edit Account
 
-
+  @smoke
   Scenario: Verify that the user's First Name information can be successfully updated -  B16DDM-76
     When The user updates the First Name field with valid information
     And The user clicks Continue button on Edit Account site

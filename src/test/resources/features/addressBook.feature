@@ -1,3 +1,4 @@
+@regression
 Feature: Address Book Functionality
   As a user, I should be able to update and add new address information by clicking the Address Book tab under the My Account module.
 
@@ -6,7 +7,7 @@ Feature: Address Book Functionality
     When user clicks My Account on the main page
     When user clicks My Account from Dropdown menu
 
-
+  @smoke
   Scenario: Verify that the user can navigate to Address Book from My Account page successfully -  B16DDM-107
     When The user clicks on Address Book from Account Page
     And The user should be successfully navigated to the Address Book page

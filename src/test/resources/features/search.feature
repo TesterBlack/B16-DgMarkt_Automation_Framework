@@ -1,7 +1,8 @@
+@regression
 Feature: Search Icon Functionality test
   As a user I should be able to search products in the search engine.
 
-  @searchIconPositive
+  @searchIconPositive @smoke
   Scenario Outline: Positive search Test - B16DDM-201
     Given The user is on the first login page
     When The user enters valid credentials

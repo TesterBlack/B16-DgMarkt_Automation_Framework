@@ -1,6 +1,7 @@
+@regression
 Feature: My Account-User can Change password
   As a user, I should be able to change the password by clicking the Password tab under the My Account module.
-
+  @smoke
   Scenario Outline: Verifies that the user can change the password. - B16DDM-81
 
     Given The user logins with new "<currentPassword>"

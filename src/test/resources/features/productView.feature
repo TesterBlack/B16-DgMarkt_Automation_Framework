@@ -1,4 +1,4 @@
-
+@regression
 Feature: Product View functionality Test
   As a user, I should be able to change the product view to a list or twos, threes, fours by clicking on the product view icon.
 
@@ -18,7 +18,7 @@ Feature: Product View functionality Test
       | col-lg-4 | 3      |
       | col-lg-3 | 4      |
 
-
-    Scenario: User can change the view of products to a list - B16DDM-199
-      When The user clicks the option to display products in a list view icon
-      Then The user should be able to see all products displayed in a list view
+  @smoke
+  Scenario: User can change the view of products to a list - B16DDM-199
+    When The user clicks the option to display products in a list view icon
+    Then The user should be able to see all products displayed in a list view

@@ -1,11 +1,11 @@
-
+@regression
 Feature: Like Icon (Wish List) functionality test
   As a user, I should be able to see the product in my wish list, when I like the product.
 
   Background:
     Given The user is on the first login page
     When The user is on the login page
-
+  @smoke
   Scenario: The user should be able to see products in the wish list - B16DDM-59
 
     When The user hover over the Category header on the main page
