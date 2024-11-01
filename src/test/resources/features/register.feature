@@ -90,8 +90,8 @@ Feature: Register Functionality
     When user enters "ayhan" lastname
     When user enters "hakan@gmail.com" email
     When user enters "2134342352451" telephone
-    When user enters "" password
-    When user enters "" password Confirm
+    When user enters "1234" password
+    When user enters "1234" password Confirm
     And user clicks Continue
     Then verify that user can see error message for checkbox "Warning: You must agree to the Privacy Policy!"
 
